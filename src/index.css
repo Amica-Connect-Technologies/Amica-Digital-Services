@@ -149,6 +149,15 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid transparent;
   transition: transform 0.16s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
+  cursor: pointer;
+  /* .btn is used on <button> as well as <a> — reset the UA button defaults.
+     Variant rules below override the background. */
+  background: none;
+  line-height: inherit;
+}
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 .btn:active { transform: translateY(1px); }
 .btn-primary {

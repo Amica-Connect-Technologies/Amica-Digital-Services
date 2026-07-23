@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
 import PageHero from '../components/PageHero.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
+import { useBooking } from '../context/BookingContext.jsx'
 import useSeo from '../hooks/useSeo.js'
 import { pricingPlans, pricingTrust, pricingIndustries, company } from '../data/site.js'
 import './pages.css'
@@ -15,6 +15,7 @@ export default function Pricing() {
     'Pricing',
     'AI-powered growth, automation and digital systems for modern businesses — transparent monthly plans from £199/mo. Cancel anytime, fast deployment.'
   )
+  const { openBooking } = useBooking()
   const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     "Hi Amica Digital, I'd like to discuss a growth system."
   )}`
@@ -51,9 +52,12 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact" className={`btn ${plan.featured ? 'btn-white' : 'btn-outline'}`}>
+                <button
+                  className={`btn ${plan.featured ? 'btn-white' : 'btn-outline'}`}
+                  onClick={() => openBooking({ source: `Pricing — ${plan.name} plan` })}
+                >
                   {plan.cta}
-                </Link>
+                </button>
               </Reveal>
             ))}
           </div>
@@ -95,7 +99,8 @@ export default function Pricing() {
       <CtaBanner
         title="Ready to Build a Smarter Business?"
         text="Book a free consultation and discover how automation can transform your operations."
-        primary={{ label: 'Book Free Strategy Call', to: '/contact' }}
+        primary={{ label: 'Book Free Strategy Call' }}
+        source="Pricing — CTA banner"
         secondary={{ label: 'Speak on WhatsApp', href: waLink, icon: 'whatsapp' }}
       />
     </>

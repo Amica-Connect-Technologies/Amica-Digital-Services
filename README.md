@@ -38,6 +38,11 @@ src/
   App.jsx               Layout shell: Navbar + <Outlet /> + Footer + FloatingWidgets
   index.css             Global styles, CSS variables, design tokens
   data/site.js          ★ ALL site content (see below)
+  data/booking.js       Booking availability: hours, slot length, notice period
+  lib/schedule.js       Slot generation + timezone conversion
+  lib/submitBooking.js  POSTs the booking to the Google Sheet endpoint
+  context/
+    BookingContext.jsx  openBooking() — lets any button open the booking modal
   pages/                One component per route
     Home.jsx            Hero, stats, differentiators, services, process, industries…
     About.jsx           Company story, audiences, testimonials
@@ -50,6 +55,7 @@ src/
     NotFound.jsx        404
   components/
     Navbar.jsx          Top nav (routes come from `nav` in site.js)
+    BookingModal.jsx    Calendar → time slot → details → confirmation
     Footer.jsx          Footer + company details + social links
     FloatingWidgets.jsx Floating chat launcher → WhatsApp / email / consultation
     PageHero.jsx        Shared page header block
@@ -95,9 +101,45 @@ Adding a service is just a new object in `services[]` — the listing card and i
 
 Icons are referenced by name (`<Icon name="shield" />`) and resolve to symbols in [public/icons.svg](public/icons.svg) — add a new `<symbol id="...">` there to add an icon.
 
+## Booking system ("Book a Consultation")
+
+Every "Book…" button on the site opens a booking modal: **pick a date → pick a time → enter details → confirmed**. It is not an embed — it's built into the app.
+
+**How it works**
+
+- Availability is generated in the browser from [src/data/booking.js](src/data/booking.js) — working days, hours, slot length, minimum notice, how far ahead the calendar opens, and any blocked dates. No calendar API, no double-booking check: the team confirms each slot by sending the invite.
+- Slots are authored in the company's timezone (`Europe/London`) and **displayed in the visitor's own timezone**, so a client in Karachi sees 01:00 PM for a 09:00 UK slot.
+- On submit the booking is POSTed to a **Google Apps Script** endpoint, which appends a row to the marketing team's Google Sheet, emails the team, and sends the client a confirmation email.
+- Each booking records **which CTA it came from** (`Navbar`, `Pricing — Growth plan`, `Home hero`…) plus UTM/gclid parameters and the referrer, so marketing can see what converts.
+- The client can download an `.ics` calendar file from the confirmation screen.
+
+**Setting up the Google Sheet (one time, ~10 min)**
+
+1. Create a Google Sheet, then **Extensions → Apps Script** and paste in [docs/booking-apps-script.gs](docs/booking-apps-script.gs).
+2. Set `TEAM_EMAILS` at the top of that script.
+3. **Deploy → New deployment → Web app**, with *Execute as: Me* and *Who has access: **Anyone***. Copy the `/exec` URL.
+4. Copy `.env.example` to `.env` and set `VITE_BOOKING_ENDPOINT` to that URL, then rebuild.
+
+Full step-by-step instructions are in the comment block at the top of the script.
+
+> Without `VITE_BOOKING_ENDPOINT` set, the modal works but submission fails with a message asking the visitor to email instead — it never shows a false confirmation.
+
+**Adding a booking button anywhere**
+
+```jsx
+import { useBooking } from '../context/BookingContext.jsx'
+
+const { openBooking } = useBooking()
+<button onClick={() => openBooking({ source: 'Blog sidebar' })}>Book a call</button>
+```
+
+`source` is what shows up in the Sheet's "CTA Source" column.
+
 ## Notes / known gaps
 
-- **Contact form does not submit anywhere.** `submit()` in [Contact.jsx](src/pages/Contact.jsx#L18) only shows a success state and clears the fields — wire it to an email service or API endpoint before going live.
+- **Contact form does not submit anywhere.** `submit()` in [Contact.jsx](src/pages/Contact.jsx#L18) only shows a success state and clears the fields — wire it to the same Apps Script endpoint (or an email service) before going live. The booking modal *is* wired up; the contact form is not.
+- The booking consent text links to `/policy`, but there is **no `/policy` route** in this app — add a privacy policy page or change the link.
+- Bookings are requests, not guaranteed slots: two visitors can pick the same time, and the team must confirm each one manually.
 - Social links in `company.social` are placeholder root URLs, not real profiles.
 - SEO is client-side only (`useSeo` sets title/description after mount). If search-engine indexing of per-page meta matters, consider prerendering or SSR.
 - BrowserRouter needs the host to rewrite all paths to `index.html`, otherwise deep links like `/pricing` will 404 on refresh.

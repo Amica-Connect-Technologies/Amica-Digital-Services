@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
+import { useBooking } from '../context/BookingContext.jsx'
 import { company } from '../data/site.js'
 import './FloatingWidgets.css'
 
 export default function FloatingWidgets() {
   const [open, setOpen] = useState(false)
+  const { openBooking } = useBooking()
   const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
     "Hi Amica Digital, I'd like to talk about an IT project."
   )}`
@@ -34,9 +35,12 @@ export default function FloatingWidgets() {
             <a className="fw__opt" href={`mailto:${company.email}`}>
               <Icon name="mail" size={20} /> Email the team
             </a>
-            <Link className="fw__opt" to="/contact" onClick={() => setOpen(false)}>
-              <Icon name="phone" size={20} /> Book a free consultation
-            </Link>
+            <button
+              className="fw__opt"
+              onClick={() => { setOpen(false); openBooking({ source: 'Chat widget' }) }}
+            >
+              <Icon name="calendar" size={20} /> Book a free consultation
+            </button>
           </div>
         </div>
       )}

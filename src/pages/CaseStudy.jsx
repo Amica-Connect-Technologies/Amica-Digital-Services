@@ -472,7 +472,8 @@ export default function CaseStudy() {
       <CtaBanner
         title="Ready to reduce onboarding delays and compliance pressure?"
         text="Book a free workflow review and we’ll show you how your agency can automate recruitment and staff onboarding more effectively."
-        primary={{ label: 'Book a Free Workflow Review', to: '/contact' }}
+        primary={{ label: 'Book a Free Workflow Review' }}
+        source="Case study — CTA banner"
         secondary={{ label: 'Speak on WhatsApp', href: waLink, icon: 'whatsapp' }}
       />
     </>

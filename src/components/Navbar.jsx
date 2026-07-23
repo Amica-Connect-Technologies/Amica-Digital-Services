@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import Logo from './Logo.jsx'
 import Icon from './Icon.jsx'
+import { useBooking } from '../context/BookingContext.jsx'
 import { nav } from '../data/site.js'
 import './Navbar.css'
 
@@ -9,6 +10,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const { openBooking } = useBooking()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -48,15 +50,21 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <NavLink to="/contact" className="btn btn-primary nav__cta-mobile">
+          <button
+            className="btn btn-primary nav__cta-mobile"
+            onClick={() => { setOpen(false); openBooking({ source: 'Navbar (mobile)' }) }}
+          >
             Book a Consultation
-          </NavLink>
+          </button>
         </nav>
 
         <div className="nav__actions">
-          <NavLink to="/contact" className="btn btn-primary nav__cta">
+          <button
+            className="btn btn-primary nav__cta"
+            onClick={() => openBooking({ source: 'Navbar' })}
+          >
             Book a Consultation
-          </NavLink>
+          </button>
           <button className="nav__burger" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}>
             <Icon name="menu" size={26} />
           </button>

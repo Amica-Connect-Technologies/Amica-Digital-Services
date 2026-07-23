@@ -127,7 +127,8 @@ export default function Services() {
       <CtaBanner
         title="Not sure which service you need?"
         text="Book a free consultation and we’ll map the fastest route to real, measurable growth for your business — no hard sell."
-        primary={{ label: 'Book a Free AI Growth Consultation', to: '/contact' }}
+        primary={{ label: 'Book a Free AI Growth Consultation' }}
+        source="Services — CTA banner"
         secondary={{ label: 'View Pricing', to: '/pricing' }}
       />
     </>

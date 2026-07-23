@@ -43,6 +43,12 @@ const paths = {
   x: <path d="M4 4l16 16M20 4L4 20" />,
   facebook: <path d="M14 8h2V5h-2a3 3 0 00-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8a1 1 0 011-1z" />,
   instagram: <><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17 7v.01" /></>,
+  calendar: <><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" /></>,
+  'chevron-left': <path d="M15 5l-7 7 7 7" />,
+  'chevron-right': <path d="M9 5l7 7-7 7" />,
+  'arrow-left': <path d="M19 12H5M11 6l-6 6 6 6" />,
+  user: <><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0116 0" /></>,
+  video: <><rect x="3" y="6" width="12" height="12" rx="2" /><path d="M15 10l6-3v10l-6-3z" /></>,
 }
 
 export default function Icon({ name, size = 24, className = '', strokeWidth = 1.7, ...rest }) {

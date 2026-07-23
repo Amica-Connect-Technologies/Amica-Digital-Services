@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from '../components/Icon.jsx'
 import Reveal from '../components/Reveal.jsx'
 import CtaBanner from '../components/CtaBanner.jsx'
+import { useBooking } from '../context/BookingContext.jsx'
 import useSeo from '../hooks/useSeo.js'
 import {
   stats, differentiators, services, process, industries,
@@ -11,6 +12,7 @@ import {
 import './Home.css'
 
 function Hero() {
+  const { openBooking } = useBooking()
   return (
     <section className="hero">
       <div className="hero__bg" aria-hidden="true">
@@ -32,9 +34,12 @@ function Hero() {
             and next-generation digital infrastructure.
           </p>
           <div className="hero__actions">
-            <Link to="/contact" className="btn btn-white btn-lg">
+            <button
+              className="btn btn-white btn-lg"
+              onClick={() => openBooking({ source: 'Home hero' })}
+            >
               Book a Free AI Growth Consultation <Icon name="arrow" size={18} />
-            </Link>
+            </button>
             <Link to="/services" className="btn btn-ghost-light btn-lg">
               Explore Our Services
             </Link>
@@ -273,6 +278,7 @@ function Audiences() {
 }
 
 function Industries() {
+  const { openBooking } = useBooking()
   return (
     <section className="section industries">
       <div className="container industries__inner">
@@ -283,9 +289,12 @@ function Industries() {
             We build industry-specific AI brains that understand the nuances, jargon
             and pain points of your unique market.
           </p>
-          <Link to="/contact" className="btn btn-primary">
+          <button
+            className="btn btn-primary"
+            onClick={() => openBooking({ source: 'Home — industries' })}
+          >
             Book Free AI Growth Consultation <Icon name="arrow" size={17} />
-          </Link>
+          </button>
         </Reveal>
         <div className="industries__grid">
           {industries.map((ind, i) => (
@@ -385,7 +394,8 @@ export default function Home() {
       <CtaBanner
         title="Ready to future-proof your digital growth?"
         text="Stop paying for disconnected services. Start building an AI-powered growth system that compounds results over time."
-        primary={{ label: 'Book a Free AI Growth Consultation', to: '/contact' }}
+        primary={{ label: 'Book a Free AI Growth Consultation' }}
+        source="Home — CTA banner"
         secondary={{ label: 'Explore Our Services', to: '/services' }}
       />
     </>
