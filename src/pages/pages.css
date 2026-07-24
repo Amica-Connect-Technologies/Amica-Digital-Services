@@ -298,8 +298,8 @@ ul.ticks.ticks--brand svg { color: var(--brand-500); }
 .team-card p { color: var(--slate-500); font-size: 0.88rem; margin: 0; }
 
 /* ---- Pricing ---- */
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
-.price-card { padding: 36px 30px; display: flex; flex-direction: column; position: relative; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
+.price-card { padding: 32px 26px; display: flex; flex-direction: column; position: relative; }
 .price-card--featured {
   background: linear-gradient(165deg, var(--brand-800), var(--brand-900));
   color: #fff; border-color: transparent;
@@ -317,7 +317,7 @@ ul.ticks.ticks--brand svg { color: var(--brand-500); }
 .price-card--featured h3 { color: #fff; }
 .price-card__tagline { color: var(--slate-500); font-size: 0.9rem; margin-bottom: 22px; min-height: 40px; }
 .price-card--featured .price-card__tagline { color: var(--slate-300); }
-.price-card__price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px; }
+.price-card__price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 22px; }
 .price-card__price strong { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; }
 .price-card__price span { color: var(--slate-500); font-size: 0.95rem; }
 .price-card--featured .price-card__price span { color: var(--slate-300); }
@@ -477,14 +477,20 @@ ul.ticks.ticks--brand svg { color: var(--brand-500); }
 /* ---- CTA inline strip ---- */
 .mini-cta { text-align: center; }
 
+/* 4-up plans → 2×2 on mid screens before stacking. */
+@media (max-width: 1080px) {
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); max-width: 720px; margin: 0 auto; }
+}
 @media (max-width: 980px) {
   .svc-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
   .values-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .price-card--featured { transform: none; }
   .split { grid-template-columns: 1fr; gap: 36px; }
   .cs-grid { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
 @media (max-width: 620px) {
   .svc-grid, .blog-grid, .values-grid, .team-grid { grid-template-columns: 1fr; }

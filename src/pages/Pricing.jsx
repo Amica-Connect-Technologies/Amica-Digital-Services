@@ -13,7 +13,7 @@ const isLead = (f) => /plus:$/.test(f)
 export default function Pricing() {
   useSeo(
     'Pricing',
-    'AI-powered growth, automation and digital systems for modern businesses — transparent monthly plans from £199/mo. Cancel anytime, fast deployment.'
+    'AI-powered growth, automation and digital systems for modern businesses — transparent monthly plans from £25/mo. Cancel anytime, fast deployment.'
   )
   const { openBooking } = useBooking()
   const waLink = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(
@@ -52,12 +52,21 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className={`btn ${plan.featured ? 'btn-white' : 'btn-outline'}`}
-                  onClick={() => openBooking({ source: `Pricing — ${plan.name} plan` })}
-                >
-                  {plan.cta}
-                </button>
+                {plan.checkoutUrl ? (
+                  <a
+                    href={plan.checkoutUrl}
+                    className={`btn ${plan.featured ? 'btn-white' : 'btn-outline'}`}
+                  >
+                    {plan.cta}
+                  </a>
+                ) : (
+                  <button
+                    className={`btn ${plan.featured ? 'btn-white' : 'btn-outline'}`}
+                    onClick={() => openBooking({ source: `Pricing — ${plan.name} plan` })}
+                  >
+                    {plan.cta}
+                  </button>
+                )}
               </Reveal>
             ))}
           </div>

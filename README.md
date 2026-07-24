@@ -135,6 +135,14 @@ const { openBooking } = useBooking()
 
 `source` is what shows up in the Sheet's "CTA Source" column.
 
+## Payments (Stripe)
+
+The four monthly plans (Starter / Foundation / Growth / Pro) on the Pricing page take payment via **Stripe Payment Links** — a hosted checkout, no backend and no secret keys in the site.
+
+- Each plan in `pricingPlans` ([src/data/site.js](src/data/site.js)) has a `checkoutUrl`. Paste the plan's `https://buy.stripe.com/…` link there and the button sends the customer to Stripe checkout.
+- While `checkoutUrl` is empty, the button falls back to opening the booking modal — so the page works before the links exist.
+- Full step-by-step (create products, links, setup fees, going live): **[docs/stripe-setup.md](docs/stripe-setup.md)**.
+
 ## Notes / known gaps
 
 - **Contact form does not submit anywhere.** `submit()` in [Contact.jsx](src/pages/Contact.jsx#L18) only shows a success state and clears the fields — wire it to the same Apps Script endpoint (or an email service) before going live. The booking modal *is* wired up; the contact form is not.

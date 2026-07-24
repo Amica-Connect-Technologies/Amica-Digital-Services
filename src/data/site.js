@@ -317,33 +317,52 @@ export const caseStudies = [
   },
 ]
 
-// Pricing / AI growth systems
+// Pricing / AI growth systems.
+//
+// `checkoutUrl` is the Stripe Payment Link for that plan (create one per plan in
+// the Stripe dashboard — steps in docs/stripe-setup.md). Leave it as '' and the
+// button falls back to opening the booking modal, so nothing breaks before the
+// links exist. Paste the full https://buy.stripe.com/... URL once you have it.
 export const pricingPlans = [
+  {
+    // PLACEHOLDER TIER — added as an entry-level plan. Review the name, subtitle
+    // and features and edit to taste before going live.
+    name: 'Starter',
+    subtitle: 'Get Online with the Essentials',
+    price: '£25',
+    period: '/mo',
+    featured: false,
+    features: [
+      'Lead capture form (website)',
+      'Enquiry notifications & tracking',
+      'Centralised contact database',
+      '2 branded social media posts / month',
+    ],
+    cta: 'Start Small',
+    checkoutUrl: '',
+  },
   {
     name: 'Foundation',
     subtitle: 'Get Started with Smart Systems',
-    price: '£199',
+    price: '£50',
     period: '/mo',
-    setup: '+ £200 setup (free with 6-month commitment)',
     featured: false,
     features: [
-      'Lead capture forms (website & social)',
+      'Everything in Starter, plus:',
       'Basic email automation',
-      'Enquiry notifications & tracking',
-      'Centralised contact database & lead tracking',
-      'Basic pipeline visibility',
+      'Pipeline visibility & lead tracking',
       'Conversion-focused website improvements',
       'Basic landing page setup',
       '4 branded social media posts / month',
     ],
     cta: 'Get Started',
+    checkoutUrl: '',
   },
   {
     name: 'Growth',
     subtitle: 'Automation + Lead Generation System',
-    price: '£490',
+    price: '£75',
     period: '/mo',
-    setup: '+ £990 setup (free with 12-month agreement)',
     featured: true,
     features: [
       'Everything in Foundation, plus:',
@@ -356,13 +375,13 @@ export const pricingPlans = [
       'Technical SEO improvements',
     ],
     cta: 'Scale My Business',
+    checkoutUrl: '',
   },
   {
     name: 'Pro',
     subtitle: 'Full AI Growth & Automation System',
-    price: '£990',
+    price: '£100',
     period: '/mo',
-    setup: '+ £1,950 setup (free with 12-month agreement)',
     featured: false,
     features: [
       'Everything in Growth, plus:',
@@ -375,6 +394,7 @@ export const pricingPlans = [
       'YouTube channel optimisation (optional)',
     ],
     cta: 'Book AI Strategy Call',
+    checkoutUrl: '',
   },
 ]
 
