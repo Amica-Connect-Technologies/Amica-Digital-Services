@@ -1,0 +1,160 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Picture from '../components/Picture.astro';
+import FlowGraphic from '../components/FlowGraphic.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+
+const faqs = [
+  { q: 'Is this only for home care agencies?', a: 'No. It suits home care, supported living, care recruitment and nursing agencies. We adapt the workflows to the services you provide.' },
+  { q: 'Will it replace our coordinators or recruiters?', a: 'No. It removes repetitive chasing and first replies so your team can spend more time with families, clients and carers. Staff can see and take over any conversation.' },
+  { q: 'What do you need from us?', a: 'A short kick-off call, access to your website and phone setup, your current enquiry and recruitment process, and someone to approve messages and workflows.' },
+  { q: 'Can it work with our rostering or care management software?', a: 'Often, yes. We check what your current software allows during the discovery call. Where a direct link is not possible, we agree a simple handover process.' },
+  { q: 'How do you handle personal data?', a: 'We set systems up with UK GDPR in mind: only the data you need, clear consent wording, secure access and a link to your privacy notice. We do not process health records in the marketing system.' },
+  { q: 'What does it cost?', a: '£490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month with no minimum term. The first monthly payment is due in advance.' },
+];
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Care and Recruitment Agency Automation Package',
+    provider: { '@type': 'Organization', name: 'Amica Digital Services Ltd' },
+    areaServed: 'GB',
+    offers: [
+      { '@type': 'Offer', name: '12-month agreement', price: '490', priceCurrency: 'GBP', description: '£490 per month, no setup fee' },
+      { '@type': 'Offer', name: 'Flexible', price: '990', priceCurrency: 'GBP', description: '£990 setup plus £490 per month, cancel anytime' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base
+  title="Care Agency Automation | CRM, Booking and Recruitment Workflows"
+  description="The Care and Recruitment Agency Automation Package from Amica: instant enquiry replies, missed-call text-back, online booking and recruitment workflows. £490 per month."
+  schema={schema}
+>
+  <PageHero
+    eyebrow="For UK care and recruitment agencies"
+    title="Care and Recruitment Agency Automation"
+    lead="Reply to families, clients and applicants straight away, book assessments and interviews automatically, and give your office team back hours every week."
+    crumbs={[{ label: 'Care Agency Automation' }]}
+  >
+    <div class="btn-row">
+      <a href="/book-a-consultation" class="btn btn-primary">Book a free 20-minute call</a>
+      <a href="#pricing" class="btn btn-secondary">See pricing</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>The same problem comes up in almost every agency</h2>
+        <p class="lead">Enquiries from families and applicants arrive while the team is out on calls or dealing with a rota crisis. By the time someone replies, the person has often gone elsewhere.</p>
+        <ul class="checklist crosslist" style="margin-top:20px">
+          <li>Families call several agencies and choose the first that calls back</li>
+          <li>Care worker applicants accept the first interview they are offered</li>
+          <li>Coordinators spend hours chasing documents and confirming times</li>
+          <li>Managers cannot see how many enquiries came in or what happened to them</li>
+        </ul>
+      </div>
+      <Picture src="/images/care-worker.jpg" alt="Care worker checking her phone before a home visit">
+        <FlowGraphic slot="fallback" />
+      </Picture>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container" style="max-width:960px">
+      <div class="center"><span class="eyebrow">See it in 30 seconds</span><h2>What happens to an evening enquiry</h2></div>
+      <video class="explainer" controls preload="none" playsinline poster="/video/amica-explainer-poster.jpg" width="1280" height="720">
+        <source src="/video/amica-explainer.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">What is included</span>
+        <h2>Everything set up for you</h2>
+        <p class="lead">We build the package around your services, your team and your current process. Not every agency needs every part; we agree the scope together.</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:40px">
+        <div class="card"><div class="icon-badge"><Icon name="crm" /></div><h3>CRM and pipeline</h3><p>Separate pipelines for client enquiries and staff recruitment, so you can see every lead and applicant in one place.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="bolt" /></div><h3>Instant enquiry replies</h3><p>Personal replies by email, SMS or WhatsApp within moments of a form, call or message.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>Missed-call text-back</h3><p>If nobody can answer, the caller gets a text straight away with a link to book a call back.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="calendar" /></div><h3>Appointment booking</h3><p>Families book assessments and applicants book interviews straight into your diary, with reminders.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="users" /></div><h3>Recruitment workflows</h3><p>Application acknowledgement, interview booking, document requests and onboarding steps.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="mail" /></div><h3>Nurture and follow-up</h3><p>Gentle follow-up for families who are not ready yet, and re-engagement for past applicants.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="heart" /></div><h3>Onboarding</h3><p>Client and staff onboarding checklists with automatic reminders.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="chart" /></div><h3>Reviews and reporting</h3><p>Review requests to happy clients and a dashboard showing enquiries, response times and bookings.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="chat" /></div><h3>AI chatbot or voice agent</h3><p>Where appropriate, an AI assistant answers common questions and takes details out of hours.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">How it works</span><h2>Live in four to six weeks</h2></div>
+      <div class="grid grid-4 steps" style="margin-top:40px">
+        <div class="card step"><h3>Discovery</h3><p>A free call to understand your enquiries, recruitment and current tools.</p></div>
+        <div class="card step"><h3>Plan</h3><p>We agree scope, messages and workflows in writing before building.</p></div>
+        <div class="card step"><h3>Build and test</h3><p>We build everything and test it with your team before going live.</p></div>
+        <div class="card step"><h3>Launch and support</h3><p>Go live, train your team, then review and improve every month.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="pricing">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Pricing</span><h2>Simple monthly pricing</h2><p class="lead">Choose a 12-month agreement with no setup fee, or a flexible option you can cancel anytime.</p></div>
+      <div class="grid grid-2 pricing" style="margin-top:44px">
+        <div class="card price-card featured">
+          <span class="badge">Best value</span>
+          <h3>12-month agreement</h3>
+          <p class="price">£490<small> / month</small></p>
+          <p>No setup fee</p>
+          <ul class="checklist">
+            <li>Full package setup included</li>
+            <li>Ongoing management and support</li>
+            <li>Monthly review and improvements</li>
+            <li>First month payable in advance</li>
+          </ul>
+          <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
+        </div>
+        <div class="card price-card">
+          <h3>Flexible</h3>
+          <p class="price">£490<small> / month</small></p>
+          <p>Plus £990 one-off setup</p>
+          <ul class="checklist">
+            <li>Same package and support</li>
+            <li>No minimum term, cancel anytime</li>
+            <li>Monthly review and improvements</li>
+            <li>First month payable in advance</li>
+          </ul>
+          <a href="/book-a-consultation" class="btn btn-secondary">Book a free call</a>
+        </div>
+      </div>
+      <p class="center small">Third-party usage costs, such as SMS, WhatsApp, phone numbers or advertising spend, may apply and will be confirmed in your written quote before work starts.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <CtaBand title="Find out where your agency is losing enquiries" />
+</Base>
+<style>
+  .pricing { max-width: 860px; margin-left: auto; margin-right: auto; }
+  .small { font-size: 0.9rem; color: var(--muted); margin-top: 24px; }
+  .explainer { width: 100%; height: auto; margin-top: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--navy); }
+</style>

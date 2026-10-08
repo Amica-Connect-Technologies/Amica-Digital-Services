@@ -1,0 +1,67 @@
+---
+import Logo from './Logo.astro';
+import { nav } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="brand" aria-label="Amica Digital Services home"><Logo /></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" type="button">
+      <span class="sr">Menu</span><span class="burger" aria-hidden="true"></span>
+    </button>
+    <nav id="site-nav" class="nav" aria-label="Main">
+      <ul>
+        {nav.map((item) => (
+          <li class:list={[{ 'has-sub': item.children }]}>
+            <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+            {item.children && (
+              <ul class="sub">
+                {item.children.map((c) => (
+                  <li><a href={c.href} aria-current={path === c.href ? 'page' : undefined}>{c.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+      <a href="/book-a-consultation" class="btn btn-primary nav-cta">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { text-decoration: none; }
+  .nav { display: flex; align-items: center; gap: 18px; }
+  .nav > ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+  .nav li { position: relative; }
+  .nav a { display: block; padding: 8px 12px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 0.95rem; border-radius: 8px; }
+  .nav a:hover, .nav a[aria-current='page'] { color: var(--teal-dark); background: var(--teal-soft); }
+  .nav .nav-cta { color: #fff; padding: 11px 20px; }
+  .nav .nav-cta:hover { color: #fff; background: #e0583a; }
+  .sub { display: none; position: absolute; top: 100%; left: 0; min-width: 240px; list-style: none; margin: 0; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+  .has-sub:hover .sub, .has-sub:focus-within .sub { display: block; }
+  .menu-toggle { display: none; background: none; border: 0; padding: 10px; cursor: pointer; }
+  .burger, .burger::before, .burger::after { display: block; width: 24px; height: 2px; background: var(--navy); position: relative; transition: 0.2s; }
+  .burger::before, .burger::after { content: ''; position: absolute; left: 0; }
+  .burger::before { top: -7px; } .burger::after { top: 7px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 1040px) {
+    .menu-toggle { display: block; }
+    .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; padding: 12px 20px 24px; max-height: calc(100vh - 72px); overflow-y: auto; }
+    .nav.open { display: flex; }
+    .nav > ul { flex-direction: column; }
+    .sub { display: block; position: static; box-shadow: none; border: 0; padding: 0 0 0 14px; }
+    .nav-cta { justify-content: center; margin-top: 8px; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

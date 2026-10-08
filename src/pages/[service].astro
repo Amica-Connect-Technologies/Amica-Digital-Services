@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Picture from '../components/Picture.astro';
+import FlowGraphic from '../components/FlowGraphic.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { services, type Service } from '../data/services';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { service: s.slug }, props: { s } }));
+}
+
+const { s } = Astro.props as { s: Service };
+const others = services.filter((o) => o.slug !== s.slug).slice(0, 3);
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: s.title,
+    description: s.metaDescription,
+    provider: { '@type': 'Organization', name: 'Amica Digital Services Ltd' },
+    areaServed: 'GB',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+<Base title={s.metaTitle} description={s.metaDescription} schema={schema}>
+  <PageHero title={s.title} lead={s.summary} eyebrow="Service" crumbs={[{ label: 'Services', href: '/services' }, { label: s.title }]}>
+    <div class="btn-row">
+      <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
+      <a href="/pricing" class="btn btn-secondary">Pricing</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>Why it matters</h2>
+        <p class="lead">{s.intro}</p>
+        <h3 style="margin-top:28px">Sound familiar?</h3>
+        <ul class="checklist crosslist">
+          {s.problems.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <Picture src={s.image} alt={`${s.title} illustration`} ratio="4 / 3">
+        <FlowGraphic slot="fallback" />
+      </Picture>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">What is included</span>
+        <h2>What we set up for you</h2>
+      </div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {s.includes.map((i) => (
+          <div class="card"><div class="icon-badge"><Icon name="check" /></div><h3>{i.title}</h3><p>{i.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">How it works</span><h2>Three clear stages</h2></div>
+      <div class="grid grid-3 steps" style="margin-top:40px">
+        {s.steps.map((st) => <div class="card step"><h3>{st.title}</h3><p>{st.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px">
+      <Faq items={s.faqs} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Related services</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        <a href="/care-agency-automation" class="card"><div class="icon-badge"><Icon name="heart" /></div><h3>Care Agency Automation</h3><p>Our complete package for UK care and recruitment agencies.</p><span class="more">Learn more →</span></a>
+        {others.slice(0, 2).map((o) => (
+          <a href={`/${o.slug}`} class="card"><div class="icon-badge"><Icon name={o.icon} /></div><h3>{o.title}</h3><p>{o.summary}</p><span class="more">Learn more →</span></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

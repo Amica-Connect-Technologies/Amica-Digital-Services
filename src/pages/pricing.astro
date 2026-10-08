@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+const faqs = [
+  { q: 'Is VAT included?', a: 'Prices are shown as quoted to business customers. Your written quote confirms the final amount, including any VAT.' },
+  { q: 'When do I pay?', a: 'The first monthly payment is due in advance, before work starts. Setup fees on the flexible plan are also payable at the start.' },
+  { q: 'Can I cancel?', a: 'The flexible plan has no minimum term. The 12-month agreement runs for twelve months in return for no setup fee.' },
+  { q: 'How do you price other projects?', a: 'Websites, custom software, voice agents and marketing campaigns are quoted individually after a short call, so you only pay for what you need.' },
+];
+---
+<Base title="Pricing" description="Transparent pricing for the Amica Care and Recruitment Agency Automation Package: £490 per month. Other services quoted after a free call.">
+  <PageHero eyebrow="Pricing" title="Clear pricing, agreed in writing" lead="Our main package has a fixed monthly price. Other projects are quoted after a free 20-minute call." crumbs={[{ label: 'Pricing' }]} />
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        <div class="card price-card featured">
+          <span class="badge">Best value</span>
+          <h3>Care and Recruitment Agency Package</h3>
+          <p class="price">£490<small> / month</small></p>
+          <p>No setup fee on a 12-month agreement</p>
+          <ul class="checklist">
+            <li>CRM, pipelines and calendars</li>
+            <li>Instant replies and missed-call text-back</li>
+            <li>Booking, reminders and follow-up</li>
+            <li>Recruitment and onboarding workflows</li>
+            <li>Reporting dashboard and support</li>
+          </ul>
+          <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
+        </div>
+        <div class="card price-card">
+          <h3>Care and Recruitment Agency Package, flexible</h3>
+          <p class="price">£490<small> / month</small></p>
+          <p>Plus £990 one-off setup, cancel anytime</p>
+          <ul class="checklist">
+            <li>Everything in the package</li>
+            <li>No minimum term</li>
+            <li>First month payable in advance</li>
+            <li>Implementation in four to six weeks</li>
+          </ul>
+          <a href="/care-agency-automation" class="btn btn-secondary">See what is included</a>
+        </div>
+        <div class="card price-card">
+          <h3>Other services</h3>
+          <p class="price" style="font-size:2rem">Quoted</p>
+          <p>Based on your requirements</p>
+          <ul class="checklist">
+            <li>AI voice agents and chatbots</li>
+            <li>GoHighLevel setup or clean-up</li>
+            <li>Websites and custom software</li>
+            <li>SEO, social media and paid ads</li>
+          </ul>
+          <a href="/contact" class="btn btn-secondary">Request a quote</a>
+        </div>
+      </div>
+      <p class="note">Third-party usage costs, such as SMS, WhatsApp, phone numbers or advertising spend, may apply and will be confirmed in your written quote.</p>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px"><Faq items={faqs} /></div>
+  </section>
+  <CtaBand />
+</Base>
+<style>.note { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 28px; }</style>

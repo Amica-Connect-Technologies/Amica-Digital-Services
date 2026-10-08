@@ -1,0 +1,33 @@
+---
+// Illustrative graphic: what happens to an enquiry with Amica automation. Example content only.
+---
+<div class="flow" aria-hidden="true">
+  <div class="fcard in">
+    <span class="dot coral"></span>
+    <div><strong>New enquiry</strong><small>Website form · 21:47</small></div>
+  </div>
+  <div class="fcard">
+    <span class="dot teal"></span>
+    <div><strong>Instant personal reply sent</strong><small>Email + SMS · within a minute</small></div>
+  </div>
+  <div class="fcard">
+    <span class="dot teal"></span>
+    <div><strong>Call booked for 10:00</strong><small>Added to your calendar</small></div>
+  </div>
+  <div class="fcard">
+    <span class="dot navy"></span>
+    <div><strong>Reminder sent</strong><small>Fewer missed calls</small></div>
+  </div>
+  <p class="cap">Example workflow</p>
+</div>
+<style>
+  .flow { position: relative; background: linear-gradient(160deg, #e3f4f1 0%, #fff 70%); border: 1px solid var(--line); border-radius: 22px; padding: 32px 28px 22px; box-shadow: var(--shadow); }
+  .flow::before { content: ''; position: absolute; left: 47px; top: 52px; bottom: 64px; width: 2px; background: repeating-linear-gradient(to bottom, #0b8f83 0 6px, transparent 6px 12px); }
+  .fcard { position: relative; display: flex; gap: 14px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(14,42,71,0.06); }
+  .fcard.in { border-color: #f6b8a8; }
+  .fcard strong { display: block; color: var(--navy); font-size: 0.98rem; }
+  .fcard small { color: var(--muted); font-size: 0.85rem; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 0 4px #fff; position: relative; z-index: 1; }
+  .dot.coral { background: var(--coral); } .dot.teal { background: var(--teal); } .dot.navy { background: var(--navy); }
+  .cap { margin: 6px 0 0; text-align: right; font-size: 0.78rem; color: var(--muted); }
+</style>

@@ -1,0 +1,12 @@
+---
+const { items, title = 'Frequently asked questions' } = Astro.props;
+---
+<div class="faq">
+  {title && <h2>{title}</h2>}
+  {items.map((f) => (
+    <details>
+      <summary>{f.q}</summary>
+      <p>{f.a}</p>
+    </details>
+  ))}
+</div>

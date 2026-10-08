@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { company } from '../data/site';
+---
+<Base title="Terms and Conditions" description="Terms of use for the Amica Digital Services website.">
+  <PageHero title="Terms and Conditions" lead="Last updated: 8 October 2026" crumbs={[{ label: 'Terms and Conditions' }]} />
+  <section class="section-sm">
+    <div class="container prose">
+      <h2>About these terms</h2>
+      <p>These terms cover your use of this website, operated by {company.legalName}. Services we provide to clients are governed by a separate written agreement, which takes priority over anything on this website.</p>
+      <h2>Information on this site</h2>
+      <p>We aim to keep information accurate and up to date, but it is general information and not professional, legal or regulatory advice. Prices and service descriptions are confirmed in a written quote before any work begins.</p>
+      <h2>Intellectual property</h2>
+      <p>The content and design of this website belong to {company.legalName} or are used with permission. You may view and share pages for personal or business reference, but not copy them for commercial use without permission.</p>
+      <h2>Links</h2>
+      <p>Links to other websites are provided for convenience. We are not responsible for their content.</p>
+      <h2>Liability</h2>
+      <p>We are not liable for any loss arising from use of this website, except where the law does not allow us to exclude liability.</p>
+      <h2>Law</h2>
+      <p>These terms are governed by the laws of England and Wales.</p>
+      <h2>Contact</h2>
+      <p><a href={`mailto:${company.email}`}>{company.email}</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { company } from '../data/site';
+---
+<Base title="Privacy Policy" description="How Amica Digital Services Ltd collects, uses and protects personal data.">
+  <PageHero title="Privacy Policy" lead="Last updated: 8 October 2026" crumbs={[{ label: 'Privacy Policy' }]} />
+  <section class="section-sm">
+    <div class="container prose">
+      <h2>Who we are</h2>
+      <p>{company.legalName} ("Amica", "we", "us") is the controller of personal data collected through this website and our sales and marketing activities. You can contact us about privacy at <a href={`mailto:${company.email}`}>{company.email}</a>{company.address && <> or by post at {company.address}</>}.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Contact details</strong> you give us through forms, booking, email, phone or messaging: name, business name, email address, phone number and your message.</li>
+        <li><strong>Booking information</strong>, such as the time you choose and any answers you give when booking.</li>
+        <li><strong>Business contact information</strong> about organisations we may be able to help, taken from public sources such as company websites and public registers.</li>
+        <li><strong>Website usage data</strong>, only if you accept analytics cookies, such as pages visited and device type.</li>
+      </ul>
+      <p>We do not ask for health information through this website. Please do not send it to us.</p>
+
+      <h2>How we use it and our lawful basis</h2>
+      <ul>
+        <li>To reply to your enquiry and arrange calls: <em>legitimate interests</em>, or steps before entering a contract.</li>
+        <li>To provide services to clients: <em>contract</em>.</li>
+        <li>To send business-to-business marketing about our services: <em>legitimate interests</em>. Every message includes a simple way to opt out.</li>
+        <li>To understand how our website is used: <em>consent</em>, given through the cookie banner.</li>
+        <li>To meet legal, tax and accounting obligations: <em>legal obligation</em>.</li>
+      </ul>
+
+      <h2>Who we share it with</h2>
+      <p>We use trusted service providers who process data on our behalf, including our CRM and messaging platform (GoHighLevel / LeadConnector), our website host (Hostinger), our email provider and, with your consent, Google Analytics. Some providers are based outside the UK, including in the United States. Where data is transferred, we rely on appropriate safeguards such as the UK International Data Transfer Addendum or the UK Extension to the EU-US Data Privacy Framework.</p>
+      <p>We do not sell personal data.</p>
+
+      <h2>How long we keep it</h2>
+      <p>We keep enquiry and prospect data for as long as it is useful for the purpose it was collected, normally no longer than two years after our last contact, unless you become a client. Client records are kept for the duration of the contract and up to six years afterwards for legal and accounting purposes.</p>
+
+      <h2>Your rights</h2>
+      <p>You can ask to access, correct or delete your data, object to or restrict how we use it, ask for a copy to be transferred, and withdraw consent at any time. To opt out of marketing, reply "no thanks" or "unsubscribe" to any message or email us. To make a request, contact <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+      <p>If you are unhappy with how we handle your data, please tell us first. You can also complain to the Information Commissioner's Office at <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>.</p>
+
+      <h2>Security</h2>
+      <p>We use access controls, secure passwords and reputable providers to protect your data, and we limit access to people who need it.</p>
+
+      <h2>Changes</h2>
+      <p>We may update this policy. The date at the top shows when it last changed.</p>
+    </div>
+  </section>
+</Base>

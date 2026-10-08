@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+---
+<Base title="About Amica" description="Amica Digital Services Ltd is a UK automation and digital growth company founded by Shaz Chughtai, helping care agencies and service businesses respond faster.">
+  <PageHero eyebrow="About Amica" title="Practical automation for busy UK teams" lead="Amica Digital Services Ltd helps care agencies, clinics and service businesses respond faster, stay organised and grow, without adding to their team's workload." crumbs={[{ label: 'About' }]} />
+  <section class="section">
+    <div class="container split">
+      <div class="prose">
+        <h2 style="margin-top:0">Why we started</h2>
+        <p>Amica was founded by Shaz Chughtai after seeing the same pattern again and again in care and service businesses: good people, good services, and enquiries lost simply because nobody was free to answer in time.</p>
+        <p>We combine CRM, automation and AI with a clear understanding of how small offices actually work. The goal is never to replace people. It is to take the repetitive work off them so they can focus on clients, families and staff.</p>
+        <h2>How we work</h2>
+        <ul>
+          <li>We start by understanding your process, not by selling software.</li>
+          <li>Everything is agreed in writing before we build.</li>
+          <li>You approve messages and workflows before they go live.</li>
+          <li>You own your data and your accounts.</li>
+        </ul>
+      </div>
+      <div class="grid" style="gap:16px">
+        <div class="card value"><div class="icon-badge"><Icon name="users" /></div><div><h3>People first</h3><p>Automation supports your team. It never pretends to be them.</p></div></div>
+        <div class="card value"><div class="icon-badge"><Icon name="shield" /></div><div><h3>Responsible AI</h3><p>AI tools use approved information only and hand over to a person when needed.</p></div></div>
+        <div class="card value"><div class="icon-badge"><Icon name="chart" /></div><div><h3>Measured results</h3><p>We agree what success looks like and report on it openly.</p></div></div>
+        <div class="card value"><div class="icon-badge"><Icon name="heart" /></div><div><h3>Care-sector focus</h3><p>We understand the pressure care offices work under.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <CtaBand title="Let's talk about your enquiries" />
+</Base>
+<style>
+  .value { display: flex; gap: 18px; padding: 22px; }
+  .value h3 { margin: 0 0 4px; }
+</style>

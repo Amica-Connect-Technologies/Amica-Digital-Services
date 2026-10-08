@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { company, ghl } from '../data/site';
+---
+<Base title="Contact" description="Contact Amica Digital Services Ltd. Send a message, request a quote or book a free 20-minute call.">
+  <PageHero eyebrow="Contact" title="Get in touch" lead="Send us a message and we will reply within one working day. For the quickest answer, book a call." crumbs={[{ label: 'Contact' }]} />
+  <section class="section-sm">
+    <div class="container split" style="align-items:start">
+      <div class="card">
+        <iframe src={ghl.contactFormUrl} class="embed-frame" id={`inline-${ghl.contactFormId}`} title="Contact form" data-layout="{'id':'INLINE'}" data-form-id={ghl.contactFormId} loading="lazy" style="min-height:640px"></iframe>
+        <script is:inline src={ghl.embedScript} defer></script>
+      </div>
+      <div>
+        <div class="grid" style="gap:14px">
+          <a class="card row" href="/book-a-consultation"><div class="icon-badge"><Icon name="calendar" /></div><div><h3>Book a call</h3><p>Choose a time for a free 20-minute call.</p></div></a>
+          <a class="card row" href={`mailto:${company.email}`}><div class="icon-badge"><Icon name="mail" /></div><div><h3>Email</h3><p>{company.email}</p></div></a>
+          {company.phone && <a class="card row" href={`tel:${company.phoneHref}`}><div class="icon-badge"><Icon name="phone" /></div><div><h3>Phone</h3><p>{company.phone}</p></div></a>}
+          {company.whatsapp && <a class="card row" href={`https://wa.me/${company.whatsapp}`} rel="noopener"><div class="icon-badge"><Icon name="whatsapp" /></div><div><h3>WhatsApp</h3><p>Message us on WhatsApp</p></div></a>}
+        </div>
+        {company.address && <p style="margin-top:24px"><strong>Address</strong><br />{company.address}</p>}
+        <p><strong>Hours</strong><br />{company.hours}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .row { display: flex; gap: 16px; align-items: center; padding: 20px; }
+  .row h3 { margin: 0; }
+</style>

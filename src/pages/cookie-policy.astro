@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Cookie Policy" description="How Amica Digital Services uses cookies and similar technologies on this website.">
+  <PageHero title="Cookie Policy" lead="Last updated: 8 October 2026" crumbs={[{ label: 'Cookie Policy' }]} />
+  <section class="section-sm">
+    <div class="container prose">
+      <p>Cookies are small files stored on your device. We keep their use to a minimum.</p>
+      <h2>Strictly necessary</h2>
+      <p>We store your cookie choice in your browser (<code>amica-consent-v1</code>) so we do not ask again. This does not identify you.</p>
+      <h2>Analytics (only with your consent)</h2>
+      <p>If you click "Accept analytics", we load Google Analytics, which sets cookies such as <code>_ga</code> and <code>_ga_*</code> to understand which pages are useful. These last up to two years. If you click "Reject", Google Analytics is not loaded.</p>
+      <h2>Booking and contact forms</h2>
+      <p>Our booking calendar and contact form are provided by GoHighLevel (LeadConnector). When you use them, that provider may set cookies needed for the form to work.</p>
+      <h2>Changing your choice</h2>
+      <p>You can change your choice at any time using <button type="button" class="linklike" data-cookie-settings>cookie settings</button>, or by clearing cookies in your browser.</p>
+    </div>
+  </section>
+</Base>
+<style>.linklike { background: none; border: 0; padding: 0; color: var(--teal-dark); text-decoration: underline; font: inherit; cursor: pointer; }</style>
