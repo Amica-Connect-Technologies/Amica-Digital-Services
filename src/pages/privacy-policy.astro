@@ -8,7 +8,7 @@ import { company } from '../data/site';
   <section class="section-sm">
     <div class="container prose">
       <h2>Who we are</h2>
-      <p>{company.legalName} ("Amica", "we", "us") is the controller of personal data collected through this website and our sales and marketing activities. You can contact us about privacy at <a href={`mailto:${company.email}`}>{company.email}</a>{company.address && <> or by post at {company.address}</>}.</p>
+      <p>{company.legalName}{company.companyNumber && <>, a company registered in England and Wales (number {company.companyNumber}),</>} ("Amica", "we", "us") is the controller of personal data collected through this website and our sales and marketing activities. You can contact us about privacy at <a href={`mailto:${company.email}`}>{company.email}</a>{company.address && <> or by post at {company.address}</>}.</p>
 
       <h2>What we collect</h2>
       <ul>

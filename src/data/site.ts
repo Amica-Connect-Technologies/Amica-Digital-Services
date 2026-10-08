@@ -13,7 +13,7 @@ export const company = {
   whatsapp: '447446981768',
   address: '378 Claremont Road, Manchester, M14 7WB, United Kingdom',
   // Leave empty until confirmed; empty values are not shown on the site.
-  companyNumber: '',
+  companyNumber: '17020927',
   icoNumber: '',
   hours: 'Monday to Friday, 08:00 to 17:00 UK time',
   social: {
