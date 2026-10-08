@@ -5,7 +5,7 @@ export const company = {
   name: 'Amica Digital Services',
   legalName: 'Amica Digital Services Ltd',
   url: 'https://amicadigitalservices.com',
-  email: 'info@amicadigitalservices.com',
+  email: 'shaz@amicadigitalservices.com',
   founder: 'Shaz Chughtai',
   // Confirmed by Shaz Chughtai on 8 October 2026.
   phone: '+44 7446 981768',
@@ -37,7 +37,7 @@ export const analytics = {
 };
 
 export const nav = [
-  { label: 'Care Agencies', href: '/care-agency-automation' },
+  { label: 'Care and Recruitment', href: '/care-agency-automation' },
   {
     label: 'Services',
     href: '/services',
@@ -48,6 +48,8 @@ export const nav = [
       { label: 'CRM and GoHighLevel', href: '/crm-gohighlevel' },
       { label: 'Lead Generation', href: '/lead-generation' },
       { label: 'Websites and Software', href: '/websites-software' },
+      { label: 'SEO', href: '/seo' },
+      { label: 'Social Media and Content', href: '/social-media-management' },
     ],
   },
   { label: 'Industries', href: '/industries' },

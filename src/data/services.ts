@@ -26,7 +26,7 @@ export const services: Service[] = [
     summary: 'Take repetitive admin off your team: instant replies, reminders, follow-ups and handovers.',
     intro:
       'Most small teams lose hours each week to the same tasks: replying to enquiries, chasing paperwork, sending reminders and copying details between systems. We map those tasks and automate the ones that follow clear rules, so your people can spend their time on the work that needs a person.',
-    image: '/images/voice-agent.jpg',
+    image: '/images/recruitment-automation.jpg',
     problems: [
       'Enquiries wait hours for a reply because the office is busy',
       'Staff re-type the same details into several systems',
@@ -62,7 +62,7 @@ export const services: Service[] = [
     summary: 'A virtual receptionist that answers when your team cannot, captures details and books calls.',
     intro:
       'Calls arrive at the worst times: during a rota crisis, after hours or when everyone is with a client. An AI voice agent can answer politely, take the caller\'s details, answer common questions from an approved knowledge base and book a call back, then pass everything to your team.',
-    image: '/images/voice-agent.jpg',
+    image: '/images/ai-receptionist.jpg',
     problems: [
       'Calls go to voicemail and callers try a competitor instead',
       'Out-of-hours enquiries wait until the next morning',
@@ -97,7 +97,7 @@ export const services: Service[] = [
     summary: 'Answer questions and qualify enquiries on your website and messaging channels, day and night.',
     intro:
       'Visitors often have a quick question before they are ready to call. A well-built chatbot answers from information you have approved, asks a few qualifying questions and books the next step, so serious enquiries reach your team with the details already captured.',
-    image: '/images/voice-agent.jpg',
+    image: '/images/ai-chatbot.jpg',
     problems: [
       'Website visitors leave without making contact',
       'The same questions arrive by email and messages every day',
@@ -131,7 +131,7 @@ export const services: Service[] = [
     summary: 'One place for every lead, conversation and appointment, set up properly and kept tidy.',
     intro:
       'GoHighLevel can bring your contacts, pipeline, calendars, email, SMS and WhatsApp into one system. Set up well, it shows exactly where every enquiry stands. Set up badly, it becomes another tool nobody trusts. We design it around your sales and onboarding process and keep it working.',
-    image: '/images/crm.jpg',
+    image: '/images/website-crm.jpg',
     problems: [
       'Leads are spread across inboxes, spreadsheets and phones',
       'Nobody is sure which enquiries have been followed up',
@@ -165,7 +165,7 @@ export const services: Service[] = [
     summary: 'Campaigns and follow-up that turn attention into booked appointments, measured end to end.',
     intro:
       'More traffic does not help if nobody follows up. We build lead-generation systems where every channel, from search and social to paid ads and outreach, feeds into a CRM with fast follow-up and clear reporting, so you can see which activity produces appointments.',
-    image: '/images/crm.jpg',
+    image: '/images/ai-chatbot.jpg',
     problems: [
       'Marketing spend with no clear link to enquiries or sales',
       'Leads arrive but are not followed up quickly enough',
@@ -199,7 +199,7 @@ export const services: Service[] = [
     summary: 'Fast, search-friendly websites, portals and tools that connect to your CRM.',
     intro:
       'Your website is often the first thing a prospect checks after hearing from you. We build fast, mobile-friendly sites that search engines can read, with forms and booking that feed your CRM. Where off-the-shelf tools do not fit, we build portals, dashboards and custom software.',
-    image: '/images/hero.jpg',
+    image: '/images/website-crm.jpg',
     problems: [
       'The current site is slow, hard to update or not found on Google',
       'Website enquiries do not reach the CRM',
@@ -221,6 +221,74 @@ export const services: Service[] = [
     faqs: [
       { q: 'Can I update the website myself?', a: 'Yes. Content is kept in simple, well-organised files, and we can make changes for you on request.' },
       { q: 'Will it work with GoHighLevel?', a: 'Yes. Forms, booking and chat can all feed directly into your GoHighLevel account.' },
+    ],
+  },
+  {
+    slug: 'seo',
+    icon: 'search',
+    title: 'Search Engine Optimisation',
+    metaTitle: 'SEO Services for UK Businesses',
+    metaDescription:
+      'Get found on Google by the customers already searching for you. Technical SEO, local SEO and content from Amica Digital Services.',
+    summary: 'Help the right customers find you on Google, then turn that traffic into enquiries.',
+    intro:
+      'Most buyers search before they call. If your website is slow, hard for search engines to read or missing the pages people look for, those enquiries go to competitors. We fix the technical basics, target the searches that matter to your business and connect your site to your CRM so every visitor has a clear next step.',
+    image: '/images/seo.jpg',
+    problems: [
+      'Your business does not appear when local customers search',
+      'The website gets visitors but very few enquiries',
+      'Nobody is sure which pages or keywords bring in business',
+    ],
+    includes: [
+      { title: 'Technical SEO', text: 'Site speed, indexing, structured data and fixes that help search engines read your site.' },
+      { title: 'Local SEO', text: 'Google Business Profile optimisation and location pages for the areas you serve.' },
+      { title: 'Keyword research', text: 'Find the searches your customers actually use and plan pages around them.' },
+      { title: 'On-page optimisation', text: 'Titles, headings, copy and internal links improved page by page.' },
+      { title: 'Content', text: 'Helpful articles and service pages written for your customers and for search.' },
+      { title: 'Reporting', text: 'Monthly reports from Google Search Console and Analytics in plain English.' },
+    ],
+    steps: [
+      { title: 'Audit', text: 'We review your site, rankings and competitors to find the quickest wins.' },
+      { title: 'Fix and build', text: 'We fix technical issues and improve or create the pages that matter most.' },
+      { title: 'Grow and report', text: 'We publish content, track results monthly and adjust the plan.' },
+    ],
+    faqs: [
+      { q: 'How long does SEO take?', a: 'Technical fixes can help within weeks, but steady growth in rankings usually takes several months. We report progress every month so you can see what is changing.' },
+      { q: 'Can you guarantee a number one ranking?', a: 'No one can honestly guarantee rankings, because Google decides them. We focus on the work that gives you the best chance and measure the results openly.' },
+    ],
+  },
+  {
+    slug: 'social-media-management',
+    icon: 'megaphone',
+    title: 'Social Media and Content',
+    metaTitle: 'Social Media Management and Content Creation',
+    metaDescription:
+      'Branded social media posts, short-form video and content publishing that keeps your business visible. Managed by Amica Digital Services.',
+    summary: 'Consistent, branded posts and short videos that keep your business in front of customers.',
+    intro:
+      'Customers and candidates check your social media to see whether you are active and trustworthy. We plan, create and publish branded content on a regular schedule, and link it to your website and CRM so interest turns into enquiries rather than likes alone.',
+    image: '/images/social-media.jpg',
+    problems: [
+      'Your pages have not been updated for weeks or months',
+      'Nobody on the team has time to create posts consistently',
+      'Social media brings likes but very few enquiries',
+    ],
+    includes: [
+      { title: 'Content planning', text: 'A monthly content calendar built around your services and audience.' },
+      { title: 'Branded posts', text: 'Designed graphics and captions in your brand style.' },
+      { title: 'Short-form video', text: 'Reels and short videos for Instagram, Facebook, TikTok and YouTube.' },
+      { title: 'Publishing', text: 'Scheduled posting across your chosen platforms.' },
+      { title: 'LinkedIn', text: 'Company and founder profile optimisation for B2B audiences.' },
+      { title: 'Lead capture', text: 'Messages and comments routed to your CRM so enquiries are followed up.' },
+    ],
+    steps: [
+      { title: 'Plan', text: 'Agree your audience, platforms, tone and monthly content plan.' },
+      { title: 'Create', text: 'We produce posts and videos for your approval before anything is published.' },
+      { title: 'Publish and review', text: 'We publish on schedule and review what performs best each month.' },
+    ],
+    faqs: [
+      { q: 'Do I approve posts before they go out?', a: 'Yes. You see and approve the content plan and posts before they are published.' },
+      { q: 'Which platforms do you cover?', a: 'Usually Facebook, Instagram and LinkedIn, plus TikTok and YouTube where they suit your audience.' },
     ],
   },
 ];

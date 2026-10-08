@@ -9,13 +9,13 @@ const year = new Date().getFullYear();
     <div class="cols">
       <div>
         <Logo light />
-        <p class="about">AI automation, CRM and lead-generation systems for UK care agencies, clinics and service businesses. Based in Manchester, working across the UK.</p>
+        <p class="about">Digital growth and AI automation for UK businesses, with specialist expertise in care and recruitment. Based in Manchester, working across the UK.</p>
         <a href="/book-a-consultation" class="btn btn-primary">Book a consultation</a>
       </div>
       <div>
         <h3>Services</h3>
         <ul>
-          <li><a href="/care-agency-automation">Care Agency Automation</a></li>
+          <li><a href="/care-agency-automation">Care and Recruitment Automation</a></li>
           {services.map((s) => <li><a href={`/${s.slug}`}>{s.title}</a></li>)}
         </ul>
       </div>

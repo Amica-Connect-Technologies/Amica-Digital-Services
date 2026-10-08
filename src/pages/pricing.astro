@@ -3,63 +3,122 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
+
+// Each plan is available on a rolling 30-day basis with a setup fee, or with the setup fee waived for a longer commitment.
+const plans = [
+  {
+    name: 'Foundation',
+    tagline: 'Get started with smart systems',
+    price: '£199',
+    setup: '£200',
+    waiver: 'Setup fee waived on a 6-month agreement',
+    features: [
+      'Lead capture forms for your website and social media',
+      'Basic email automation',
+      'Enquiry notifications and tracking',
+      'Central contact database and lead tracking',
+      'Basic pipeline visibility',
+      'Conversion-focused website improvements',
+      'Basic landing page setup',
+      '4 branded social media posts per month',
+    ],
+  },
+  {
+    name: 'Growth',
+    tagline: 'Automation and lead generation system',
+    price: '£490',
+    setup: '£990',
+    waiver: 'Setup fee waived on a 12-month agreement',
+    featured: true,
+    features: [
+      'Everything in Foundation, plus:',
+      'Multi-step workflows and WhatsApp automation',
+      'Automated follow-ups and appointment booking',
+      'Full CRM pipeline with team access',
+      'Funnel setup with lead routing and qualification',
+      '8 social media posts per month',
+      'On-page SEO and local keyword targeting',
+      'Technical SEO improvements',
+    ],
+  },
+  {
+    name: 'Pro',
+    tagline: 'Full AI growth and automation system',
+    price: '£990',
+    setup: '£1,950',
+    waiver: 'Setup fee waived on a 12-month agreement',
+    features: [
+      'Everything in Growth, plus:',
+      'Advanced workflows, sales pipelines and API integrations',
+      'Lead scoring, qualification and advanced dashboards',
+      'AI chatbot, WhatsApp assistant and lead qualification',
+      'Advanced SEO content strategy',
+      '12 posts per month plus Reels and short-form video',
+      'LinkedIn profile optimisation and B2B outreach',
+      'YouTube channel optimisation (optional)',
+    ],
+  },
+];
+
 const faqs = [
+  { q: 'How does the rolling 30-day plan work?', a: 'You pay monthly in advance with no minimum term, plus a one-off setup fee at the start. You can cancel by giving 30 days\' notice.' },
+  { q: 'How do I avoid the setup fee?', a: 'Choose a longer agreement: 6 months for Foundation, or 12 months for Growth and Pro. The monthly price stays the same and the setup fee is waived.' },
   { q: 'Is VAT included?', a: 'Amica Digital Services is not currently VAT registered, so no VAT is added to our prices. Your written quote confirms the final amount.' },
-  { q: 'When do I pay?', a: 'The first monthly payment is due in advance, before work starts. Setup fees on the flexible plan are also payable at the start.' },
-  { q: 'Can I cancel?', a: 'The flexible plan has no minimum term. The 12-month agreement runs for twelve months in return for no setup fee.' },
-  { q: 'How do you price other projects?', a: 'Websites, custom software, voice agents and marketing campaigns are quoted individually after a short call, so you only pay for what you need.' },
+  { q: 'When do I pay?', a: 'The first monthly payment, and any setup fee, is due in advance before work starts.' },
+  { q: 'Can I change plan later?', a: 'Yes. You can move up a plan at any time. We confirm any change in writing before it takes effect.' },
+  { q: 'How do you price other projects?', a: 'Custom websites, software, AI voice agents and advertising campaigns are quoted individually after a short call, so you only pay for what you need.' },
 ];
 ---
-<Base title="Pricing" description="Transparent pricing for the Amica Care and Recruitment Agency Automation Package: £490 per month. Other services quoted after a free call.">
-  <PageHero eyebrow="Pricing" title="Clear pricing, agreed in writing" lead="Our main package has a fixed monthly price. Other projects are quoted after a free 20-minute call." crumbs={[{ label: 'Pricing' }]} />
+<Base title="Pricing" description="Simple monthly plans from Amica Digital Services: Foundation £199, Growth £490 and Pro £990 per month. Rolling 30-day plans or setup fee waived on longer agreements.">
+  <PageHero eyebrow="Pricing" title="Simple monthly plans, agreed in writing" lead="Choose a rolling 30-day plan with a one-off setup fee, or commit for longer and we waive the setup fee. Every plan includes setup, support and a monthly review." crumbs={[{ label: 'Pricing' }]} />
   <section class="section">
     <div class="container">
       <div class="grid grid-3">
-        <div class="card price-card featured">
-          <span class="badge">Best value</span>
-          <h3>Care and Recruitment Agency Package</h3>
-          <p class="price">£490<small> / month</small></p>
-          <p>No setup fee on a 12-month agreement</p>
-          <ul class="checklist">
-            <li>CRM, pipelines and calendars</li>
-            <li>Instant replies and missed-call text-back</li>
-            <li>Booking, reminders and follow-up</li>
-            <li>Recruitment and onboarding workflows</li>
-            <li>Reporting dashboard and support</li>
-          </ul>
-          <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
-        </div>
-        <div class="card price-card">
-          <h3>Care and Recruitment Agency Package, flexible</h3>
-          <p class="price">£490<small> / month</small></p>
-          <p>Plus £990 one-off setup, cancel anytime</p>
-          <ul class="checklist">
-            <li>Everything in the package</li>
-            <li>No minimum term</li>
-            <li>First month payable in advance</li>
-            <li>Implementation in four to six weeks</li>
-          </ul>
-          <a href="/care-agency-automation" class="btn btn-secondary">See what is included</a>
-        </div>
-        <div class="card price-card">
-          <h3>Other services</h3>
-          <p class="price" style="font-size:2rem">Quoted</p>
-          <p>Based on your requirements</p>
-          <ul class="checklist">
-            <li>AI voice agents and chatbots</li>
-            <li>GoHighLevel setup or clean-up</li>
-            <li>Websites and custom software</li>
-            <li>SEO, social media and paid ads</li>
-          </ul>
-          <a href="/contact" class="btn btn-secondary">Request a quote</a>
-        </div>
+        {plans.map((p) => (
+          <div class:list={['card price-card', { featured: p.featured }]}>
+            {p.featured && <span class="badge">Most popular</span>}
+            <h3>{p.name}</h3>
+            <p class="tagline">{p.tagline}</p>
+            <p class="price">{p.price}<small> / month</small></p>
+            <p class="terms">Rolling 30-day plan: {p.setup} one-off setup<br /><strong>{p.waiver}</strong></p>
+            <ul class="checklist">
+              {p.features.map((f) => <li>{f}</li>)}
+            </ul>
+            <a href="/book-a-consultation" class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']}>Book a free call</a>
+          </div>
+        ))}
       </div>
       <p class="note">Third-party usage costs, such as SMS, WhatsApp, phone numbers or advertising spend, may apply and will be confirmed in your written quote.</p>
     </div>
   </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="card specialist split">
+        <div>
+          <span class="eyebrow">For care and recruitment agencies</span>
+          <h2>Care and Recruitment Automation Package</h2>
+          <p class="lead" style="margin:0">Our Growth plan, built specifically for care and recruitment agencies: client enquiry and candidate pipelines, interview and assessment booking, onboarding workflows and reporting.</p>
+        </div>
+        <div>
+          <p class="price">£490<small> / month</small></p>
+          <p>No setup fee on a 12-month agreement, or £990 setup on a rolling 30-day plan.</p>
+          <a href="/care-agency-automation" class="btn btn-primary">See what is included</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section section-alt">
     <div class="container" style="max-width:860px"><Faq items={faqs} /></div>
   </section>
   <CtaBand />
 </Base>
-<style>.note { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 28px; }</style>
+<style>
+  .note { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 28px; }
+  .tagline { color: var(--muted); margin: -6px 0 0; }
+  .terms { font-size: 0.92rem; color: var(--muted); }
+  .terms strong { color: var(--teal-dark); }
+  .specialist { padding: 40px; grid-template-columns: 1.5fr 1fr; }
+  @media (max-width: 900px) { .specialist { padding: 28px; } }
+</style>

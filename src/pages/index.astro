@@ -8,9 +8,9 @@ import Faq from '../components/Faq.astro';
 import { services } from '../data/services';
 
 const faqs = [
-  { q: 'Who do you work with?', a: 'Mainly UK care and recruitment agencies, dental and aesthetic clinics, healthcare recruiters and other CQC-regulated or appointment-based businesses. We also help other service businesses that rely on fast follow-up.' },
+  { q: 'Who do you work with?', a: 'UK businesses of every size that want more enquiries and less admin, from clinics and professional services to local and home-service businesses. Our deepest expertise is in care and recruitment, where we have more than 15 years of hands-on experience.' },
   { q: 'Does automation replace my office team?', a: 'No. It takes repetitive tasks off them, such as first replies, reminders and chasing, so they have more time for families, clients and staff. Your team can see and step into every conversation.' },
-  { q: 'How much does it cost?', a: 'Our Care and Recruitment Agency Automation Package is £490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month with no minimum term. Other projects are quoted after a short call.' },
+  { q: 'How much does it cost?', a: 'Plans start at £199 per month. Each plan is available on a rolling 30-day basis with a one-off setup fee, or with the setup fee waived when you commit for longer. Custom projects are quoted after a short call.' },
   { q: 'How long does setup take?', a: 'Implementation normally takes four to six weeks, depending on scope and how quickly we receive the information we need from you.' },
   { q: 'Do I need to already use GoHighLevel?', a: 'No. We can set it up from scratch, or audit and improve an account you already have.' },
 ];
@@ -22,33 +22,42 @@ const faqSchema = {
 };
 ---
 <Base
-  title="Amica Digital Services | AI Automation and CRM for UK Care Agencies"
-  description="Amica Digital Services helps UK care agencies, clinics and recruitment teams reply to every enquiry fast, book more calls and cut admin with AI automation and GoHighLevel CRM."
+  title="Amica Digital Services | Digital Growth and AI Automation for UK Businesses"
+  description="Amica Digital Services helps UK businesses win more customers and cut admin with websites, SEO, social media, CRM and AI automation. Specialists in care and recruitment."
   schema={[faqSchema]}
 >
   <section class="hero">
     <div class="container split">
       <div>
-        <span class="eyebrow">AI automation for UK care and service businesses</span>
-        <h1>Reply to every enquiry in minutes, even when your team is out on calls</h1>
+        <span class="eyebrow">Digital growth and AI automation for UK businesses</span>
+        <h1>Win more customers and spend less time on admin</h1>
         <p class="lead">
-          Amica sets up the systems that answer new enquiries straight away, book calls and interviews into your diary and send the reminders, so families, clients and applicants do not go elsewhere while your team is busy.
+          Amica connects your website, marketing, CRM and AI tools into one system that attracts enquiries, replies in minutes, books appointments and follows up for you, so no opportunity slips through while your team is busy.
         </p>
         <div class="btn-row">
           <a href="/book-a-consultation" class="btn btn-primary">Book a free 20-minute call <Icon name="arrow" /></a>
-          <a href="/care-agency-automation" class="btn btn-secondary">See the care agency package</a>
+          <a href="/services" class="btn btn-secondary">Explore our services</a>
         </div>
         <ul class="hero-points">
           <li><Icon name="check" /> UK-based team</li>
           <li><Icon name="check" /> Built with UK GDPR in mind</li>
-          <li><Icon name="check" /> Your staff stay in control</li>
+          <li><Icon name="check" /> Care and recruitment specialists</li>
         </ul>
       </div>
       <div class="hero-visual">
-        <Picture src="/images/hero.jpg" alt="Care coordinator working at a laptop in a bright office" eager>
+        <Picture src="/images/website-crm.jpg" alt="Two colleagues reviewing a website and CRM dashboard across desktop, laptop and phone" eager>
           <FlowGraphic slot="fallback" />
         </Picture>
       </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container" style="max-width:960px">
+      <div class="center"><span class="eyebrow">See Amica in action</span><h2>How we help businesses grow</h2></div>
+      <video class="promo" controls preload="none" playsinline poster="/video/amica-promo-poster.jpg" width="1280" height="720">
+        <source src="/video/amica-promo.mp4" type="video/mp4" />
+      </video>
     </div>
   </section>
 
@@ -57,12 +66,12 @@ const faqSchema = {
       <div class="center">
         <span class="eyebrow">The problem</span>
         <h2>Where good enquiries get lost</h2>
-        <p class="lead">Most agencies do not have a marketing problem. They have a response-time problem. The enquiry arrives, but nobody is free to reply properly.</p>
+        <p class="lead">Many businesses do not have a marketing problem. They have a follow-up problem. The enquiry arrives, but nobody is free to reply properly.</p>
       </div>
       <div class="grid grid-4" style="margin-top:40px">
-        <div class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>Missed calls</h3><p>Calls come in while staff are on visits or covering a shift, and the caller rings the next agency.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>Missed calls</h3><p>Calls come in while staff are busy with customers, and the caller rings the next business.</p></div>
         <div class="card"><div class="icon-badge"><Icon name="clock" /></div><h3>Slow replies</h3><p>Website and email enquiries wait until someone has a spare moment, often the next day.</p></div>
-        <div class="card"><div class="icon-badge"><Icon name="users" /></div><h3>Applicants drop out</h3><p>Care workers apply to several agencies. The first to arrange an interview usually wins.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="crm" /></div><h3>Disconnected tools</h3><p>Website, social media, email and phones all work separately, so nothing follows up automatically.</p></div>
         <div class="card"><div class="icon-badge"><Icon name="chart" /></div><h3>No clear view</h3><p>Leads sit across inboxes, phones and spreadsheets, so nobody knows what was followed up.</p></div>
       </div>
     </div>
@@ -71,9 +80,9 @@ const faqSchema = {
   <section class="section">
     <div class="container split">
       <div>
-        <span class="eyebrow">Care and Recruitment Agency Automation Package</span>
+        <span class="eyebrow">Our specialism: care and recruitment</span>
         <h2>One system for client enquiries, recruitment and follow-up</h2>
-        <p class="lead">A done-for-you setup built around how your office already works.</p>
+        <p class="lead">Built on more than 15 years of experience in recruitment, staffing and care, our Care and Recruitment Automation Package is a done-for-you setup built around how your office already works.</p>
         <ul class="checklist" style="margin-top:20px">
           <li>CRM and sales pipeline for client and staff enquiries</li>
           <li>Instant replies to website, phone and social enquiries</li>
@@ -84,15 +93,15 @@ const faqSchema = {
           <li>Review requests and reporting dashboard</li>
         </ul>
         <div class="btn-row">
-          <a href="/care-agency-automation" class="btn btn-primary">See the full package</a>
+          <a href="/care-agency-automation" class="btn btn-primary">See the care and recruitment package</a>
           <a href="/pricing" class="btn btn-secondary">View pricing</a>
         </div>
       </div>
       <div class="card price-highlight">
-        <span class="tag">Most popular</span>
+        <span class="tag">Care and recruitment package</span>
         <p class="price">£490<small> / month</small></p>
         <p>No setup fee on a 12-month agreement.</p>
-        <p class="muted">Or £990 setup plus £490 per month, cancel anytime. First month payable in advance. Implementation normally takes four to six weeks.</p>
+        <p class="muted">Or £990 setup plus £490 per month on a rolling 30-day plan. First month payable in advance. Implementation normally takes four to six weeks.</p>
         <a href="/book-a-consultation" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px">Book a free call</a>
       </div>
     </div>
@@ -102,8 +111,8 @@ const faqSchema = {
     <div class="container">
       <div class="center">
         <span class="eyebrow">Services</span>
-        <h2>Everything needed to turn enquiries into appointments</h2>
-        <p class="lead">Pick one service or combine them into a complete system.</p>
+        <h2>Everything needed to attract, convert and keep customers</h2>
+        <p class="lead">Pick one service or combine them into a connected system.</p>
       </div>
       <div class="grid grid-3" style="margin-top:40px">
         {services.map((s) => (
@@ -139,10 +148,10 @@ const faqSchema = {
         <h2>Built for businesses where every enquiry matters</h2>
       </div>
       <div class="grid grid-4" style="margin-top:40px">
-        <a href="/care-agency-automation" class="card"><div class="icon-badge"><Icon name="heart" /></div><h3>Care agencies</h3><p>Home care, supported living and care recruitment.</p></a>
-        <a href="/industries#clinics" class="card"><div class="icon-badge"><Icon name="tooth" /></div><h3>Dental and aesthetic clinics</h3><p>Fill appointment books and reduce no-shows.</p></a>
-        <a href="/industries#recruitment" class="card"><div class="icon-badge"><Icon name="briefcase" /></div><h3>Healthcare recruitment</h3><p>Respond to candidates and clients faster.</p></a>
-        <a href="/industries#regulated" class="card"><div class="icon-badge"><Icon name="building" /></div><h3>CQC-regulated services</h3><p>Organised, auditable communication.</p></a>
+        <a href="/care-agency-automation" class="card"><div class="icon-badge"><Icon name="heart" /></div><h3>Care and recruitment</h3><p>Our specialism: home care, supported living, staffing and recruitment agencies.</p></a>
+        <a href="/industries#clinics" class="card"><div class="icon-badge"><Icon name="tooth" /></div><h3>Clinics and healthcare</h3><p>Fill appointment books and reduce no-shows.</p></a>
+        <a href="/industries#professional" class="card"><div class="icon-badge"><Icon name="building" /></div><h3>Professional services</h3><p>Respond faster and keep every client conversation organised.</p></a>
+        <a href="/industries#local" class="card"><div class="icon-badge"><Icon name="store" /></div><h3>Local and home services</h3><p>Turn calls, messages and website visits into booked jobs.</p></a>
       </div>
     </div>
   </section>
@@ -164,5 +173,6 @@ const faqSchema = {
   .hero-points :global(svg) { width: 18px; height: 18px; color: var(--teal); }
   .btn :global(svg) { width: 18px; height: 18px; }
   .price-highlight { padding: 36px; }
+  .promo { width: 100%; height: auto; margin-top: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--navy); }
   .price-highlight .muted { color: var(--muted); font-size: 0.95rem; }
 </style>

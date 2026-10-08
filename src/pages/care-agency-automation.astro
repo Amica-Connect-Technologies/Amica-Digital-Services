@@ -13,7 +13,7 @@ const faqs = [
   { q: 'What do you need from us?', a: 'A short kick-off call, access to your website and phone setup, your current enquiry and recruitment process, and someone to approve messages and workflows.' },
   { q: 'Can it work with our rostering or care management software?', a: 'Often, yes. We check what your current software allows during the discovery call. Where a direct link is not possible, we agree a simple handover process.' },
   { q: 'How do you handle personal data?', a: 'We set systems up with UK GDPR in mind: only the data you need, clear consent wording, secure access and a link to your privacy notice. We do not process health records in the marketing system.' },
-  { q: 'What does it cost?', a: '£490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month with no minimum term. The first monthly payment is due in advance.' },
+  { q: 'What does it cost?', a: '£490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month on a rolling 30-day plan. The first monthly payment is due in advance.' },
 ];
 const schema = [
   {
@@ -24,7 +24,7 @@ const schema = [
     areaServed: 'GB',
     offers: [
       { '@type': 'Offer', name: '12-month agreement', price: '490', priceCurrency: 'GBP', description: '£490 per month, no setup fee' },
-      { '@type': 'Offer', name: 'Flexible', price: '990', priceCurrency: 'GBP', description: '£990 setup plus £490 per month, cancel anytime' },
+      { '@type': 'Offer', name: 'Flexible', price: '990', priceCurrency: 'GBP', description: '£990 setup plus £490 per month, rolling 30-day plan' },
     ],
   },
   {
@@ -35,7 +35,7 @@ const schema = [
 ];
 ---
 <Base
-  title="Care Agency Automation | CRM, Booking and Recruitment Workflows"
+  title="Care and Recruitment Agency Automation | CRM, Booking and Recruitment Workflows"
   description="The Care and Recruitment Agency Automation Package from Amica: instant enquiry replies, missed-call text-back, online booking and recruitment workflows. £490 per month."
   schema={schema}
 >
@@ -63,7 +63,7 @@ const schema = [
           <li>Managers cannot see how many enquiries came in or what happened to them</li>
         </ul>
       </div>
-      <Picture src="/images/care-worker.jpg" alt="Care worker checking her phone before a home visit">
+      <Picture src="/images/recruitment-automation.jpg" alt="Recruitment team reviewing candidates and an automated interview pipeline">
         <FlowGraphic slot="fallback" />
       </Picture>
     </div>
@@ -113,7 +113,7 @@ const schema = [
 
   <section class="section section-alt" id="pricing">
     <div class="container">
-      <div class="center"><span class="eyebrow">Pricing</span><h2>Simple monthly pricing</h2><p class="lead">Choose a 12-month agreement with no setup fee, or a flexible option you can cancel anytime.</p></div>
+      <div class="center"><span class="eyebrow">Pricing</span><h2>Simple monthly pricing</h2><p class="lead">Choose a 12-month agreement with no setup fee, or a rolling 30-day plan with a one-off setup fee.</p></div>
       <div class="grid grid-2 pricing" style="margin-top:44px">
         <div class="card price-card featured">
           <span class="badge">Best value</span>
@@ -129,12 +129,12 @@ const schema = [
           <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
         </div>
         <div class="card price-card">
-          <h3>Flexible</h3>
+          <h3>Rolling 30-day plan</h3>
           <p class="price">£490<small> / month</small></p>
           <p>Plus £990 one-off setup</p>
           <ul class="checklist">
             <li>Same package and support</li>
-            <li>No minimum term, cancel anytime</li>
+            <li>No minimum term, 30 days' notice</li>
             <li>Monthly review and improvements</li>
             <li>First month payable in advance</li>
           </ul>

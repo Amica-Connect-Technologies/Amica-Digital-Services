@@ -34,12 +34,9 @@ After go-live, submit `https://amicadigitalservices.com/sitemap-index.xml` in Go
 
 ## Images
 
-The pages expect these files in `public/images/`. Until they exist, a built-in workflow graphic is shown instead:
+Page images live in `public/images/`. If a file is missing, a built-in workflow graphic is shown instead:
 
-- `hero.jpg` (home page)
-- `care-worker.jpg` (care agency page)
-- `voice-agent.jpg` (AI automation, voice agent and chatbot pages)
-- `crm.jpg` (CRM and lead generation pages)
+- `website-crm.jpg`, `recruitment-automation.jpg`, `ai-receptionist.jpg`, `ai-chatbot.jpg`, `seo.jpg`, `social-media.jpg` (supplied by Amica, October 2026)
 
 ## Analytics and cookies
 
