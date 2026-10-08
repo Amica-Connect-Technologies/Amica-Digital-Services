@@ -7,7 +7,7 @@ export const company = {
   url: 'https://amicadigitalservices.com',
   email: 'info@amicadigitalservices.com',
   founder: 'Shaz Chughtai',
-  // Taken from the July 2026 version of this repository. Confirm before publishing.
+  // Confirmed by Shaz Chughtai on 8 October 2026.
   phone: '+44 7446 981768',
   phoneHref: '+447446981768',
   whatsapp: '447446981768',
