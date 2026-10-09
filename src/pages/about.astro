@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Picture from '../components/Picture.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const services = [
+  'Website design and development',
+  'Search engine optimisation',
+  'Social media management',
+  'Content creation and publishing',
+  'Google and social media advertising',
+  'Lead generation campaigns',
+  'CRM setup and management',
+  'Email and WhatsApp marketing automation',
+  'Automated lead follow-up',
+  'Online appointment booking systems',
+  'AI receptionists',
+  'AI website chatbots',
+  'AI-powered business assistants',
+  'Recruitment and candidate-management automation',
+  'Custom business portals and software solutions',
+];
+
+const reasons = [
+  { icon: 'crm', title: 'One connected solution', text: 'We bring websites, CRM, marketing, communication and automation together, reducing the need to manage multiple disconnected providers.' },
+  { icon: 'target', title: 'Solutions built around your business', text: 'We take time to understand your processes, challenges and goals before recommending or implementing a solution.' },
+  { icon: 'users', title: 'Automation with a human approach', text: 'We use technology to enhance customer service and support your team, not to remove the personal relationships that make your business successful.' },
+  { icon: 'chart', title: 'Focused on commercial results', text: 'Our work is designed to help generate enquiries, improve conversion, save time, reduce missed opportunities and support sustainable growth.' },
+  { icon: 'shield', title: 'Ongoing partnership', text: 'We do not simply build a system and disappear. We can provide ongoing management, optimisation, technical support and strategic guidance as your business develops.' },
+];
+---
+<Base title="About Amica Digital Services" description="Amica Digital Services is a UK-based digital growth and AI automation agency helping businesses attract more customers, improve efficiency and reduce repetitive work.">
+  <PageHero eyebrow="About Amica Digital Services" title="Technology that helps your business work smarter" lead="Amica Digital Services is a UK-based digital growth and AI automation agency helping businesses attract more customers, improve efficiency and reduce time spent on repetitive work." crumbs={[{ label: 'About' }]} />
+
+  <section class="section">
+    <div class="container split">
+      <div class="prose">
+        <p>We combine digital marketing, intelligent automation, customer relationship management and modern website technology into practical solutions tailored to each business. Instead of supplying disconnected services, we create integrated systems that help our clients generate leads, respond faster, manage customers and grow more confidently.</p>
+        <p>Our goal is simple: to make powerful digital technology accessible, useful and commercially valuable for businesses of every size.</p>
+        <h2>More than a digital marketing agency</h2>
+        <p>A successful business needs more than an attractive website or occasional social media posts. It needs a connected system that can attract potential customers, capture enquiries, automate follow-ups, book appointments and provide management with clear visibility of every opportunity.</p>
+        <p><strong>That is what we build.</strong></p>
+        <p>Our websites, marketing campaigns, CRM platforms and AI-powered tools are designed to work together. From the moment a potential customer discovers your business to the point they make an enquiry, book an appointment or complete a purchase, we help create a smoother and more effective customer journey.</p>
+      </div>
+      <Picture src="/images/website-crm.jpg" alt="Colleagues reviewing a connected website and CRM system" ratio="4 / 3">
+        <div slot="fallback"></div>
+      </Picture>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">Our services</span>
+        <h2>A comprehensive range of digital services</h2>
+      </div>
+      <ul class="checklist service-list">
+        {services.map((s) => <li>{s}</li>)}
+      </ul>
+      <p class="center lead" style="margin-top:28px">Every solution is developed around the client's actual requirements, objectives and workflow.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <Picture src="/images/ai-receptionist.jpg" alt="Receptionist supported by an AI voice assistant that books appointments" ratio="4 / 3">
+        <div slot="fallback"></div>
+      </Picture>
+      <div class="prose">
+        <h2 style="margin-top:0">AI that delivers practical business results</h2>
+        <p>We believe artificial intelligence should solve real business problems, not simply be added because it is fashionable.</p>
+        <p>Our AI receptionists can handle customer calls, answer common questions, collect important information and support appointment booking. Our AI chatbots can engage website visitors, respond instantly and help convert enquiries into opportunities.</p>
+        <p>For recruitment and staffing businesses, we can automate candidate registration, screening, document collection, interview scheduling, reminders and follow-up communication.</p>
+        <p>These systems help businesses respond more quickly, maintain consistent service and allow their teams to focus on higher-value activities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container prose" style="max-width:820px;margin:0 auto">
+      <h2 style="margin-top:0">Experience behind Amica</h2>
+      <p>Amica Digital Services is built on more than 15 years of hands-on experience in business development, recruitment, staffing, customer service and operational management.</p>
+      <p>This commercial experience shapes the way we approach technology. We understand that a digital system must do more than look impressive. It must support everyday operations, improve the customer experience and contribute to measurable business growth.</p>
+      <p>Our team brings together expertise in marketing, software development, CRM implementation, automation, artificial intelligence, content creation and lead generation.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Why businesses choose Amica</span><h2>What you can expect from us</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {reasons.map((r) => (
+          <div class="card"><div class="icon-badge"><Icon name={r.icon} /></div><h3>{r.title}</h3><p>{r.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container prose center" style="max-width:820px;margin:0 auto">
+      <span class="eyebrow">Our mission</span>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Our mission is to help ambitious businesses use digital marketing, automation and artificial intelligence to compete more effectively, operate more efficiently and provide a better experience for their customers.</p>
+      <p>We aim to become a trusted long-term digital partner for every client we serve.</p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Let's build a smarter business together"
+    text="Whether you need a productive new website, stronger online visibility, a complete CRM system, automated lead follow-up or an AI-powered customer service solution, we can help. Automate. Grow. Succeed."
+  />
+</Base>
+<style>
+  .service-list { columns: 3; column-gap: 32px; margin-top: 36px; }
+  .service-list li { break-inside: avoid; }
+  @media (max-width: 900px) { .service-list { columns: 2; } }
+  @media (max-width: 640px) { .service-list { columns: 1; } }
+</style>

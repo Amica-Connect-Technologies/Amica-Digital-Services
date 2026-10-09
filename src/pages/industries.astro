@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+const industries = [
+  { id: 'care', icon: 'heart', title: 'Care and supported living agencies (our specialism)', text: 'Families and commissioners expect a quick, reassuring response, and care workers apply to several agencies at once.', points: ['Instant replies to care enquiries', 'Assessment and interview booking', 'Recruitment and onboarding workflows', 'Review requests from satisfied clients'], link: '/care-agency-automation' },
+  { id: 'recruitment', icon: 'briefcase', title: 'Recruitment and staffing (our specialism)', text: 'Candidates and clients both expect fast responses, and good candidates do not stay available for long.', points: ['Candidate registration and screening', 'Interview scheduling and reminders', 'Compliance document collection', 'Client enquiry pipeline'], link: '/care-agency-automation' },
+  { id: 'clinics', icon: 'tooth', title: 'Clinics and healthcare', text: 'Treatment enquiries often come in the evening and at weekends, and no-shows cost valuable appointment time.', points: ['Enquiry follow-up and treatment booking', 'Appointment reminders and confirmations', 'No-show and reactivation campaigns', 'Review requests after appointments'] },
+  { id: 'professional', icon: 'building', title: 'Professional services', text: 'Accountants, consultants, legal and property businesses win work by responding quickly and professionally.', points: ['Website and SEO that bring in enquiries', 'Structured enquiry handling and CRM', 'Automated follow-up and booking', 'Reporting for managers'] },
+  { id: 'local', icon: 'store', title: 'Local and home services', text: 'Trades, home services and local businesses lose jobs when calls and messages go unanswered.', points: ['Missed-call text-back', 'Google Business Profile and local SEO', 'Online booking and quotes', 'Social media and review requests'] },
+];
+---
+<Base title="Industries We Serve" description="Amica Digital Services helps UK businesses grow with websites, marketing, CRM and AI automation, with specialist expertise in care and recruitment.">
+  <PageHero eyebrow="Industries" title="Built for businesses where response time matters" lead="We work with businesses of every kind where a fast, personal reply makes the difference between winning and losing a customer. Care and recruitment is where our experience runs deepest." crumbs={[{ label: 'Industries' }]} />
+  <section class="section">
+    <div class="container">
+      {industries.map((i) => (
+        <article class="card industry" id={i.id}>
+          <div class="icon-badge"><Icon name={i.icon} /></div>
+          <div>
+            <h2>{i.title}</h2>
+            <p class="lead">{i.text}</p>
+            <ul class="checklist cols2">{i.points.map((p) => <li>{p}</li>)}</ul>
+            {i.link && <a class="btn btn-primary" href={i.link} style="margin-top:12px">See the care and recruitment package</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+<style>
+  .industry { display: flex; gap: 24px; margin-bottom: 24px; padding: 36px; scroll-margin-top: 90px; }
+  .industry h2 { font-size: 1.5rem; }
+  .cols2 { columns: 2; column-gap: 32px; }
+  .cols2 li { break-inside: avoid; }
+  @media (max-width: 640px) { .industry { flex-direction: column; padding: 26px; } .cols2 { columns: 1; } }
+</style>

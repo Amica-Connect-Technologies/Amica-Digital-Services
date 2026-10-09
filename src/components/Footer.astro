@@ -1,0 +1,73 @@
+---
+import Logo from './Logo.astro';
+import { company, nav, legalNav } from '../data/site';
+import { services } from '../data/services';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div>
+        <Logo light />
+        <p class="about">Digital growth and AI automation for UK businesses, with specialist expertise in care and recruitment. Based in Manchester, working across the UK.</p>
+        <a href="/book-a-consultation" class="btn btn-primary">Book a consultation</a>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <ul>
+          <li><a href="/care-agency-automation">Care and Recruitment Automation</a></li>
+          {services.map((s) => <li><a href={`/${s.slug}`}>{s.title}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about">About Amica</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul class="contact">
+          <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
+          {company.phone && <li><a href={`tel:${company.phoneHref}`}>{company.phone}</a></li>}
+          {company.address && <li>{company.address}</li>}
+          <li>{company.hours}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>
+        © {year} {company.legalName}.
+        {company.companyNumber && <> Registered in England and Wales, company number {company.companyNumber}.</>}
+        {company.icoNumber && <> ICO registration {company.icoNumber}.</>}
+      </p>
+      <ul>
+        {legalNav.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        <li><button type="button" class="link-btn" data-cookie-settings>Cookie settings</button></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<style>
+  .site-footer { background: var(--navy); color: #b9c7d6; padding: 64px 0 28px; font-size: 0.95rem; }
+  .cols { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; }
+  .about { margin: 18px 0 22px; max-width: 340px; }
+  h3 { color: #fff; font-size: 1rem; margin-bottom: 14px; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 8px; }
+  a { color: #d9e3ee; text-decoration: none; }
+  a:hover { color: #fff; text-decoration: underline; }
+  .site-footer .btn { color: #fff; text-decoration: none; }
+  .legal { margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 0.85rem; }
+  .legal p { margin: 0; }
+  .legal ul { display: flex; flex-wrap: wrap; gap: 18px; }
+  .legal li { margin: 0; }
+  .link-btn { background: none; border: 0; padding: 0; color: #d9e3ee; font: inherit; cursor: pointer; }
+  .link-btn:hover { text-decoration: underline; color: #fff; }
+  @media (max-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .cols { grid-template-columns: 1fr; } }
+</style>

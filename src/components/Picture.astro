@@ -1,0 +1,14 @@
+---
+// Renders an image from /public/images only if the file exists, so pages build cleanly before photos are added.
+import fs from 'node:fs';
+import path from 'node:path';
+const { src, alt, eager = false, ratio = '3 / 2' } = Astro.props;
+const exists = src && fs.existsSync(path.join(process.cwd(), 'public', src));
+---
+{exists ? (
+  <div class="media" style={`aspect-ratio:${ratio}`}>
+    <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" width="1200" height="800" />
+  </div>
+) : (
+  <slot name="fallback" />
+)}

@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import FlowGraphic from '../components/FlowGraphic.astro';
+---
+<Base title="Case Studies" description="How Amica Digital Services approaches automation projects for UK businesses, including care and recruitment agencies, with example workflows.">
+  <PageHero eyebrow="Case studies" title="Results, shared honestly" lead="We only publish case studies with real figures and our clients' permission. While we prepare them, here is an example of the kind of workflow we build." crumbs={[{ label: 'Case Studies' }]} />
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="tag">Example workflow</span>
+        <h2 style="margin-top:14px">An evening enquiry at a home care agency</h2>
+        <p>A daughter fills in the website form at 9.47pm asking about care for her father. In a typical office, that enquiry waits until the morning.</p>
+        <ul class="checklist">
+          <li>She receives a personal reply by email and text within a minute</li>
+          <li>The message includes a link to book a call at a time that suits her</li>
+          <li>She books 10am, and the coordinator sees the booking in the calendar</li>
+          <li>A reminder goes out an hour before the call</li>
+          <li>The enquiry, call and outcome are recorded in the CRM</li>
+        </ul>
+        <p class="muted">This is an illustration of a typical setup, not a client result.</p>
+        <p>Want to talk to an existing client? Ask on your discovery call and we will arrange a reference where a client has agreed to it.</p>
+      </div>
+      <FlowGraphic />
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+<style>.muted { color: var(--muted); font-size: 0.92rem; }</style>
