@@ -37,6 +37,7 @@ export const analytics = {
 };
 
 export const nav = [
+  { label: 'Home', href: '/' },
   { label: 'Care and Recruitment', href: '/care-agency-automation' },
   {
     label: 'Services',

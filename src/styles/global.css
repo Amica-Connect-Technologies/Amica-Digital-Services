@@ -495,3 +495,12 @@ a.card:hover {
 .cta-band .lead {
   color: #c9d6e3;
 }
+
+/* Let grid and split children shrink on narrow screens so long words never force sideways scrolling. */
+.grid > *,
+.split > * {
+  min-width: 0;
+}
+.card {
+  overflow-wrap: break-word;
+}
