@@ -4,14 +4,14 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 const industries = [
-  { id: 'care', icon: 'heart', title: 'Care and supported living agencies (our specialism)', text: 'Families and commissioners expect a quick, reassuring response, and care workers apply to several agencies at once.', points: ['Instant replies to care enquiries', 'Assessment and interview booking', 'Recruitment and onboarding workflows', 'Review requests from satisfied clients'], link: '/care-agency-automation' },
-  { id: 'recruitment', icon: 'briefcase', title: 'Recruitment and staffing (our specialism)', text: 'Candidates and clients both expect fast responses, and good candidates do not stay available for long.', points: ['Candidate registration and screening', 'Interview scheduling and reminders', 'Compliance document collection', 'Client enquiry pipeline'], link: '/care-agency-automation' },
-  { id: 'clinics', icon: 'tooth', title: 'Clinics and healthcare', text: 'Treatment enquiries often come in the evening and at weekends, and no-shows cost valuable appointment time.', points: ['Enquiry follow-up and treatment booking', 'Appointment reminders and confirmations', 'No-show and reactivation campaigns', 'Review requests after appointments'] },
-  { id: 'professional', icon: 'building', title: 'Professional services', text: 'Accountants, consultants, legal and property businesses win work by responding quickly and professionally.', points: ['Website and SEO that bring in enquiries', 'Structured enquiry handling and CRM', 'Automated follow-up and booking', 'Reporting for managers'] },
-  { id: 'local', icon: 'store', title: 'Local and home services', text: 'Trades, home services and local businesses lose jobs when calls and messages go unanswered.', points: ['Missed-call text-back', 'Google Business Profile and local SEO', 'Online booking and quotes', 'Social media and review requests'] },
+  { id: 'care', icon: 'heart', title: 'Care and supported living agencies (our specialism)', text: 'Families and commissioners expect a quick, reassuring response, and care workers apply to several agencies at once.', points: ['Instant replies to care enquiries', 'Assessment and interview booking', 'Recruitment and onboarding workflows', 'Review requests from satisfied clients'], link: '/care-agency-automation', linkLabel: 'See the care and recruitment package', extra: { href: '/ai-receptionist-care-agencies', label: 'AI receptionist for care agencies' } },
+  { id: 'recruitment', icon: 'briefcase', title: 'Recruitment and staffing (our specialism)', text: 'Candidates and clients both expect fast responses, and good candidates do not stay available for long.', points: ['Candidate registration and screening', 'Interview scheduling and reminders', 'Compliance document collection', 'Client enquiry pipeline'], link: '/recruitment-agency-automation', linkLabel: 'See recruitment agency automation' },
+  { id: 'clinics', icon: 'tooth', title: 'Clinics and healthcare', text: 'Treatment enquiries often come in the evening and at weekends, and no-shows cost valuable appointment time.', points: ['Enquiry follow-up and treatment booking', 'Appointment reminders and confirmations', 'No-show and reactivation campaigns', 'Review requests after appointments'], link: '/ai-automation', linkLabel: 'See AI automation' },
+  { id: 'professional', icon: 'building', title: 'Professional services', text: 'Accountants, consultants, legal and property businesses win work by responding quickly and professionally.', points: ['Website and SEO that bring in enquiries', 'Structured enquiry handling and CRM', 'Automated follow-up and booking', 'Reporting for managers'], link: '/crm-gohighlevel', linkLabel: 'See CRM and GoHighLevel' },
+  { id: 'local', icon: 'store', title: 'Local and home services', text: 'Trades, home services and local businesses lose jobs when calls and messages go unanswered.', points: ['Missed-call text-back', 'Google Business Profile and local SEO', 'Online booking and quotes', 'Social media and review requests'], link: '/seo', linkLabel: 'See SEO and local search' },
 ];
 ---
-<Base title="Industries We Serve" description="Amica Digital Services helps UK businesses grow with websites, marketing, CRM and AI automation, with specialist expertise in care and recruitment.">
+<Base title="Industries: Care, Recruitment, Clinics and More | Amica" description="Automation and marketing for UK care agencies, recruitment firms, clinics, professional services and local businesses where fast replies win customers.">
   <PageHero eyebrow="Industries" title="Built for businesses where response time matters" lead="We work with businesses of every kind where a fast, personal reply makes the difference between winning and losing a customer. Care and recruitment is where our experience runs deepest." crumbs={[{ label: 'Industries' }]} />
   <section class="section">
     <div class="container">
@@ -22,7 +22,10 @@ const industries = [
             <h2>{i.title}</h2>
             <p class="lead">{i.text}</p>
             <ul class="checklist cols2">{i.points.map((p) => <li>{p}</li>)}</ul>
-            {i.link && <a class="btn btn-primary" href={i.link} style="margin-top:12px">See the care and recruitment package</a>}
+            <div class="btn-row" style="margin-top:12px">
+              {i.link && <a class="btn btn-primary" href={i.link}>{i.linkLabel}</a>}
+              {i.extra && <a class="btn btn-secondary" href={i.extra.href}>{i.extra.label}</a>}
+            </div>
           </div>
         </article>
       ))}

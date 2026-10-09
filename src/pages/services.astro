@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { services } from '../data/services';
 ---
-<Base title="Services" description="Websites, SEO, social media, lead generation, GoHighLevel CRM, AI chatbots, voice agents and automation from Amica Digital Services for UK businesses.">
+<Base title="Digital Marketing and AI Automation Services | Amica" description="Websites, SEO, social media, lead generation, GoHighLevel CRM, AI chatbots, AI receptionists and automation for UK businesses from a Manchester team.">
   <PageHero eyebrow="Services" title="Services that attract, convert and keep customers" lead="Choose a single service or combine them into one joined-up system, managed by a UK team." crumbs={[{ label: 'Services' }]} />
   <section class="section">
     <div class="container">
@@ -18,6 +18,10 @@ import { services } from '../data/services';
           <span class="more">See the package →</span>
         </div>
       </a>
+      <div class="grid grid-2" style="margin-top:24px">
+        <a href="/ai-receptionist-care-agencies" class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>AI Receptionist for Care Agencies</h3><p>Answer family enquiries and carer applicants out of hours, with clear rules for handing over to your team.</p><span class="more">Learn more →</span></a>
+        <a href="/recruitment-agency-automation" class="card"><div class="icon-badge"><Icon name="briefcase" /></div><h3>Recruitment Agency Automation</h3><p>Candidate registration, screening, interview booking and compliance chasing, alongside your existing ATS.</p><span class="more">Learn more →</span></a>
+      </div>
       <div class="grid grid-3" style="margin-top:24px">
         {services.map((s) => (
           <a href={`/${s.slug}`} class="card">

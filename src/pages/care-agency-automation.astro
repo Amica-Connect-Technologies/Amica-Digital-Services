@@ -6,37 +6,34 @@ import Picture from '../components/Picture.astro';
 import FlowGraphic from '../components/FlowGraphic.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
 
 const faqs = [
-  { q: 'Is this only for home care agencies?', a: 'No. It suits home care, supported living, care recruitment and nursing agencies. We adapt the workflows to the services you provide.' },
-  { q: 'Will it replace our coordinators or recruiters?', a: 'No. It removes repetitive chasing and first replies so your team can spend more time with families, clients and carers. Staff can see and take over any conversation.' },
-  { q: 'What do you need from us?', a: 'A short kick-off call, access to your website and phone setup, your current enquiry and recruitment process, and someone to approve messages and workflows.' },
-  { q: 'Can it work with our rostering or care management software?', a: 'Often, yes. We check what your current software allows during the discovery call. Where a direct link is not possible, we agree a simple handover process.' },
-  { q: 'How do you handle personal data?', a: 'We set systems up with UK GDPR in mind: only the data you need, clear consent wording, secure access and a link to your privacy notice. We do not process health records in the marketing system.' },
-  { q: 'What does it cost?', a: '£490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month on a rolling 30-day plan. The first monthly payment is due in advance.' },
+  { q: "Is this only for home care agencies?", a: "No. It suits home care, supported living, care recruitment and nursing agencies. We adapt the workflows to the services you provide." },
+  { q: "Will it replace our coordinators or recruiters?", a: "No. It removes repetitive chasing and first replies so your team can spend more time with families, clients and carers. Staff can see and take over any conversation." },
+  { q: "Can it work with our rostering or care management software?", a: "Often, yes. We check what your current software allows during the discovery call. Where a direct link is not possible, we agree a simple handover process." },
+  { q: "How do you handle personal data?", a: "We set systems up with UK GDPR in mind: only the data you need, clear consent wording, secure access and a link to your privacy notice. We do not process health records in the marketing system." },
+  { q: "What does it cost?", a: "£490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month on a rolling 30-day plan. The first monthly payment is due in advance." },
+  { q: "What do you need from us?", a: "A short kick-off call, access to your website and phone setup, your current enquiry and recruitment process, and someone to approve messages and workflows." },
 ];
 const schema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+  serviceSchema({
     name: 'Care and Recruitment Agency Automation Package',
-    provider: { '@type': 'Organization', name: 'Amica Digital Services Ltd' },
-    areaServed: 'GB',
+    serviceType: 'Care and recruitment agency automation',
+    description: "Automation for UK care and recruitment agencies: instant enquiry replies, missed-call text-back, online booking and candidate workflows. £490 per month.",
+    path: '/care-agency-automation',
+    audience: 'Care and recruitment agencies',
     offers: [
       { '@type': 'Offer', name: '12-month agreement', price: '490', priceCurrency: 'GBP', description: '£490 per month, no setup fee' },
-      { '@type': 'Offer', name: 'Flexible', price: '990', priceCurrency: 'GBP', description: '£990 setup plus £490 per month, rolling 30-day plan' },
+      { '@type': 'Offer', name: 'Rolling 30-day plan', price: '990', priceCurrency: 'GBP', description: '£990 setup plus £490 per month, rolling 30-day plan' },
     ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-  },
+  }),
+  faqSchema(faqs),
 ];
 ---
 <Base
-  title="Care and Recruitment Agency Automation | CRM, Booking and Recruitment Workflows"
-  description="The Care and Recruitment Agency Automation Package from Amica: instant enquiry replies, missed-call text-back, online booking and recruitment workflows. £490 per month."
+  title="Care and Recruitment Agency Automation (UK) | Amica"
+  description="Automation for UK care and recruitment agencies: instant enquiry replies, missed-call text-back, online booking and candidate workflows. £490 per month."
   schema={schema}
 >
   <PageHero
@@ -45,6 +42,7 @@ const schema = [
     lead="Reply to families, clients and applicants straight away, book assessments and interviews automatically, and give your office team back hours every week."
     crumbs={[{ label: 'Care Agency Automation' }]}
   >
+    <p class="answer">The Care and Recruitment Agency Automation Package is a done-for-you system from Amica Digital Services that replies to family, client and applicant enquiries within moments, books assessments and interviews, and follows up by email, SMS and WhatsApp. It is built mainly in GoHighLevel, around how your office already works, and your team stays in control of every conversation.</p>
     <div class="btn-row">
       <a href="/book-a-consultation" class="btn btn-primary">Book a free 20-minute call</a>
       <a href="#pricing" class="btn btn-secondary">See pricing</a>
@@ -145,6 +143,16 @@ const schema = [
     </div>
   </section>
 
+  <section class="section-sm">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Focus on one area</span><h2>Need help with one part first?</h2></div>
+      <div class="grid grid-2" style="margin-top:32px">
+        <a href="/ai-receptionist-care-agencies" class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>AI receptionist for care agencies</h3><p>Answer family enquiries and carer applicants out of hours, with clear rules for when a call goes to your on-call coordinator.</p><span class="more">Learn more →</span></a>
+        <a href="/recruitment-agency-automation" class="card"><div class="icon-badge"><Icon name="briefcase" /></div><h3>Recruitment agency automation</h3><p>Candidate registration, screening, interview booking and compliance document chasing, working alongside your ATS.</p><span class="more">Learn more →</span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container" style="max-width:860px">
       <Faq items={faqs} />
@@ -155,6 +163,7 @@ const schema = [
 </Base>
 <style>
   .pricing { max-width: 860px; margin-left: auto; margin-right: auto; }
+  .answer { max-width: 760px; color: var(--ink); }
   .small { font-size: 0.9rem; color: var(--muted); margin-top: 24px; }
   .explainer { width: 100%; height: auto; margin-top: 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow); background: var(--navy); }
 </style>

@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { company, ghl } from '../data/site';
+import { orgId, founderSchema, areaServed, socialUrls } from '../data/schema';
 import Icon from '../components/Icon.astro';
 
 interface Props {
@@ -11,32 +12,48 @@ interface Props {
   description: string;
   image?: string;
   noindex?: boolean;
+  ogType?: 'website' | 'article';
   schema?: Record<string, unknown>[];
 }
 
-const { title, description, image = '/images/og-default.jpg', noindex = false, schema = [] } = Astro.props;
+const { title, description, image = '/images/og-default.jpg', noindex = false, ogType = 'website', schema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', company.url).href;
-const fullTitle = title.includes('Amica') ? title : `${title} | Amica Digital Services`;
+
+// Add the brand suffix only when the title does not already name Amica and the
+// result stays within 60 characters, so Google is less likely to truncate it.
+const SUFFIX = ' | Amica Digital Services';
+const fullTitle = title.includes('Amica') || (title + SUFFIX).length > 60 ? title : title + SUFFIX;
 const ogImage = new URL(image, company.url).href;
 
 const orgSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
+  '@type': ['ProfessionalService', 'Organization'],
+  '@id': orgId,
   name: company.legalName,
+  alternateName: company.name,
+  legalName: company.legalName,
   url: company.url,
   logo: `${company.url}/images/logo.png`,
-  image: ogImage,
+  image: `${company.url}/images/og-default.jpg`,
   email: company.email,
   telephone: company.phone,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '378 Claremont Road',
-    addressLocality: 'Manchester',
-    postalCode: 'M14 7WB',
-    addressCountry: 'GB',
+  address: { '@type': 'PostalAddress', ...company.addressParts },
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'Companies House company number',
+    value: company.companyNumber,
   },
-  areaServed: 'GB',
-  founder: { '@type': 'Person', name: 'Muhammad Shahzad Chughtai' },
+  founder: founderSchema,
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '17:00',
+  },
+  areaServed,
+  knowsAbout: ['AI automation', 'AI receptionists', 'GoHighLevel', 'CRM', 'SEO', 'care agency marketing', 'recruitment automation'],
+  priceRange: '££',
+  ...(socialUrls.length ? { sameAs: socialUrls } : {}),
 };
 ---
 <!doctype html>
@@ -52,7 +69,7 @@ const orgSchema = {
     <link rel="apple-touch-icon" href="/images/logo.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#0e2a47" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Amica Digital Services" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:title" content={fullTitle} />

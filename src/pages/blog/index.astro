@@ -6,14 +6,14 @@ import posts from '../../data/blog.json';
 
 const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
-<Base title="Blog" description="Practical articles from Amica Digital Services on AI automation, digital marketing, SEO and healthcare technology for UK businesses.">
+<Base title="AI, Automation and Marketing Blog for UK Firms | Amica" description="Practical guides on AI receptionists, GoHighLevel, automation, SEO and lead generation for UK businesses, with a focus on care and recruitment agencies.">
   <PageHero eyebrow="Blog" title="Insights on AI, automation and growth" lead="Practical articles on using AI, automation and digital marketing to win more customers and save time." crumbs={[{ label: 'Blog' }]} />
   <section class="section">
     <div class="container">
       <div class="grid grid-3">
         {posts.map((p) => (
           <a class="card post-card" href={`/blog/${p.slug}`}>
-            <div class="media" style="aspect-ratio:16 / 9"><img src={p.coverImage} alt="" loading="lazy" decoding="async" width="800" height="450" /></div>
+            <div class="media" style="aspect-ratio:16 / 9"><img src={p.coverImage} alt={p.coverAlt ?? ''} loading="lazy" decoding="async" width="800" height="450" /></div>
             <span class="tag">{p.category}</span>
             <h3>{p.title}</h3>
             <p>{p.excerpt}</p>

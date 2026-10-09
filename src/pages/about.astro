@@ -4,6 +4,9 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import Picture from '../components/Picture.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { company } from '../data/site';
+import { faqSchema, orgRef } from '../data/schema';
 
 const services = [
   'Website design and development',
@@ -30,8 +33,27 @@ const reasons = [
   { icon: 'chart', title: 'Focused on commercial results', text: 'Our work is designed to help generate enquiries, improve conversion, save time, reduce missed opportunities and support sustainable growth.' },
   { icon: 'shield', title: 'Ongoing partnership', text: 'We do not simply build a system and disappear. We can provide ongoing management, optimisation, technical support and strategic guidance as your business develops.' },
 ];
+
+const faqs = [
+  { q: "Who founded Amica Digital Services?", a: "Amica Digital Services Ltd was founded by Muhammad Shahzad Chughtai, known as Shaz. The business is built on more than 15 years of hands-on experience in business development, recruitment, staffing, customer service and operational management." },
+  { q: "Where are you based?", a: "Our registered address is 378 Claremont Road, Manchester, M14 7WB. We work with businesses across the UK." },
+  { q: "Is Amica Digital Services a registered company?", a: "Yes. Amica Digital Services Ltd is registered at Companies House with company number 17020927." },
+  { q: "What are your opening hours?", a: "Monday to Friday, 08:00 to 17:00 UK time." },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Amica Digital Services',
+    url: `${company.url}/about`,
+    about: orgRef,
+    mainEntity: orgRef,
+  },
+  faqSchema(faqs),
+];
 ---
-<Base title="About Amica Digital Services" description="Amica Digital Services is a UK-based digital growth and AI automation agency helping businesses attract more customers, improve efficiency and reduce repetitive work.">
+<Base title="About Amica Digital Services, Manchester AI Agency" description="Amica Digital Services Ltd (company 17020927) is a Manchester AI automation and digital growth agency founded by Shaz Chughtai." schema={schema}>
   <PageHero eyebrow="About Amica Digital Services" title="Technology that helps your business work smarter" lead="Amica Digital Services is a UK-based digital growth and AI automation agency helping businesses attract more customers, improve efficiency and reduce time spent on repetitive work." crumbs={[{ label: 'About' }]} />
 
   <section class="section">
@@ -84,6 +106,23 @@ const reasons = [
       <p>Amica Digital Services is built on more than 15 years of hands-on experience in business development, recruitment, staffing, customer service and operational management.</p>
       <p>This commercial experience shapes the way we approach technology. We understand that a digital system must do more than look impressive. It must support everyday operations, improve the customer experience and contribute to measurable business growth.</p>
       <p>Our team brings together expertise in marketing, software development, CRM implementation, automation, artificial intelligence, content creation and lead generation.</p>
+      <h3>Company details</h3>
+      <dl class="facts">
+        <dt>Registered name</dt><dd>{company.legalName}</dd>
+        <dt>Founder</dt><dd>{company.founderFullName}, known as Shaz</dd>
+        <dt>Company number</dt><dd>{company.companyNumber} (registered in England and Wales)</dd>
+        <dt>Registered address</dt><dd>{company.address}</dd>
+        <dt>Phone</dt><dd><a href={`tel:${company.phoneHref}`}>{company.phone}</a></dd>
+        <dt>Email</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd>
+        <dt>Opening hours</dt><dd>{company.hours}</dd>
+        {(company.social.linkedin || company.social.facebook) && (
+          <><dt>Social media</dt><dd>
+            {company.social.linkedin && <a href={company.social.linkedin} rel="noopener me" target="_blank">LinkedIn</a>}
+            {company.social.linkedin && company.social.facebook && ' · '}
+            {company.social.facebook && <a href={company.social.facebook} rel="noopener me" target="_blank">Facebook</a>}
+          </dd></>
+        )}
+      </dl>
     </div>
   </section>
 
@@ -106,12 +145,22 @@ const reasons = [
     </div>
   </section>
 
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
   <CtaBand
     title="Let's build a smarter business together"
     text="Whether you need a productive new website, stronger online visibility, a complete CRM system, automated lead follow-up or an AI-powered customer service solution, we can help. Automate. Grow. Succeed."
   />
 </Base>
 <style>
+  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin: 16px 0 0; }
+  .facts dt { font-weight: 700; color: var(--navy); }
+  .facts dd { margin: 0; }
+  @media (max-width: 560px) { .facts { grid-template-columns: 1fr; gap: 2px; } .facts dd { margin-bottom: 10px; } }
   .service-list { columns: 3; column-gap: 32px; margin-top: 36px; }
   .service-list li { break-inside: avoid; }
   @media (max-width: 900px) { .service-list { columns: 2; } }

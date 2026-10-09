@@ -1,8 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CtaBand from '../../components/CtaBand.astro';
+import Faq from '../../components/Faq.astro';
+import Icon from '../../components/Icon.astro';
 import posts from '../../data/blog.json';
 import { company } from '../../data/site';
+import { relatedCards } from '../../data/services';
+import { orgRef, founderSchema, faqSchema, breadcrumbSchema } from '../../data/schema';
 
 export function getStaticPaths() {
   return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
@@ -11,31 +15,43 @@ export function getStaticPaths() {
 const { post } = Astro.props;
 const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 const others = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
-const schema = [{
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: post.title,
-  description: post.excerpt,
-  datePublished: post.date,
-  image: new URL(post.coverImage, company.url).href,
-  author: { '@type': 'Organization', name: company.legalName },
-  publisher: { '@type': 'Organization', name: company.legalName, logo: { '@type': 'ImageObject', url: `${company.url}/images/logo.png` } },
-  mainEntityOfPage: new URL(`/blog/${post.slug}`, company.url).href,
-}];
+const related = relatedCards(post.related ?? []);
+const faqs = post.faq ?? [];
+const url = new URL(`/blog/${post.slug}`, company.url).href;
+const byFounder = post.author === company.founder;
+const crumbs = [{ label: 'Blog', href: '/blog' }, { label: post.title }];
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.seoDescription ?? post.excerpt,
+    datePublished: post.date,
+    dateModified: post.dateModified ?? post.date,
+    inLanguage: 'en-GB',
+    image: new URL(post.coverImage, company.url).href,
+    author: byFounder ? founderSchema : orgRef,
+    publisher: orgRef,
+    mainEntityOfPage: url,
+    url,
+  },
+  breadcrumbSchema(crumbs, `/blog/${post.slug}`),
+  ...(faqs.length ? [faqSchema(faqs)] : []),
+];
 ---
-<Base title={post.title} description={post.excerpt} image={post.coverImage} schema={schema}>
+<Base title={post.seoTitle ?? post.title} description={post.seoDescription ?? post.excerpt} image={post.coverImage} ogType="article" schema={schema}>
   <article>
     <header class="page-hero">
       <div class="container narrow">
-        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog">Blog</a> / <span>{post.category}</span></nav>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog">Blog</a> / <span>{post.title}</span></nav>
         <span class="eyebrow">{post.category}</span>
         <h1>{post.title}</h1>
-        <p class="meta">{fmt(post.date)} · {post.readTime} · {post.author}</p>
+        <p class="meta">{fmt(post.date)} · {post.readTime} · {byFounder ? <a href="/about">{post.author}</a> : post.author}{post.dateModified && post.dateModified !== post.date && <> · Updated {fmt(post.dateModified)}</>}</p>
       </div>
     </header>
     <section class="section-sm">
       <div class="container narrow">
-        <div class="media cover"><img src={post.coverImage} alt="" width="1200" height="675" decoding="async" /></div>
+        <div class="media cover"><img src={post.coverImage} alt={post.coverAlt ?? ''} width="1200" height="675" decoding="async" /></div>
         <div class="prose post">
           {post.sections.map((s) => (
             s.type === 'heading' ? <h2 set:html={s.content} /> :
@@ -51,9 +67,27 @@ const schema = [{
             <p set:html={s.content} />
           ))}
         </div>
+        {faqs.length > 0 && <div class="post-faq"><Faq items={faqs} /></div>}
+        {byFounder && (
+          <aside class="author-box" aria-label="About the author">
+            <p><strong>About the author.</strong> Shaz Chughtai is the founder of <a href="/about">{company.legalName}</a>, a Manchester-based AI automation and digital growth agency. Amica is built on more than 15 years of hands-on experience in business development, recruitment, staffing, customer service and operational management.</p>
+          </aside>
+        )}
       </div>
     </section>
   </article>
+  {related.length > 0 && (
+    <section class="section-sm">
+      <div class="container">
+        <h2>Related services</h2>
+        <div class="grid grid-3" style="margin-top:24px">
+          {related.map((o) => (
+            <a href={o.href} class="card"><div class="icon-badge"><Icon name={o.icon} /></div><h3>{o.title}</h3><p>{o.summary}</p><span class="more">Learn more →</span></a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
   <section class="section section-alt">
     <div class="container">
       <h2>More from the blog</h2>
@@ -76,6 +110,10 @@ const schema = [{
   table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.95rem; }
   th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
   th { background: var(--teal-soft); }
+  .post-faq { margin-top: 40px; }
+  .author-box { margin-top: 36px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; background: #fff; font-size: 0.95rem; }
+  .author-box p { margin: 0; }
+  .meta a { color: inherit; }
   .more { padding-left: 1.2em; }
   .more li { margin: 8px 0; }
 </style>

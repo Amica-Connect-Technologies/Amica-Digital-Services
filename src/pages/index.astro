@@ -6,30 +6,26 @@ import FlowGraphic from '../components/FlowGraphic.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
 import { services } from '../data/services';
+import { faqSchema } from '../data/schema';
 
 const faqs = [
-  { q: 'Who do you work with?', a: 'UK businesses of every size that want more enquiries and less admin, from clinics and professional services to local and home-service businesses. Our deepest expertise is in care and recruitment, where we have more than 15 years of hands-on experience.' },
-  { q: 'Does automation replace my office team?', a: 'No. It takes repetitive tasks off them, such as first replies, reminders and chasing, so they have more time for families, clients and staff. Your team can see and step into every conversation.' },
-  { q: 'How much does it cost?', a: 'Plans start at £199 per month. Each plan is available on a rolling 30-day basis with a one-off setup fee, or with the setup fee waived when you commit for longer. Custom projects are quoted after a short call.' },
-  { q: 'How long does setup take?', a: 'Implementation normally takes four to six weeks, depending on scope and how quickly we receive the information we need from you.' },
-  { q: 'Do I need to already use GoHighLevel?', a: 'No. We can set it up from scratch, or audit and improve an account you already have.' },
+  { q: "What does Amica Digital Services do?", a: "Amica Digital Services Ltd is a Manchester-based digital growth and AI automation agency. We connect websites, SEO, social media, CRM (mainly GoHighLevel), AI chatbots and AI voice agents into one system that replies to enquiries quickly, books appointments and follows up, for UK businesses of every size." },
+  { q: "Who do you work with?", a: "UK businesses of every size that want more enquiries and less admin, from clinics and professional services to local and home-service businesses. Our deepest expertise is in care and recruitment, where we have more than 15 years of hands-on experience." },
+  { q: "Does automation replace my office team?", a: "No. It takes repetitive tasks off them, such as first replies, reminders and chasing, so they have more time for families, clients and staff. Your team can see and step into every conversation." },
+  { q: "How much does it cost?", a: "Plans start at £199 per month. Each plan is available on a rolling 30-day basis with a one-off setup fee, or with the setup fee waived when you commit for longer. Custom projects are quoted after a short call." },
+  { q: "How long does setup take?", a: "Implementation normally takes four to six weeks, depending on scope and how quickly we receive the information we need from you." },
+  { q: "Do I need to already use GoHighLevel?", a: "No. We can set it up from scratch, or audit and improve an account you already have." },
 ];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-};
 ---
 <Base
-  title="Amica Digital Services | Digital Growth and AI Automation for UK Businesses"
-  description="Amica Digital Services helps UK businesses win more customers and cut admin with websites, SEO, social media, CRM and AI automation. Specialists in care and recruitment."
-  schema={[faqSchema]}
+  title="AI Automation and Digital Growth Agency Manchester | Amica"
+  description="Manchester agency helping UK businesses win more enquiries and cut admin with websites, SEO, CRM, AI chatbots and AI receptionists. From £199/month."
+  schema={[faqSchema(faqs)]}
 >
   <section class="hero">
     <div class="container split">
       <div>
-        <span class="eyebrow">Digital growth and AI automation for UK businesses</span>
+        <span class="eyebrow">AI automation and digital growth agency, Manchester</span>
         <h1>Win more customers and spend less time on admin</h1>
         <p class="lead">
           Amica connects your website, marketing, CRM and AI tools into one system that attracts enquiries, replies in minutes, books appointments and follows up for you, so no opportunity slips through while your team is busy.

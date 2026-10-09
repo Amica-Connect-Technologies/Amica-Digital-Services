@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
+import { faqSchema, orgRef, areaServed } from '../data/schema';
+import { company } from '../data/site';
 
 // Each plan is available on a rolling 30-day basis with a setup fee, or with the setup fee waived for a longer commitment.
 const plans = [
@@ -68,8 +70,40 @@ const faqs = [
   { q: 'Can I change plan later?', a: 'Yes. You can move up a plan at any time. We confirm any change in writing before it takes effect.' },
   { q: 'How do you price other projects?', a: 'Custom websites, software, AI voice agents and advertising campaigns are quoted individually after a short call, so you only pay for what you need.' },
 ];
+
+const toNumber = (p: string) => p.replace(/[£,]/g, '');
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Digital growth and AI automation plans',
+    serviceType: 'Digital marketing and AI automation',
+    url: `${company.url}/pricing`,
+    provider: orgRef,
+    areaServed,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Monthly plans',
+      itemListElement: plans.map((p) => ({
+        '@type': 'Offer',
+        name: p.name,
+        description: `${p.tagline}. Rolling 30-day plan: ${p.setup} one-off setup. ${p.waiver}.`,
+        price: toNumber(p.price),
+        priceCurrency: 'GBP',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: toNumber(p.price),
+          priceCurrency: 'GBP',
+          unitText: 'MONTH',
+          referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+        },
+      })),
+    },
+  },
+  faqSchema(faqs),
+];
 ---
-<Base title="Pricing" description="Simple monthly plans from Amica Digital Services: Foundation £199, Growth £490 and Pro £990 per month. Rolling 30-day plans or setup fee waived on longer agreements.">
+<Base title="Pricing: Automation and Marketing from £199/month | Amica" description="Foundation £199, Growth £490 and Pro £990 per month. Rolling 30-day plans with a setup fee, or the setup fee waived on longer agreements. No VAT added." schema={schema}>
   <PageHero eyebrow="Pricing" title="Simple monthly plans, agreed in writing" lead="Choose a rolling 30-day plan with a one-off setup fee, or commit for longer and we waive the setup fee. Every plan includes setup, support and a monthly review." crumbs={[{ label: 'Pricing' }]} />
   <section class="section">
     <div class="container">

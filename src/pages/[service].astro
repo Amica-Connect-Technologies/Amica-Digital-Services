@@ -6,32 +6,22 @@ import Picture from '../components/Picture.astro';
 import FlowGraphic from '../components/FlowGraphic.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
-import { services, type Service } from '../data/services';
+import { services, relatedCards, type Service } from '../data/services';
+import { faqSchema, serviceSchema } from '../data/schema';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { service: s.slug }, props: { s } }));
 }
 
 const { s } = Astro.props as { s: Service };
-const others = services.filter((o) => o.slug !== s.slug).slice(0, 3);
+const related = relatedCards(s.related);
 const schema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: s.title,
-    description: s.metaDescription,
-    provider: { '@type': 'Organization', name: 'Amica Digital Services Ltd' },
-    areaServed: 'GB',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-  },
+  serviceSchema({ name: s.h1, serviceType: s.serviceType, description: s.metaDescription, path: `/${s.slug}` }),
+  faqSchema(s.faqs),
 ];
 ---
 <Base title={s.metaTitle} description={s.metaDescription} schema={schema}>
-  <PageHero title={s.title} lead={s.summary} eyebrow="Service" crumbs={[{ label: 'Services', href: '/services' }, { label: s.title }]}>
+  <PageHero title={s.h1} lead={s.answer} eyebrow="Service" crumbs={[{ label: 'Services', href: '/services' }, { label: s.title }]}>
     <div class="btn-row">
       <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
       <a href="/pricing" class="btn btn-secondary">Pricing</a>
@@ -48,7 +38,7 @@ const schema = [
           {s.problems.map((p) => <li>{p}</li>)}
         </ul>
       </div>
-      <Picture src={s.image} alt={`${s.title} illustration`} ratio="4 / 3">
+      <Picture src={s.image} alt={s.imageAlt} ratio="4 / 3">
         <FlowGraphic slot="fallback" />
       </Picture>
     </div>
@@ -87,9 +77,8 @@ const schema = [
     <div class="container">
       <h2>Related services</h2>
       <div class="grid grid-3" style="margin-top:24px">
-        <a href="/care-agency-automation" class="card"><div class="icon-badge"><Icon name="heart" /></div><h3>Care Agency Automation</h3><p>Our complete package for UK care and recruitment agencies.</p><span class="more">Learn more →</span></a>
-        {others.slice(0, 2).map((o) => (
-          <a href={`/${o.slug}`} class="card"><div class="icon-badge"><Icon name={o.icon} /></div><h3>{o.title}</h3><p>{o.summary}</p><span class="more">Learn more →</span></a>
+        {related.map((o) => (
+          <a href={o.href} class="card"><div class="icon-badge"><Icon name={o.icon} /></div><h3>{o.title}</h3><p>{o.summary}</p><span class="more">Learn more →</span></a>
         ))}
       </div>
     </div>

@@ -7,18 +7,27 @@ export const company = {
   url: 'https://amicadigitalservices.com',
   email: 'shaz@amicadigitalservices.com',
   founder: 'Shaz Chughtai',
+  founderFullName: 'Muhammad Shahzad Chughtai',
+  founderRole: 'Founder',
   // Confirmed by Shaz Chughtai on 8 October 2026.
   phone: '+44 7446 981768',
   phoneHref: '+447446981768',
   whatsapp: '447446981768',
   address: '378 Claremont Road, Manchester, M14 7WB, United Kingdom',
+  addressParts: {
+    streetAddress: '378 Claremont Road',
+    addressLocality: 'Manchester',
+    postalCode: 'M14 7WB',
+    addressCountry: 'GB',
+  },
   // Leave empty until confirmed; empty values are not shown on the site.
   companyNumber: '17020927',
   icoNumber: '',
   hours: 'Monday to Friday, 08:00 to 17:00 UK time',
+  // Only verified profile URLs. Empty values are not shown and are left out of the schema.
   social: {
-    linkedin: '',
-    facebook: '',
+    linkedin: 'https://www.linkedin.com/company/112604923',
+    facebook: 'https://www.facebook.com/922791870926750',
     instagram: '',
     youtube: '',
   },
@@ -40,7 +49,15 @@ export const analytics = {
 
 export const nav = [
   { label: 'Home', href: '/' },
-  { label: 'Care and Recruitment', href: '/care-agency-automation' },
+  {
+    label: 'Care and Recruitment',
+    href: '/care-agency-automation',
+    children: [
+      { label: 'Care and Recruitment Package', href: '/care-agency-automation' },
+      { label: 'AI Receptionist for Care Agencies', href: '/ai-receptionist-care-agencies' },
+      { label: 'Recruitment Agency Automation', href: '/recruitment-agency-automation' },
+    ],
+  },
   {
     label: 'Services',
     href: '/services',
