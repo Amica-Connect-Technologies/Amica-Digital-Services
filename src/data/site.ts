@@ -30,6 +30,8 @@ export const ghl = {
   contactFormUrl: 'https://api.leadconnectorhq.com/widget/form/W09aF9SXp5iUXiSIKLjL',
   contactFormId: 'W09aF9SXp5iUXiSIKLjL',
   embedScript: 'https://link.msgsndr.com/js/form_embed.js',
+  // "whatsapp chat widget" in GHL → Sites → Chat Widget (the account default).
+  chatWidgetId: '69df58aed69ee8616381a214',
 };
 
 export const analytics = {

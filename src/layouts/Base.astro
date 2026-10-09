@@ -3,7 +3,8 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import { company } from '../data/site';
+import { company, ghl } from '../data/site';
+import Icon from '../components/Icon.astro';
 
 interface Props {
   title: string;
@@ -70,5 +71,7 @@ const orgSchema = {
     </main>
     <Footer />
     <CookieBanner />
+    <a class="call-fab" href={`tel:${company.phoneHref}`} aria-label={`Call us on ${company.phone}`}><Icon name="phone" /></a>
+    <script is:inline src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id={ghl.chatWidgetId} defer></script>
   </body>
 </html>
