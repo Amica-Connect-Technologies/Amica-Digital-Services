@@ -38,7 +38,9 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   .nav li { position: relative; }
   .nav a { display: block; padding: 8px 12px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 0.95rem; border-radius: 8px; }
   .nav a:hover, .nav a[aria-current='page'] { color: var(--teal-dark); background: var(--teal-soft); }
+  .nav a, .brand { white-space: nowrap; }
   .nav .nav-cta { color: #fff; padding: 11px 20px; }
+  @media (max-width: 1600px) { .nav { gap: 10px; } .nav > ul { gap: 0; } .nav a { padding: 8px 9px; font-size: 0.92rem; } .nav .nav-cta { padding: 11px 16px; } }
   .nav .nav-cta:hover { color: #fff; background: #e0583a; }
   .sub { display: none; position: absolute; top: 100%; left: 0; min-width: 240px; list-style: none; margin: 0; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
   .has-sub:hover .sub, .has-sub:focus-within .sub { display: block; }
@@ -47,7 +49,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   .burger::before, .burger::after { content: ''; position: absolute; left: 0; }
   .burger::before { top: -7px; } .burger::after { top: 7px; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  @media (max-width: 1040px) {
+  @media (max-width: 1200px) {
     .menu-toggle { display: block; }
     .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; padding: 12px 20px 24px; max-height: calc(100vh - 72px); overflow-y: auto; }
     .nav.open { display: flex; }
