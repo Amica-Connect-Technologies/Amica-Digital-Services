@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import { analytics } from '../data/site';
+const hasPixels = Boolean(analytics.metaPixelId || analytics.linkedinPartnerId);
 ---
 <Base title="Cookie Policy" description="How Amica Digital Services uses cookies and similar technologies on this website.">
   <PageHero title="Cookie Policy" lead="Last updated: 8 October 2026" crumbs={[{ label: 'Cookie Policy' }]} />
@@ -11,6 +13,10 @@ import PageHero from '../components/PageHero.astro';
       <p>We store your cookie choice in your browser (<code>amica-consent-v1</code>) so we do not ask again. This does not identify you.</p>
       <h2>Analytics (only with your consent)</h2>
       <p>If you click "Accept analytics", we load Google Analytics, which sets cookies such as <code>_ga</code> and <code>_ga_*</code> to understand which pages are useful. These last up to two years. If you click "Reject", Google Analytics is not loaded.</p>
+      {hasPixels && <>
+        <h2>Marketing pixels (only with your consent)</h2>
+        <p>If you accept, we may also load marketing pixels from Meta and LinkedIn. They set cookies such as <code>_fbp</code> and <code>li_*</code> so we can see whether our adverts lead to enquiries. If you reject, they are not loaded.</p>
+      </>}
       <h2>Booking and contact forms</h2>
       <p>Our booking calendar, contact form and WhatsApp chat button are provided by GoHighLevel (LeadConnector). That provider may store small amounts of data in your browser needed for these features to work, such as remembering an open chat.</p>
       <h2>Changing your choice</h2>

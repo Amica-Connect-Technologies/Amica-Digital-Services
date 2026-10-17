@@ -1,0 +1,21 @@
+---
+// GoHighLevel iframe whose src gets the visitor's stored lead source values
+// (see leadTracking in site.ts) before it loads. Without JavaScript the
+// <noscript> copy loads the plain embed URL.
+interface Props {
+  src: string;
+  id: string;
+  kind: 'form' | 'booking';
+  title: string;
+  [key: string]: unknown;
+}
+const { src, id, kind, title, ...rest } = Astro.props;
+---
+<iframe data-src={src} data-lead-frame={kind} id={id} title={title} class="embed-frame" {...rest}></iframe>
+<noscript><style>iframe[data-lead-frame]{display:none}</style><iframe src={src} title={title} class="embed-frame" {...rest}></iframe></noscript>
+<script is:inline define:vars={{ id, src }}>
+  (function () {
+    var f = document.getElementById(id);
+    if (f) f.src = window.amicaLeadUrl ? window.amicaLeadUrl(src) : src;
+  })();
+</script>

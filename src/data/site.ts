@@ -45,6 +45,32 @@ export const ghl = {
 
 export const analytics = {
   ga4: 'G-PGDEKR5YCR',
+  // Ad pixels. Leave empty to load nothing. When set, they load only after the
+  // visitor accepts cookies (see CookieBanner.astro), and the cookie banner,
+  // cookie policy and privacy policy then mention them automatically.
+  metaPixelId: '',
+  linkedinPartnerId: '',
+};
+
+// Lead source capture. On the first page view of a browser session we keep the
+// UTM tags, click IDs, landing path and referring site in sessionStorage (nothing
+// personal), then pass them to the GoHighLevel form and booking iframes.
+export const leadTracking = {
+  storageKey: 'amica-lead-src-v1',
+  // Query string keys read from the landing URL.
+  captureKeys: ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'],
+  // Stored value -> query param name added to the GHL iframe src. GHL hidden
+  // fields are filled from matching query params, so change the right-hand names
+  // here if the form or calendar field keys differ. Remove a line to stop sending it.
+  ghlParams: {
+    utm_source: 'utm_source',
+    utm_medium: 'utm_medium',
+    utm_campaign: 'utm_campaign',
+    utm_content: 'utm_content',
+    utm_term: 'utm_term',
+    landing_page: 'landing_page',
+    referrer: 'referrer',
+  } as Record<string, string>,
 };
 
 export const nav = [

@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
-import { company, ghl } from '../data/site';
+import { company, ghl, leadTracking } from '../data/site';
 import { orgId, founderSchema, areaServed, socialUrls } from '../data/schema';
 import Icon from '../components/Icon.astro';
 
@@ -77,6 +77,96 @@ const orgSchema = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline define:vars={{ lt: leadTracking }}>
+      // Lead source capture (functional, no consent needed): first touch per session,
+      // stores only campaign tags, click IDs, the landing path and the referring page.
+      // Also defines amicaLeadUrl() for the GHL iframes and amicaTrack() for events,
+      // which send nothing until analytics or pixels have loaded after consent.
+      (function () {
+        var data = null;
+        try { data = JSON.parse(sessionStorage.getItem(lt.storageKey) || 'null'); } catch (e) {}
+        if (!data) {
+          data = {};
+          try {
+            var q = new URLSearchParams(location.search);
+            lt.captureKeys.forEach(function (k) { var v = q.get(k); if (v) data[k] = v.slice(0, 200); });
+            data.landing_page = location.pathname;
+            if (document.referrer) {
+              var r = new URL(document.referrer);
+              if (r.origin !== location.origin) data.referrer = (r.origin + r.pathname).slice(0, 200);
+            }
+            sessionStorage.setItem(lt.storageKey, JSON.stringify(data));
+          } catch (e) {}
+        }
+        window.amicaLeadData = data;
+        window.amicaLeadUrl = function (base) {
+          try {
+            var u = new URL(base, location.href);
+            Object.keys(lt.ghlParams).forEach(function (k) { if (data[k]) u.searchParams.set(lt.ghlParams[k], data[k]); });
+            return u.toString();
+          } catch (e) { return base; }
+        };
+        var PIXEL = { generate_lead: 'Lead', book_appointment: 'Schedule' };
+        window.amicaTrack = function (name, params) {
+          try {
+            if (window.__amicaGa && window.gtag) window.gtag('event', name, params || {});
+            if (window.fbq && PIXEL[name]) window.fbq('track', PIXEL[name]);
+          } catch (e) {}
+        };
+        // Click events on calls to action.
+        document.addEventListener('click', function (e) {
+          var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          var name = null;
+          if (/^tel:/i.test(href)) name = 'click_call';
+          else if (/^mailto:/i.test(href)) name = 'click_email';
+          else if (/^https?:\/\/(api\.)?wa\.me\//i.test(href)) name = 'click_whatsapp';
+          else {
+            try {
+              var u = new URL(a.href, location.href);
+              if (u.origin === location.origin && u.pathname.replace(/\/$/, '') === '/book-a-consultation') name = 'click_book_cta';
+            } catch (err) {}
+          }
+          if (name) window.amicaTrack(name, { link_url: href.split('?')[0], link_text: (a.textContent || '').trim().slice(0, 100) });
+        }, true);
+        // Submissions inside the GoHighLevel iframes. GHL does not document these
+        // postMessage shapes, so we match known names loosely, fire each event once
+        // per page, and log anything unrecognised with console.debug for review.
+        var fired = {};
+        var seen = {};
+        function frameOf(src) {
+          var frames = document.querySelectorAll('iframe[data-lead-frame]');
+          for (var i = 0; i < frames.length; i++) if (frames[i].contentWindow === src) return frames[i].getAttribute('data-lead-frame');
+          return null;
+        }
+        window.addEventListener('message', function (e) {
+          var host = '';
+          try { host = new URL(e.origin).hostname; } catch (err) { return; }
+          if (!/(^|\.)(leadconnectorhq\.com|msgsndr\.com)$/.test(host)) return;
+          var d = e.data, id = '';
+          if (Array.isArray(d)) id = String(d[0]);
+          else if (typeof d === 'string') id = d;
+          else if (d && typeof d === 'object') id = String(d.type || d.event || d.action || d.name || '');
+          var kind = frameOf(e.source);
+          var ev = null;
+          if (/booking[-_ ]?complete|appointment[-_ ]?(booked|created|scheduled)|booking[-_ ]?(success|confirmed)/i.test(id)) ev = 'book_appointment';
+          else if (kind !== 'booking' && /form[-_ ]?submi|set-sticky-contacts/i.test(id)) ev = 'generate_lead';
+          if (ev && kind === 'booking' && ev !== 'book_appointment') ev = null;
+          if (ev) {
+            if (fired[ev]) return;
+            fired[ev] = true;
+            window.amicaTrack(ev, { form: kind || 'unknown' });
+            return;
+          }
+          var key = id.slice(0, 60) || typeof d;
+          if (!/setheight|resize|height|iframe-loaded|scroll/i.test(key) && !seen[key]) {
+            seen[key] = true;
+            try { console.debug('[amica] unhandled GHL message', host, key); } catch (err) {}
+          }
+        });
+      })();
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>

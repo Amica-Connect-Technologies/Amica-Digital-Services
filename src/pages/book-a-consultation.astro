@@ -2,13 +2,14 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import { ghl, company } from '../data/site';
+import LeadFrame from '../components/LeadFrame.astro';
 ---
 <Base title="Book a Free 20-Minute Consultation | Amica" description="Book a free 20-minute call to see where your business is losing enquiries and how AI automation could help. No obligation and no hard sell.">
   <PageHero eyebrow="Free 20-minute call" title="Book a free consultation" lead="Pick a time that suits you. We will look at how enquiries reach you today and where automation could save time. No obligation and no hard sell." crumbs={[{ label: 'Book a consultation' }]} />
   <section class="section-sm">
     <div class="container split" style="align-items:start">
       <div class="card">
-        <iframe src={ghl.bookingUrl} class="embed-frame" title="Book a call with Amica Digital Services" id="booking-frame" scrolling="no" loading="lazy"></iframe>
+        <LeadFrame src={ghl.bookingUrl} kind="booking" title="Book a call with Amica Digital Services" id="booking-frame" scrolling="no" loading="lazy" />
         <script is:inline src={ghl.embedScript} defer></script>
       </div>
       <div>

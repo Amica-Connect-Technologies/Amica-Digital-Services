@@ -42,6 +42,7 @@ const year = new Date().getFullYear();
         <ul class="contact">
           <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
           {company.phone && <li><a href={`tel:${company.phoneHref}`}>{company.phone}</a></li>}
+          {company.whatsapp && <li><a href={`https://wa.me/${company.whatsapp}`} rel="noopener">WhatsApp</a></li>}
           {company.address && <li>{company.address}</li>}
           <li>{company.hours}</li>
         </ul>

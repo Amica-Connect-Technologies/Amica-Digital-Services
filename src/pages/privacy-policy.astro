@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
-import { company } from '../data/site';
+import { company, analytics } from '../data/site';
+const hasPixels = Boolean(analytics.metaPixelId || analytics.linkedinPartnerId);
 ---
 <Base title="Privacy Policy" description="How Amica Digital Services Ltd collects, uses and protects personal data.">
   <PageHero title="Privacy Policy" lead="Last updated: 8 October 2026" crumbs={[{ label: 'Privacy Policy' }]} />
@@ -29,7 +30,7 @@ import { company } from '../data/site';
       </ul>
 
       <h2>Who we share it with</h2>
-      <p>We use trusted service providers who process data on our behalf, including our CRM and messaging platform (GoHighLevel / LeadConnector), our website host (Hostinger), our email provider and, with your consent, Google Analytics. Some providers are based outside the UK, including in the United States. Where data is transferred, we rely on appropriate safeguards such as the UK International Data Transfer Addendum or the UK Extension to the EU-US Data Privacy Framework.</p>
+      <p>We use trusted service providers who process data on our behalf, including our CRM and messaging platform (GoHighLevel / LeadConnector), our website host (Hostinger), our email provider and, with your consent, Google Analytics{hasPixels && <> and the Meta and LinkedIn marketing pixels</>}. Some providers are based outside the UK, including in the United States. Where data is transferred, we rely on appropriate safeguards such as the UK International Data Transfer Addendum or the UK Extension to the EU-US Data Privacy Framework.</p>
       <p>We do not sell personal data.</p>
 
       <h2>How long we keep it</h2>

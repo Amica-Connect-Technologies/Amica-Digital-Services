@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
+import LeadFrame from '../components/LeadFrame.astro';
 import { company, ghl } from '../data/site';
 ---
 <Base title="Contact Amica Digital Services, Manchester" description="Contact Amica Digital Services Ltd, 378 Claremont Road, Manchester M14 7WB. Call +44 7446 981768, send a message or book a free 20-minute call.">
@@ -9,7 +10,7 @@ import { company, ghl } from '../data/site';
   <section class="section-sm">
     <div class="container split" style="align-items:start">
       <div class="card">
-        <iframe src={ghl.contactFormUrl} class="embed-frame" id={`inline-${ghl.contactFormId}`} title="Contact form" data-layout="{'id':'INLINE'}" data-form-id={ghl.contactFormId} loading="lazy" style="min-height:640px"></iframe>
+        <LeadFrame src={ghl.contactFormUrl} kind="form" id={`inline-${ghl.contactFormId}`} title="Contact form" data-layout="{'id':'INLINE'}" data-form-id={ghl.contactFormId} loading="lazy" style="min-height:640px" />
         <script is:inline src={ghl.embedScript} defer></script>
       </div>
       <div>
