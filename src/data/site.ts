@@ -110,3 +110,21 @@ export const legalNav = [
   { label: 'Cookie Policy', href: '/cookie-policy' },
   { label: 'Terms and Conditions', href: '/terms' },
 ];
+
+// Native enquiry form (EnquiryForm.astro). It posts JSON to the Express server,
+// which saves the lead in GoHighLevel. Option values must match the GHL custom
+// field options exactly (and the server's list in src/config/enquiry.js).
+export const enquiry = {
+  endpoint: '/api/enquiry',
+  options: {
+    orgType: ['Care or home care provider', 'Recruitment or staffing agency', 'Clinic or healthcare practice', 'Other small business'],
+    role: ['Owner or director', 'Registered manager', 'Operations or office manager', 'Other'],
+    teamSize: ['1-10', '11-50', '51-200', '200+'],
+    mainNeed: ['Missed calls and out-of-hours enquiries', 'Carer recruitment and onboarding', 'Website and SEO', 'CRM and lead follow-up', 'Not sure yet'],
+    timing: ['Now', 'Within 1-3 months', 'Just researching'],
+    budget: ['Under £200', '£200-£500', '£500-£1,000', '£1,000+'],
+    heardFrom: ['Google search', 'Facebook', 'LinkedIn', 'Referral', 'Email from us', 'Other'],
+  },
+  // Hidden lead source values sent with the form (read from the session capture above).
+  sourceKeys: ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'landing_page', 'referrer'],
+};

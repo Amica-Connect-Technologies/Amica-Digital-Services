@@ -1,16 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
 import { ghl, company } from '../data/site';
-import LeadFrame from '../components/LeadFrame.astro';
 ---
 <Base title="Book a Free 20-Minute Consultation | Amica" description="Book a free 20-minute call to see where your business is losing enquiries and how AI automation could help. No obligation and no hard sell.">
-  <PageHero eyebrow="Free 20-minute call" title="Book a free consultation" lead="Pick a time that suits you. We will look at how enquiries reach you today and where automation could save time. No obligation and no hard sell." crumbs={[{ label: 'Book a consultation' }]} />
+  <PageHero eyebrow="Free 20-minute call" title="Book a free consultation" lead="Tell us a little about your business, then pick a time. We will look at how enquiries reach you today and where automation could save time. No obligation and no hard sell." crumbs={[{ label: 'Book a consultation' }]} />
   <section class="section-sm">
     <div class="container split" style="align-items:start">
-      <div class="card">
-        <LeadFrame src={ghl.bookingUrl} kind="booking" title="Book a call with Amica Digital Services" id="booking-frame" scrolling="no" loading="lazy" />
-        <script is:inline src={ghl.embedScript} defer></script>
+      <div class="card booking-card">
+        <div data-step-form>
+          <p class="step-label">Step 1 of 2</p>
+          <h2 class="form-title">Tell us a little about your business</h2>
+          <EnquiryForm variant="booking" />
+        </div>
+        <div id="booking-step" hidden>
+          <p class="step-label">Step 2 of 2</p>
+          <h2 class="form-title" tabindex="-1">Pick a time for your call</h2>
+          <iframe id="booking-frame" data-lead-frame="booking" title="Book a call with Amica Digital Services" class="embed-frame" scrolling="no"></iframe>
+        </div>
+        <noscript>
+          <style>[data-step-form]{display:none}</style>
+          <iframe src={ghl.bookingUrl} title="Book a call with Amica Digital Services" class="embed-frame" scrolling="no"></iframe>
+        </noscript>
       </div>
       <div>
         <h2>What we will cover</h2>
@@ -20,8 +32,48 @@ import LeadFrame from '../components/LeadFrame.astro';
           <li>Which parts of the process could be automated</li>
           <li>Whether our package is a good fit, and the likely cost</li>
         </ul>
-        <p class="notice" style="margin-top:24px">Prefer to talk now? Email <a href={`mailto:${company.email}`}>{company.email}</a> or use the <a href="/contact">contact page</a>.</p>
+        <p class="notice" style="margin-top:24px">Prefer to talk now? Call <a href={`tel:${company.phoneHref}`}>{company.phone}</a>, email <a href={`mailto:${company.email}`}>{company.email}</a> or use the <a href="/contact">contact page</a>.</p>
       </div>
     </div>
   </section>
 </Base>
+<script is:inline define:vars={{ bookingUrl: ghl.bookingUrl, embedScript: ghl.embedScript }}>
+  // After the enquiry form succeeds, show the GHL calendar with the visitor's
+  // details and lead source prefilled.
+  (function () {
+    document.addEventListener('amica:enquiry-success', function (e) {
+      var d = e.detail || {};
+      var step = document.getElementById('booking-step');
+      var frame = document.getElementById('booking-frame');
+      if (!step || !frame) return;
+      var src = window.amicaLeadUrl ? window.amicaLeadUrl(bookingUrl) : bookingUrl;
+      try {
+        var u = new URL(src);
+        if (d.firstName) u.searchParams.set('first_name', d.firstName);
+        if (d.lastName) u.searchParams.set('last_name', d.lastName);
+        if (d.email) u.searchParams.set('email', d.email);
+        if (d.phone) u.searchParams.set('phone', d.phone);
+        src = u.toString();
+      } catch (err) {}
+      document.querySelectorAll('[data-step-form] > .step-label, [data-step-form] > .form-title').forEach(function (el) { el.hidden = true; });
+      frame.src = src;
+      step.hidden = false;
+      if (!document.querySelector('script[data-ghl-embed]')) {
+        var s = document.createElement('script');
+        s.src = embedScript;
+        s.defer = true;
+        s.setAttribute('data-ghl-embed', '');
+        document.body.appendChild(s);
+      }
+      var h = step.querySelector('h2');
+      if (h) { h.focus({ preventScroll: true }); step.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  })();
+</script>
+<style>
+  .form-title { font-size: 1.4rem; }
+  .step-label { color: var(--teal-dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  #booking-step { margin-top: 20px; scroll-margin-top: 96px; }
+  #booking-step h2:focus { outline: none; }
+  @media (max-width: 640px) { .booking-card { padding: 22px 18px; } }
+</style>
