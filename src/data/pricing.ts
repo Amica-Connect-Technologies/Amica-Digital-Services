@@ -45,7 +45,7 @@ export const individualServices: ServicePrice[] = [
     from: '£199',
     billing: 'month',
     icon: 'megaphone',
-    includes: ['Monthly content planning', 'Four branded social media posts', 'Captions and hashtags', 'Publishing to up to two agreed platforms', 'Basic engagement reporting'],
+    includes: ['Monthly content planning', 'Eight branded social media posts', 'Captions and hashtags', 'Publishing to up to two agreed platforms', 'Basic engagement reporting'],
     note: 'Additional videos, paid advertising and community management are quoted separately.',
     cta: { label: 'Explore social media', href: '/social-media-management' },
   },
@@ -85,9 +85,10 @@ export const individualServices: ServicePrice[] = [
     name: 'AI Workflow Automation',
     from: '£199',
     billing: 'month',
+    suffix: 'plus build from £495',
     icon: 'bolt',
     includes: ['Workflow discovery', 'One standard automation workflow', 'Trigger and action configuration', 'Testing', 'Routine monitoring', 'Monthly review'],
-    note: 'Complex integrations, additional workflows and third-party costs are quoted separately.',
+    note: 'A one-off build fee from £495 covers discovery, configuration and testing. Complex integrations, additional workflows and third-party costs are quoted separately.',
     cta: { label: 'Explore AI automation', href: '/ai-automation' },
   },
   {
@@ -113,11 +114,11 @@ export const individualServices: ServicePrice[] = [
   {
     key: 'Custom Software and Client Portals',
     name: 'Custom Software and Client Portals',
-    from: '£2,500',
+    from: '£4,000',
     billing: 'one-off',
     icon: 'code',
     includes: ['Requirements discovery', 'User access and permissions', 'Agreed portal features', 'Basic dashboard functionality', 'Testing and deployment'],
-    note: 'Price shown is for defined portal projects. Bespoke software, advanced integrations and SaaS platforms are quoted individually; larger projects often start from £4,500.',
+    note: 'Price shown is for defined portal projects. Bespoke software, advanced integrations and SaaS platforms are quoted individually.',
     cta: { label: 'Request a technical consultation', href: '/websites-software' },
   },
 ];
@@ -129,6 +130,8 @@ export type Package = {
   price: string;
   setup: string;
   waiver: string;
+  /** Minimum term on the rolling plan; omitted means rolling 30-day. */
+  minimum?: string;
   featured?: boolean;
   intro?: string;
   features: string[];
@@ -141,9 +144,10 @@ export const packages: Package[] = [
     key: 'Foundation package',
     name: 'Foundation',
     tagline: 'For small businesses establishing their digital presence.',
-    price: '£199',
+    price: '£249',
     setup: '£200',
     waiver: 'Setup fee waived on a 6-month agreement',
+    minimum: '3-month',
     features: [
       'Website and social media lead capture forms',
       'Basic contact database',
@@ -163,7 +167,7 @@ export const packages: Package[] = [
     name: 'Growth',
     tagline: 'For growing businesses that want better visibility, lead management and automated follow-up.',
     price: '£490',
-    setup: '£990',
+    setup: '£495',
     waiver: 'Setup fee waived on a 12-month agreement',
     featured: true,
     intro: 'Everything in Foundation, plus:',
@@ -234,6 +238,12 @@ export const comparison: { label: string; values: (string | boolean)[] }[] = [
   { label: 'Reporting', values: ['Monthly summary', 'Monthly growth report', 'Monthly strategy review'] },
   { label: 'Support', values: ['Email', 'Email', 'Priority'] },
 ];
+
+export const foundingOffer = {
+  title: 'Founding client offer',
+  text: 'Our first 10 new clients get 20% off their monthly fee for the first 12 months on a 12-month agreement, in return for a case study and testimonial we can publish once results are in.',
+  small: 'Applies to Foundation, Growth, Pro and individual monthly services. Setup fees, usage and advertising spend are not discounted. Ask us how many places are left.',
+};
 
 export type LsaPackage = { key: string; name: string; price: string; setup: string; featured?: boolean; summary: string; includes: string[] };
 

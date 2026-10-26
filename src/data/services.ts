@@ -357,7 +357,7 @@ export const services: Service[] = [
     faqs: [
       { q: "Do I approve posts before they go out?", a: "Yes. You see and approve the content plan and posts before they are published." },
       { q: "Which platforms do you cover?", a: "Usually Facebook, Instagram and LinkedIn, plus TikTok and YouTube where they suit your audience." },
-      { q: "How many posts are included?", a: "Social media management on its own starts from £199 per month for four branded posts on up to two platforms. Foundation includes 4 posts per month, Growth 8, and Pro 12 plus one short-form video." },
+      { q: "How many posts are included?", a: "Social media management on its own starts from £199 per month for eight branded posts on up to two platforms. Foundation includes 4 posts per month, Growth 8, and Pro 12 plus one short-form video." },
     ],
   },
 ];

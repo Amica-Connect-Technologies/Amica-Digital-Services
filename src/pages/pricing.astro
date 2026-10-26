@@ -7,7 +7,7 @@ import Icon from '../components/Icon.astro';
 import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
 import { faqSchema, orgRef, areaServed } from '../data/schema';
 import { company } from '../data/site';
-import { packages, individualServices, comparison, toNumber, type Billing } from '../data/pricing';
+import { packages, individualServices, comparison, foundingOffer, toNumber, type Billing } from '../data/pricing';
 
 const per = (b: Billing) => (b === 'month' ? '/ month' : 'one-off');
 
@@ -20,7 +20,7 @@ const separately: Record<string, number> = {
 };
 
 const faqs = [
-  { q: 'How does the rolling 30-day plan work?', a: "You pay monthly in advance with no minimum term, plus a one-off setup fee at the start. You can cancel by giving 30 days' notice." },
+  { q: 'How does the rolling 30-day plan work?', a: "You pay monthly in advance, plus a one-off setup fee at the start. Growth, Pro and individual services have no minimum term and you can cancel by giving 30 days' notice. Foundation has a 3-month minimum term, then continues monthly with 30 days' notice." },
   { q: 'How do I avoid the setup fee?', a: 'Choose a longer agreement: 6 months for Foundation, or 12 months for Growth and Pro. The monthly price stays the same and the setup fee is waived.' },
   { q: 'Why choose a package instead of single services?', a: 'A package joins your marketing, CRM and follow-up into one system managed by one team, and costs less than buying the same services separately. Single services suit businesses that only need one thing done well.' },
   { q: 'What is not included in the monthly price?', a: 'Advertising spend (for example Google Local Services Ads or social media ads), call minutes and phone numbers, SMS and WhatsApp usage, third-party software subscriptions and custom development are separate unless your written quote says otherwise.' },
@@ -56,7 +56,7 @@ const schema = [
       '@type': 'OfferCatalog',
       name: 'Amica Digital Services pricing',
       itemListElement: [
-        ...packages.map((p) => monthlyOffer(`${p.name} package`, `${p.tagline} Rolling 30-day plan: ${p.setup} one-off setup. ${p.waiver}.`, p.price)),
+        ...packages.map((p) => monthlyOffer(`${p.name} package`, `${p.tagline} ${p.minimum ? `Rolling plan with a ${p.minimum} minimum` : 'Rolling 30-day plan'}: ${p.setup} one-off setup. ${p.waiver}.`, p.price)),
         ...individualServices.map((s) =>
           s.billing === 'month'
             ? monthlyOffer(s.name, `From ${s.from} per month. ${s.note}`, s.from)
@@ -78,6 +78,12 @@ const schema = [
 
   <section class="section pricing-tabs-section">
     <div class="container">
+      <aside class="founding" aria-labelledby="founding-title">
+        <h2 id="founding-title">{foundingOffer.title}</h2>
+        <p>{foundingOffer.text}</p>
+        <p class="founding-small">{foundingOffer.small}</p>
+        <a href="#enquire" class="btn btn-primary" data-pick-service="Not sure yet">Ask about a founding place</a>
+      </aside>
       <div class="tabs" role="tablist" aria-label="Pricing options" data-tabs hidden>
         <button type="button" role="tab" id="tab-packages" aria-controls="panel-packages" aria-selected="true">Business growth packages</button>
         <button type="button" role="tab" id="tab-services" aria-controls="panel-services" aria-selected="false" tabindex="-1">Individual services</button>
@@ -94,7 +100,7 @@ const schema = [
               <p class="tagline">{p.tagline}</p>
               <p class="price">{p.price}<small> / month</small></p>
               {separately[p.name] && <p class="anchor">Bought separately: from £{separately[p.name].toLocaleString('en-GB')} / month</p>}
-              <p class="terms">Rolling 30-day plan: {p.setup} one-off setup<br /><strong>{p.waiver}</strong></p>
+              <p class="terms">{p.minimum ? `Rolling plan, ${p.minimum} minimum` : 'Rolling 30-day plan'}: {p.setup} one-off setup<br /><strong>{p.waiver}</strong></p>
               <a href="#enquire" class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']} data-pick-service={p.key}>{p.cta}</a>
               {p.intro && <p class="intro">{p.intro}</p>}
               <ul class="checklist">
@@ -247,6 +253,10 @@ const schema = [
   .panel + .panel { margin-top: 64px; }
   .panel[hidden] { display: none; }
   .panel-title { text-align: center; }
+  .founding { max-width: 820px; margin: 0 auto 40px; padding: 24px 28px; border: 2px solid var(--coral); border-radius: 16px; background: var(--coral-soft); text-align: center; }
+  .founding h2 { font-size: 1.35rem; margin: 0 0 8px; }
+  .founding p { margin: 0 0 10px; }
+  .founding .founding-small { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; }
   .panel-lead { text-align: center; color: var(--muted); max-width: 720px; margin: 0 auto 40px; }
   .packages { align-items: stretch; }
   .tagline { color: var(--muted); margin: 4px 0 0; min-height: 3em; }
