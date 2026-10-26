@@ -108,7 +108,7 @@ export const services: Service[] = [
       { q: "Will callers know they are speaking to an AI?", a: "We recommend the agent says so at the start of the call. Being open builds trust and avoids confusion." },
       { q: "Can it handle sensitive or urgent calls?", a: "It is set up to recognise these and pass them to a person, or give your agreed emergency instructions. It does not give clinical, legal or financial advice." },
       { q: "Do I need a new phone number?", a: "Not usually. Calls can be forwarded to the agent when your team is busy or outside office hours." },
-      { q: "How much does an AI receptionist cost?", a: "AI voice agents are quoted individually after a short call, because cost depends on call volume, hours covered and integrations. The Pro plan (£990 per month) includes an AI chatbot and WhatsApp assistant; voice agents are priced separately." },
+      { q: "How much does an AI receptionist cost?", a: "AI receptionists start from £199 per month plus usage. Setup, call minutes, phone numbers and extra integrations are quoted after a short call, because they depend on call volume, hours covered and the systems involved. The Pro plan (£690 per month) includes AI receptionist setup for one agreed call flow." },
     ],
   },
   {
@@ -211,7 +211,7 @@ export const services: Service[] = [
       'More traffic does not help if nobody follows up. We build lead-generation systems where every channel, from search and social to paid ads and outreach, feeds into a CRM with fast follow-up and clear reporting, so you can see which activity produces appointments.',
     image: '/images/ai-chatbot.jpg',
     imageAlt: "Woman on a laptop with an enquiry form, lead filter and appointment calendar connected on screen",
-    related: ["seo", "crm-gohighlevel", "social-media-management"],
+    related: ["google-local-services-ads", "seo", "crm-gohighlevel"],
     problems: [
       'Marketing spend with no clear link to enquiries or sales',
       'Leads arrive but are not followed up quickly enough',
@@ -219,7 +219,7 @@ export const services: Service[] = [
     ],
     includes: [
       { title: 'SEO and local search', text: 'Technical SEO, content and Google Business Profile optimisation.' },
-      { title: 'Paid advertising', text: 'Google and Meta campaigns with agreed budgets and stop-loss rules.' },
+      { title: 'Paid advertising', text: 'Google and Meta campaigns, including Google Local Services Ads for eligible local businesses, with agreed budgets and stop-loss rules.' },
       { title: 'Social media', text: 'LinkedIn, Facebook, Instagram and YouTube content planned around your offer.' },
       { title: 'Landing pages', text: 'Focused pages with one clear next step.' },
       { title: 'Email, SMS and WhatsApp nurture', text: 'Sequences that keep in touch until the lead is ready.' },
@@ -293,7 +293,7 @@ export const services: Service[] = [
       'Most buyers search before they call. If your website is slow, hard for search engines to read or missing the pages people look for, those enquiries go to competitors. We fix the technical basics, target the searches that matter to your business and connect your site to your CRM so every visitor has a clear next step.',
     image: '/images/seo.jpg',
     imageAlt: "Team gathered round a laptop reviewing search rankings, a site speed score and traffic charts",
-    related: ["websites-software", "lead-generation", "social-media-management"],
+    related: ["google-local-services-ads", "websites-software", "lead-generation"],
     problems: [
       'Your business does not appear when local customers search',
       'The website gets visitors but very few enquiries',
@@ -316,7 +316,7 @@ export const services: Service[] = [
       { q: "How long does SEO take?", a: "Technical fixes can help within weeks, but steady growth in rankings usually takes several months. We report progress every month so you can see what is changing." },
       { q: "Can you guarantee a number one ranking?", a: "No one can honestly guarantee rankings, because Google decides them. We focus on the work that gives you the best chance and measure the results openly." },
       { q: "Do you do local SEO?", a: "Yes. Local SEO includes Google Business Profile optimisation and location pages for the areas you serve, alongside technical SEO and content." },
-      { q: "Is SEO included in your monthly plans?", a: "The Growth plan (£490 per month) includes on-page SEO, local keyword targeting and technical SEO improvements. The Pro plan (£990 per month) adds an advanced SEO content strategy." },
+      { q: "Is SEO included in your monthly plans?", a: "The Growth plan (£490 per month) includes on-page SEO, local keyword targeting and technical SEO improvements. The Pro plan (£690 per month) adds an expanded SEO strategy and monthly content planning. SEO on its own starts from £299 per month." },
     ],
   },
   {
@@ -357,7 +357,7 @@ export const services: Service[] = [
     faqs: [
       { q: "Do I approve posts before they go out?", a: "Yes. You see and approve the content plan and posts before they are published." },
       { q: "Which platforms do you cover?", a: "Usually Facebook, Instagram and LinkedIn, plus TikTok and YouTube where they suit your audience." },
-      { q: "How many posts are included?", a: "Foundation includes 4 branded posts per month, Growth 8, and Pro 12 plus Reels and short-form video." },
+      { q: "How many posts are included?", a: "Social media management on its own starts from £199 per month for four branded posts on up to two platforms. Foundation includes 4 posts per month, Growth 8, and Pro 12 plus one short-form video." },
     ],
   },
 ];
@@ -384,9 +384,29 @@ export const landingPages = [
   },
 ];
 
+// Service pages with their own layout (not built from the template in [service].astro).
+export const standaloneServices = [
+  {
+    slug: 'google-local-services-ads',
+    icon: 'pin',
+    title: 'Google Local Services Ads (LSA)',
+    summary: 'Get found by local customers on Google and pay for leads rather than clicks, with CRM follow-up built in.',
+  },
+];
+
+/** Every service in menu order: the template services with the LSA page placed straight after SEO. */
+export function serviceLinks() {
+  const list: { slug: string; icon: string; title: string; summary: string }[] = [];
+  services.forEach((s) => {
+    list.push(s);
+    if (s.slug === 'seo') list.push(...standaloneServices);
+  });
+  return list;
+}
+
 /** Card data for a list of related page slugs (services or landing pages). */
 export function relatedCards(slugs: string[]) {
-  const all = [...services, ...landingPages];
+  const all = [...services, ...standaloneServices, ...landingPages];
   return slugs
     .map((slug) => all.find((p) => p.slug === slug))
     .filter((p): p is (typeof all)[number] => Boolean(p))

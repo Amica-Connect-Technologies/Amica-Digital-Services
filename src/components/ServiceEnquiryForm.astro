@@ -1,0 +1,356 @@
+---
+// Service and package enquiry form for /pricing and /google-local-services-ads.
+// Posts JSON to /api/enquiry with formType "service"; the server saves the lead in
+// GoHighLevel with an ADS-* tag for the chosen service and alerts Shaz.
+// Links or buttons with data-pick-service="<option>" anywhere on the page choose
+// that option and scroll to the form.
+import { company, enquiry } from '../data/site';
+import { serviceOptions, lsaCategories, adBudgets } from '../data/pricing';
+
+interface Props {
+  /** Option chosen when the page loads. */
+  service?: string;
+  submitLabel?: string;
+}
+const { service = '', submitLabel = 'Send my enquiry' } = Astro.props;
+const timing = enquiry.options.timing;
+---
+<form class="svc-form" novalidate data-service-form data-endpoint={enquiry.endpoint} data-source-keys={enquiry.sourceKeys.join(',')}>
+  <p class="svc-required-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+  <div class="svc-summary" role="alert" tabindex="-1" hidden data-summary></div>
+
+  <div class="svc-grid">
+    <div class="svc-field">
+      <label for="svc-firstName">First name <span class="req" aria-hidden="true">*</span></label>
+      <input id="svc-firstName" name="firstName" type="text" autocomplete="given-name" maxlength="60" required aria-describedby="svc-firstName-err" />
+      <p class="svc-error" id="svc-firstName-err" hidden>Enter your first name.</p>
+    </div>
+    <div class="svc-field">
+      <label for="svc-lastName">Last name</label>
+      <input id="svc-lastName" name="lastName" type="text" autocomplete="family-name" maxlength="60" />
+    </div>
+    <div class="svc-field">
+      <label for="svc-email">Email <span class="req" aria-hidden="true">*</span></label>
+      <input id="svc-email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="svc-email-err" />
+      <p class="svc-error" id="svc-email-err" hidden>Enter a valid email address, like name@example.co.uk.</p>
+    </div>
+    <div class="svc-field">
+      <label for="svc-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+      <input id="svc-phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required aria-describedby="svc-phone-err" />
+      <p class="svc-error" id="svc-phone-err" hidden>Enter a phone number using digits, spaces and +.</p>
+    </div>
+    <div class="svc-field">
+      <label for="svc-companyName">Business name <span class="req" aria-hidden="true">*</span></label>
+      <input id="svc-companyName" name="companyName" type="text" autocomplete="organization" maxlength="120" required aria-describedby="svc-companyName-err" />
+      <p class="svc-error" id="svc-companyName-err" hidden>Enter your business name.</p>
+    </div>
+    <div class="svc-field">
+      <label for="svc-website">Website address</label>
+      <input id="svc-website" name="website" type="text" inputmode="url" autocomplete="url" maxlength="200" placeholder="example.co.uk" aria-describedby="svc-website-err" />
+      <p class="svc-error" id="svc-website-err" hidden>Enter a website address, like example.co.uk.</p>
+    </div>
+    <div class="svc-field">
+      <label for="svc-service">Service you are interested in <span class="req" aria-hidden="true">*</span></label>
+      <select id="svc-service" name="service" required aria-describedby="svc-service-err">
+        <option value="">Please choose</option>
+        {serviceOptions.map((v) => <option value={v} selected={v === service}>{v}</option>)}
+      </select>
+      <p class="svc-error" id="svc-service-err" hidden>Choose a service.</p>
+    </div>
+    <div class="svc-field">
+      <label for="svc-location">Business location <span class="req" aria-hidden="true">*</span></label>
+      <input id="svc-location" name="location" type="text" autocomplete="address-level2" maxlength="120" placeholder="Town or city" required aria-describedby="svc-location-err" />
+      <p class="svc-error" id="svc-location-err" hidden>Enter the town or city your business is based in.</p>
+    </div>
+
+    <div class="svc-wide svc-lsa" data-lsa-fields hidden>
+      <p class="svc-lsa-title">About your Local Services Ads</p>
+      <div class="svc-grid">
+        <div class="svc-field">
+          <label for="svc-lsaCategory">Business category <span class="req" aria-hidden="true">*</span></label>
+          <select id="svc-lsaCategory" name="lsaCategory" aria-describedby="svc-lsaCategory-err">
+            <option value="">Please choose</option>
+            {lsaCategories.map((v) => <option value={v}>{v}</option>)}
+          </select>
+          <p class="svc-error" id="svc-lsaCategory-err" hidden>Choose your business category.</p>
+        </div>
+        <div class="svc-field">
+          <label for="svc-serviceArea">Postcodes or area you cover <span class="req" aria-hidden="true">*</span></label>
+          <input id="svc-serviceArea" name="serviceArea" type="text" maxlength="200" placeholder="For example M1-M9, Salford, Stockport" aria-describedby="svc-serviceArea-err" />
+          <p class="svc-error" id="svc-serviceArea-err" hidden>Enter the postcodes or area you cover.</p>
+        </div>
+        <div class="svc-field svc-wide">
+          <label for="svc-adBudget">Approximate Google advertising budget</label>
+          <select id="svc-adBudget" name="adBudget">
+            <option value="">Prefer not to say</option>
+            {adBudgets.map((v) => <option value={v}>{v}</option>)}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <fieldset class="svc-field svc-wide" id="svc-timing" aria-describedby="svc-timing-err">
+      <legend>When would you like to start? <span class="req" aria-hidden="true">*</span></legend>
+      <div class="svc-options svc-inline">
+        {timing.map((v, i) => (
+          <label class="svc-check"><input type="radio" name="timing" value={v} id={i === 0 ? 'svc-timing-0' : undefined} /> <span>{v}</span></label>
+        ))}
+      </div>
+      <p class="svc-error" id="svc-timing-err" hidden>Choose when you would like to start.</p>
+    </fieldset>
+
+    <div class="svc-field svc-wide">
+      <label for="svc-message">Brief requirements <span class="req" aria-hidden="true">*</span></label>
+      <textarea id="svc-message" name="message" rows="4" maxlength="2000" required aria-describedby="svc-message-err" placeholder="What would you like help with?"></textarea>
+      <p class="svc-error" id="svc-message-err" hidden>Tell us briefly what you need.</p>
+    </div>
+
+    <div class="svc-hp" aria-hidden="true">
+      <label for="svc-hp">Leave this field empty</label>
+      <input id="svc-hp" name="contact_me_by_fax_only" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    {enquiry.sourceKeys.map((k) => <input type="hidden" name={k} value="" />)}
+
+    <div class="svc-field svc-wide">
+      <label class="svc-check svc-consent">
+        <input type="checkbox" id="svc-consent" name="consent" required aria-describedby="svc-consent-err" />
+        <span>I agree to Amica Digital Services contacting me about this enquiry. <span class="req" aria-hidden="true">*</span> See our <a href="/privacy-policy">privacy policy</a>.</span>
+      </label>
+      <p class="svc-error" id="svc-consent-err" hidden>Tick this box so we can reply to you.</p>
+      <label class="svc-check svc-consent svc-optin">
+        <input type="checkbox" name="marketingConsent" />
+        <span>Optional: send me occasional emails with tips and offers. You can unsubscribe at any time.</span>
+      </label>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary svc-submit">{submitLabel}</button>
+
+  <div class="svc-fail notice" role="alert" tabindex="-1" hidden data-fail>
+    <p><strong>Sorry, your enquiry did not send.</strong> Please try again, or contact us directly:</p>
+    <p class="svc-fail-links">
+      <a href={`tel:${company.phoneHref}`}>Call {company.phone}</a>
+      <a href={`https://wa.me/${company.whatsapp}`} rel="noopener">Message us on WhatsApp</a>
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+    </p>
+  </div>
+</form>
+<div class="svc-success notice" role="status" tabindex="-1" hidden data-service-success>
+  <p><strong data-success-title>Thank you.</strong> We have your enquiry and will reply within one working day. Want to talk sooner? <a href="/book-a-consultation">Book a free consultation</a>.</p>
+</div>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('form[data-service-form]');
+  if (form) {
+    const summary = form.querySelector<HTMLElement>('[data-summary]')!;
+    const fail = form.querySelector<HTMLElement>('[data-fail]')!;
+    const success = form.nextElementSibling as HTMLElement;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const submitText = submit.textContent || '';
+    const select = form.querySelector<HTMLSelectElement>('#svc-service')!;
+    const lsaBox = form.querySelector<HTMLElement>('[data-lsa-fields]')!;
+
+    const lead = ((window as any).amicaLeadData || {}) as Record<string, string>;
+    (form.dataset.sourceKeys || '').split(',').forEach((k) => {
+      const el = form.elements.namedItem(k) as HTMLInputElement | null;
+      if (el && lead[k]) el.value = String(lead[k]).slice(0, 200);
+    });
+
+    const isLsa = () => /Local Services Ads|^LSA /.test(select.value);
+    const showLsa = () => {
+      lsaBox.hidden = !isLsa();
+    };
+    select.addEventListener('change', showLsa);
+
+    // Buttons elsewhere on the page that pick a service and jump to the form.
+    const pick = (value: string) => {
+      if ([...select.options].some((o) => o.value === value)) select.value = value;
+      showLsa();
+    };
+    document.querySelectorAll<HTMLElement>('[data-pick-service]').forEach((el) =>
+      el.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        pick(el.dataset.pickService || '');
+        form.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        setTimeout(() => form.querySelector<HTMLInputElement>('#svc-firstName')?.focus({ preventScroll: true }), 400);
+        const w = window as any;
+        if (w.amicaTrack) w.amicaTrack('select_service', { service: el.dataset.pickService || '' });
+      })
+    );
+    const fromUrl = new URLSearchParams(location.search).get('service');
+    if (fromUrl) pick(fromUrl);
+    showLsa();
+
+    const val = (n: string) => ((form.elements.namedItem(n) as HTMLInputElement | null)?.value || '').trim();
+    const checked = (n: string) => Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${n}"]:checked`)).map((i) => i.value);
+    const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    const phoneOk = (v: string) => /^[0-9+()\-\s.]{6,30}$/.test(v);
+    const siteOk = (v: string) => !v || /^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(v);
+
+    const checks: [string, () => boolean, string][] = [
+      ['firstName', () => !!val('firstName'), 'First name'],
+      ['email', () => emailOk(val('email')), 'Email'],
+      ['phone', () => phoneOk(val('phone')), 'Phone'],
+      ['companyName', () => !!val('companyName'), 'Business name'],
+      ['website', () => siteOk(val('website')), 'Website address'],
+      ['service', () => !!val('service'), 'Service'],
+      ['location', () => !!val('location'), 'Business location'],
+      ['lsaCategory', () => !isLsa() || !!val('lsaCategory'), 'Business category'],
+      ['serviceArea', () => !isLsa() || !!val('serviceArea'), 'Postcodes or area you cover'],
+      ['timing', () => checked('timing').length > 0, 'Start timing'],
+      ['message', () => !!val('message'), 'Brief requirements'],
+      ['consent', () => (form.elements.namedItem('consent') as HTMLInputElement).checked, 'Consent'],
+    ];
+
+    function setError(name: string, bad: boolean) {
+      const err = document.getElementById(`svc-${name}-err`);
+      if (err) err.hidden = !bad;
+      const group = document.getElementById(`svc-${name}`);
+      const target = group && group.tagName === 'FIELDSET' ? group : (form!.elements.namedItem(name) as HTMLElement | null);
+      if (target && 'setAttribute' in target) {
+        if (bad) target.setAttribute('aria-invalid', 'true');
+        else target.removeAttribute('aria-invalid');
+      }
+    }
+    const focusTarget = (name: string) =>
+      document.getElementById(`svc-${name}`)?.tagName === 'FIELDSET' ? document.getElementById(`svc-${name}-0`) : document.getElementById(`svc-${name}`);
+    function validate(): string[] {
+      const bad: string[] = [];
+      checks.forEach(([name, ok]) => {
+        const isBad = !ok();
+        setError(name, isBad);
+        if (isBad) bad.push(name);
+      });
+      return bad;
+    }
+    // Clear a field's error as soon as it is fixed: while typing, not on blur, so the
+    // layout does not shift under the pointer when someone clicks the next field.
+    const clearFixed = (e: Event) => {
+      const n = (e.target as HTMLInputElement).name;
+      const c = checks.find(([name]) => name === n);
+      if (c && document.getElementById(`svc-${n}-err`)?.hidden === false && c[1]()) setError(n, false);
+    };
+    form.addEventListener('input', clearFixed);
+    form.addEventListener('change', clearFixed);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      fail.hidden = true;
+      const bad = validate();
+      if (bad.length) {
+        const labels = checks.filter(([n]) => bad.includes(n)).map(([n, , l]) => `<li><a href="#svc-${n}">${l}</a></li>`).join('');
+        summary.innerHTML = `<p><strong>Please check ${bad.length === 1 ? 'this field' : `these ${bad.length} fields`}:</strong></p><ul>${labels}</ul>`;
+        summary.hidden = false;
+        summary.querySelectorAll('a').forEach((a) =>
+          a.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            focusTarget(a.getAttribute('href')!.slice(5))?.focus();
+          })
+        );
+        focusTarget(bad[0])?.focus();
+        return;
+      }
+      summary.hidden = true;
+
+      const lsa = isLsa();
+      const payload: Record<string, unknown> = {
+        formType: 'service',
+        firstName: val('firstName'),
+        lastName: val('lastName'),
+        email: val('email'),
+        phone: val('phone'),
+        companyName: val('companyName'),
+        website: val('website'),
+        service: val('service'),
+        location: val('location'),
+        lsaCategory: lsa ? val('lsaCategory') : '',
+        serviceArea: lsa ? val('serviceArea') : '',
+        adBudget: lsa ? val('adBudget') : '',
+        timing: checked('timing')[0],
+        message: val('message'),
+        consent: true,
+        marketingConsent: (form.elements.namedItem('marketingConsent') as HTMLInputElement).checked,
+        contact_me_by_fax_only: val('contact_me_by_fax_only'),
+        formPage: location.pathname,
+      };
+      (form.dataset.sourceKeys || '').split(',').forEach((k) => {
+        if (val(k)) payload[k] = val(k);
+      });
+
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+      let ok = false;
+      let score: string | undefined;
+      try {
+        const res = await fetch(form.dataset.endpoint!, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        ok = res.ok && data && data.ok === true;
+        score = data && data.score;
+      } catch {
+        ok = false;
+      }
+      submit.disabled = false;
+      submit.textContent = submitText;
+
+      if (!ok) {
+        fail.hidden = false;
+        fail.focus?.();
+        return;
+      }
+      const w = window as any;
+      if (w.amicaTrack) w.amicaTrack('generate_lead', { form: 'service_enquiry', service: String(payload.service), lead_score: score || '' });
+      const title = success.querySelector('[data-success-title]');
+      if (title) title.textContent = `Thank you, ${payload.firstName}.`;
+      form.hidden = true;
+      success.hidden = false;
+      success.focus();
+    });
+  }
+</script>
+
+<style>
+  .svc-form { margin: 0; }
+  .svc-required-note { color: var(--muted); font-size: 0.92rem; margin-bottom: 18px; }
+  .svc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; }
+  .svc-wide { grid-column: 1 / -1; }
+  @media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
+  .svc-field { min-width: 0; }
+  fieldset.svc-field { border: 0; padding: 0; margin: 0; }
+  .svc-field > label, .svc-field legend { display: block; font-weight: 700; color: var(--navy); margin-bottom: 6px; font-size: 0.97rem; padding: 0; }
+  .req { color: #b4361b; }
+  .svc-form input[type='text'], .svc-form input[type='email'], .svc-form input[type='tel'], .svc-form select, .svc-form textarea {
+    width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--white);
+    border: 1.5px solid #b9c1ca; border-radius: 10px; padding: 11px 13px; min-height: 48px;
+  }
+  .svc-form textarea { resize: vertical; min-height: 110px; }
+  .svc-form input:focus-visible, .svc-form select:focus-visible, .svc-form textarea:focus-visible, .svc-check input:focus-visible {
+    outline: 3px solid var(--teal); outline-offset: 2px; border-color: var(--teal);
+  }
+  .svc-form [aria-invalid='true'] { border-color: #b4361b; }
+  fieldset[aria-invalid='true'] .svc-options { border-left: 3px solid #b4361b; padding-left: 10px; }
+  .svc-options { display: grid; gap: 8px; }
+  .svc-inline { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .svc-check { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; color: var(--ink); cursor: pointer; line-height: 1.45; }
+  .svc-check input { width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0; accent-color: var(--teal-dark); }
+  .svc-field > label.svc-consent { font-size: 0.95rem; font-weight: 500; color: var(--ink); }
+  .svc-field > label.svc-optin { margin-top: 12px; color: var(--muted); }
+  .svc-lsa { background: var(--teal-soft); border-radius: 14px; padding: 18px 20px; }
+  .svc-lsa[hidden] { display: none; }
+  .svc-lsa-title { font-weight: 800; color: var(--teal-dark); margin: 0 0 12px; }
+  .svc-error { color: #b4361b; font-size: 0.9rem; font-weight: 600; margin: 6px 0 0; }
+  .svc-summary { background: var(--coral-soft); border-left: 4px solid #b4361b; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; color: var(--navy); }
+  .svc-summary :global(ul) { margin: 4px 0 0; padding-left: 20px; }
+  .svc-summary :global(p) { margin: 0; }
+  .svc-submit { margin-top: 24px; }
+  .svc-submit[disabled] { opacity: 0.7; cursor: wait; }
+  .svc-fail { margin-top: 20px; background: var(--coral-soft); border-left-color: #b4361b; }
+  .svc-fail p { margin: 0 0 8px; }
+  .svc-fail-links { display: flex; flex-wrap: wrap; gap: 8px 20px; font-weight: 700; }
+  .svc-success p { margin: 0; }
+  .svc-hp { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+</style>

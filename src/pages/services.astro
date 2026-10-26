@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { services } from '../data/services';
+import { serviceLinks } from '../data/services';
 ---
 <Base title="Digital Marketing and AI Automation Services | Amica" description="Websites, SEO, social media, lead generation, GoHighLevel CRM, AI chatbots, AI receptionists and automation for UK businesses from a Manchester team.">
   <PageHero eyebrow="Services" title="Services that attract, convert and keep customers" lead="Choose a single service or combine them into one joined-up system, managed by a UK team." crumbs={[{ label: 'Services' }]} />
@@ -23,7 +23,7 @@ import { services } from '../data/services';
         <a href="/recruitment-agency-automation" class="card"><div class="icon-badge"><Icon name="briefcase" /></div><h3>Recruitment Agency Automation</h3><p>Candidate registration, screening, interview booking and compliance chasing, alongside your existing ATS.</p><span class="more">Learn more →</span></a>
       </div>
       <div class="grid grid-3" style="margin-top:24px">
-        {services.map((s) => (
+        {serviceLinks().map((s) => (
           <a href={`/${s.slug}`} class="card">
             <div class="icon-badge"><Icon name={s.icon} /></div>
             <h3>{s.title}</h3>

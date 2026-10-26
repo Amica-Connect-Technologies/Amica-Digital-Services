@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import { company, nav, legalNav } from '../data/site';
-import { services } from '../data/services';
+import { serviceLinks } from '../data/services';
 import Icon from './Icon.astro';
 const socials = [
   { label: 'Amica Digital Services on LinkedIn', icon: 'linkedin', href: company.social.linkedin },
@@ -23,7 +23,7 @@ const year = new Date().getFullYear();
           <li><a href="/care-agency-automation">Care and Recruitment Automation</a></li>
           <li><a href="/ai-receptionist-care-agencies">AI Receptionist for Care Agencies</a></li>
           <li><a href="/recruitment-agency-automation">Recruitment Agency Automation</a></li>
-          {services.map((s) => <li><a href={`/${s.slug}`}>{s.title}</a></li>)}
+          {serviceLinks().map((s) => <li><a href={`/${s.slug}`}>{s.title}</a></li>)}
         </ul>
       </div>
       <div>
@@ -91,4 +91,6 @@ const year = new Date().getFullYear();
   .link-btn:hover { text-decoration: underline; color: #fff; }
   @media (max-width: 900px) { .cols { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .cols { grid-template-columns: 1fr; } }
+  /* Keep the last footer line clear of the floating call and chat buttons. */
+  @media (max-width: 900px) { .site-footer { padding-bottom: 96px; } }
 </style>

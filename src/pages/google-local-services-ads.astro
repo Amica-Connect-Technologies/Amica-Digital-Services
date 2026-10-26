@@ -1,0 +1,202 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+import { lsaPackages, toNumber } from '../data/pricing';
+import { relatedCards } from '../data/services';
+
+const benefits = [
+  { icon: 'pin', title: 'Reach customers searching locally', text: 'Connect with potential customers actively looking for services in your area.' },
+  { icon: 'target', title: 'Pay for leads rather than standard clicks', text: 'Google generally charges for valid enquiries under its applicable billing rules, not for ordinary clicks.' },
+  { icon: 'shield', title: 'Build customer confidence', text: 'Eligible businesses can show the Google Verified badge once they pass the checks Google requires. We prepare and submit your application; Google makes the decision.' },
+  { icon: 'chart', title: 'Control your budget', text: 'Set and manage your advertising budget according to your business objectives.' },
+  { icon: 'clock', title: 'Monitor performance', text: 'Track enquiries, advertising spend and campaign performance in one place.' },
+];
+
+const management = [
+  { title: 'Eligibility assessment', items: ['Business category eligibility', 'Service area assessment', 'Google Business Profile review', 'Verification requirements checklist'] },
+  { title: 'Account setup', items: ['LSA account configuration', 'Business profile alignment', 'Service category selection', 'Geographic targeting', 'Advertising budget configuration', 'Google Verified application support'] },
+  { title: 'Campaign management', items: ['Ongoing campaign monitoring', 'Lead quality analysis', 'Budget management', 'Campaign optimisation', 'Performance reviews'] },
+  { title: 'CRM and automation integration', items: ['Lead management pipelines', 'Automated enquiry notifications', 'Appointment booking workflows', 'Customer follow-up automation', 'AI chatbot and receptionist options'], note: 'CRM and AI features are included in selected packages and depend on supported integrations.' },
+  { title: 'Performance reporting', items: ['Enquiry volume', 'Advertising spend', 'Cost per lead', 'Appointment conversions where measurable', 'Monthly campaign performance reports'] },
+];
+
+const industries = ['Plumbing', 'Heating', 'Electrical services', 'Roofing', 'Cleaning', 'Pest control', 'Landscaping', 'Other Google-approved local services'];
+
+const faqs = [
+  { q: 'Do I pay Google separately?', a: "Yes. Google advertising spend is paid directly by you to Google and is not included in Amica's management fee." },
+  { q: 'Can every business use Local Services Ads?', a: 'No. Google limits Local Services Ads to eligible business categories and locations, and verification requirements apply. We check your eligibility before you commit.' },
+  { q: 'Can you guarantee leads?', a: 'No. Results depend on competition, demand, budget, eligibility and other factors outside our control. We report openly on enquiries and cost per lead every month.' },
+  { q: 'Can Local Services Ads connect with my CRM?', a: 'We can set up supported integrations and workflows after checking the available lead sources, account permissions and technical compatibility.' },
+  { q: 'How quickly can I start?', a: "We can begin the eligibility assessment and onboarding straight away, but your ads only go live once Google's verification and approval checks are complete." },
+  { q: 'Is this included in your Growth or Pro packages?', a: 'Growth includes an LSA eligibility assessment and readiness checklist. Pro includes LSA setup assistance and ongoing campaign management for one eligible business account. Google advertising spend is separate in both.' },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Google Local Services Ads management',
+    serviceType: 'Local Services Ads management',
+    description: 'Professional Google Local Services Ads management for eligible UK businesses: eligibility checks, setup, campaign optimisation, CRM and AI follow-up.',
+    path: '/google-local-services-ads',
+    offers: lsaPackages.map((p) => ({
+      '@type': 'Offer',
+      name: p.name,
+      description: `${p.summary} Setup ${p.setup}. Google advertising spend is separate.`,
+      priceCurrency: 'GBP',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: toNumber(p.price),
+        priceCurrency: 'GBP',
+        unitText: 'MONTH',
+        referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+      },
+    })),
+  }),
+  faqSchema(faqs),
+];
+const related = relatedCards(['seo', 'lead-generation', 'crm-gohighlevel']);
+---
+<Base title="Google Local Services Ads Management UK | Amica Digital" description="Professional Google Local Services Ads management for eligible UK businesses. LSA setup, campaign optimisation, CRM and AI automation from Amica Digital Services." schema={schema}>
+  <PageHero eyebrow="New service" title="Google Local Services Ads Management UK" lead="Get found locally and generate more customer enquiries. Connect with customers actively searching for your services on Google. We help eligible UK businesses set up, manage and optimise Google Local Services Ads, with CRM and AI follow-up so every enquiry is answered." crumbs={[{ label: 'Services', href: '/services' }, { label: 'Google Local Services Ads' }]}>
+    <div class="btn-row">
+      <a href="#enquire" class="btn btn-primary" data-pick-service="Google Local Services Ads">Check my LSA eligibility</a>
+      <a href="#lsa-pricing" class="btn btn-secondary">View LSA pricing</a>
+      <a href="/book-a-consultation" class="btn btn-secondary">Book a free consultation</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">The basics</span>
+        <h2>What are Google Local Services Ads?</h2>
+        <p class="lead">Google Local Services Ads are a specialised advertising format that helps eligible businesses connect with customers searching for local services.</p>
+        <p>Unlike conventional pay-per-click advertising, Google generally charges for valid leads rather than ordinary website clicks. Businesses must meet Google's eligibility and verification requirements before their ads can run.</p>
+      </div>
+      <div class="card lsa-flow" aria-hidden="true">
+        <div class="flow-step"><span>1</span><p><strong>Customer searches</strong> “plumber near me”</p></div>
+        <div class="flow-step"><span>2</span><p><strong>Your verified listing</strong> appears at the top of Google</p></div>
+        <div class="flow-step"><span>3</span><p><strong>They call or message</strong> you directly</p></div>
+        <div class="flow-step"><span>4</span><p><strong>Your CRM follows up</strong> and books the job</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Why use them</span><h2>Why use Google Local Services Ads?</h2></div>
+      <div class="grid grid-3 benefits">
+        {benefits.map((b) => (
+          <div class="card"><div class="icon-badge"><Icon name={b.icon} /></div><h3>{b.title}</h3><p>{b.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">What we do</span><h2>Our LSA management services</h2></div>
+      <div class="grid grid-3 manage">
+        {management.map((m, i) => (
+          <div class="card step-card">
+            <span class="num">{i + 1}</span>
+            <h3>{m.title}</h3>
+            <ul class="checklist">{m.items.map((it) => <li>{it}</li>)}</ul>
+            {m.note && <p class="small">{m.note}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Industries</span>
+        <h2>Industries we support</h2>
+        <p class="lead">Google Local Services Ads may suit eligible UK businesses in categories such as:</p>
+        <p class="small">Eligibility must be confirmed for each business category and location. Google decides which categories are available in each area.</p>
+      </div>
+      <ul class="chips">
+        {industries.map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="lsa-pricing">
+    <div class="container">
+      <div class="center"><span class="eyebrow">LSA pricing</span><h2>Local Services Ads packages</h2><p class="lead">Standalone LSA management, separate from our Foundation, Growth and Pro packages. Google advertising spend is paid directly to Google.</p></div>
+      <div class="grid grid-3 lsa-plans">
+        {lsaPackages.map((p) => (
+          <article class:list={['card price-card', { featured: p.featured }]}>
+            {p.featured && <span class="badge">Most popular</span>}
+            <h3>{p.name}</h3>
+            <p class="tagline">{p.summary}</p>
+            <p class="price">{p.price}<small> / month</small></p>
+            <p class="terms">Setup: {p.setup} one-off</p>
+            <ul class="checklist">{p.includes.map((i) => <li>{i}</li>)}</ul>
+            <a href="#enquire" class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']} data-pick-service={p.key}>Choose {p.name}</a>
+          </article>
+        ))}
+      </div>
+      <p class="note">AI usage allowances and third-party charges are set out in your customer agreement. Want LSA as part of a bigger plan? Our <a href="/pricing">Pro package</a> includes LSA management alongside SEO, social media and AI.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px"><Faq items={faqs} /></div>
+  </section>
+
+  <section class="section" id="enquire">
+    <div class="container enquire-wrap">
+      <div>
+        <span class="eyebrow">Free eligibility check</span>
+        <h2>Turn local Google searches into business opportunities</h2>
+        <p class="lead">Tell us about your business and we will check whether Google Local Services Ads are suitable, then reply within one working day.</p>
+        <p>Prefer to talk? <a href="/book-a-consultation">Book a free consultation</a>.</p>
+      </div>
+      <div class="card form-card">
+        <ServiceEnquiryForm service="Google Local Services Ads" submitLabel="Check my eligibility" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2>Related services</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        {related.map((o) => (
+          <a href={o.href} class="card"><div class="icon-badge"><Icon name={o.icon} /></div><h3>{o.title}</h3><p>{o.summary}</p><span class="more">Learn more →</span></a>
+        ))}
+      </div>
+      <p class="disclaimer">Amica Digital Services is an independent agency. We are not affiliated with, endorsed by or sponsored by Google. Google and Google Local Services Ads are trademarks of Google LLC. Ad eligibility, verification and billing are decided by Google under its own policies. Our management fee is agreed in writing before work starts and your Google advertising spend is reported separately. Read Google's <a href="https://support.google.com/adspolicy/answer/6086450?hl=en-GB" rel="noopener" target="_blank">guidance on working with third-party agencies (opens in a new tab)</a>.</p>
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+<style>
+  .benefits, .manage, .lsa-plans { margin-top: 40px; }
+  .lsa-flow { display: grid; gap: 14px; }
+  .flow-step { display: flex; gap: 14px; align-items: center; }
+  .flow-step span { width: 36px; height: 36px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
+  .flow-step p { margin: 0; color: var(--ink); }
+  .step-card { position: relative; }
+  .step-card .num { width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 800; display: grid; place-items: center; }
+  .step-card .checklist { margin-top: 14px; }
+  .small { font-size: 0.9rem; color: var(--muted); }
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips li { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; font-weight: 600; color: var(--navy); }
+  .tagline { color: var(--muted); margin: 4px 0 0; }
+  .terms { font-size: 0.92rem; color: var(--muted); }
+  .note { text-align: center; color: var(--muted); font-size: 0.92rem; margin-top: 28px; }
+  .enquire-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
+  @media (max-width: 960px) { .enquire-wrap { grid-template-columns: 1fr; gap: 28px; } }
+  .form-card { padding: 32px; }
+  @media (max-width: 640px) { .form-card { padding: 22px 18px; } }
+  #enquire, #lsa-pricing { scroll-margin-top: 80px; }
+  .disclaimer { margin-top: 40px; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+</style>

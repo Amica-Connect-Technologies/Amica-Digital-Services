@@ -6,16 +6,22 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 <header class="site-header">
   <div class="container bar">
     <a href="/" class="brand" aria-label="Amica Digital Services home"><Logo /></a>
+    <a href="/book-a-consultation" class="btn btn-primary bar-cta">Book a call</a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" type="button">
       <span class="sr">Menu</span><span class="burger" aria-hidden="true"></span>
     </button>
     <nav id="site-nav" class="nav" aria-label="Main">
       <ul>
-        {nav.map((item) => (
+        {nav.map((item, n) => (
           <li class:list={[{ 'has-sub': item.children }]}>
             <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
             {item.children && (
-              <ul class="sub">
+              <button type="button" class="sub-toggle" aria-expanded="false" aria-controls={`sub-${n}`}>
+                <span class="sr">Show {item.label} pages</span><span class="chev" aria-hidden="true"></span>
+              </button>
+            )}
+            {item.children && (
+              <ul class="sub" id={`sub-${n}`}>
                 {item.children.map((c) => (
                   <li><a href={c.href} aria-current={path === c.href ? 'page' : undefined}>{c.label}</a></li>
                 ))}
@@ -30,7 +36,7 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 </header>
 
 <style>
-  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .site-header { position: sticky; top: 0; z-index: 55; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .bar { display: flex; align-items: center; justify-content: space-between; height: 72px; }
   .brand { text-decoration: none; }
   .nav { display: flex; align-items: center; gap: 18px; }
@@ -45,18 +51,36 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   .sub { display: none; position: absolute; top: 100%; left: 0; min-width: 240px; list-style: none; margin: 0; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
   .has-sub:hover .sub, .has-sub:focus-within .sub { display: block; }
   .menu-toggle { display: none; background: none; border: 0; padding: 10px; cursor: pointer; }
+  .sub-toggle, .bar-cta { display: none; }
   .burger, .burger::before, .burger::after { display: block; width: 24px; height: 2px; background: var(--navy); position: relative; transition: 0.2s; }
   .burger::before, .burger::after { content: ''; position: absolute; left: 0; }
   .burger::before { top: -7px; } .burger::after { top: 7px; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   @media (max-width: 1200px) {
     .menu-toggle { display: block; }
-    .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; padding: 12px 20px 24px; max-height: calc(100vh - 72px); overflow-y: auto; }
+    .bar-cta { display: inline-flex; margin-left: auto; margin-right: 6px; padding: 9px 16px; font-size: 0.92rem; min-height: 42px; }
+    .nav { display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; padding: 8px 20px 20px; max-height: calc(100vh - 72px); max-height: calc(100dvh - 72px); overflow-y: auto; box-shadow: 0 16px 30px rgba(14,42,71,0.12); }
     .nav.open { display: flex; }
     .nav > ul { flex-direction: column; }
-    .sub { display: block; position: static; box-shadow: none; border: 0; padding: 0 0 0 14px; }
-    .nav-cta { justify-content: center; margin-top: 8px; }
+    .nav > ul > li { display: grid; grid-template-columns: 1fr auto; align-items: center; border-bottom: 1px solid var(--line); }
+    .nav > ul > li > a { padding: 13px 4px; font-size: 1rem; }
+    .sub-toggle { display: grid; place-items: center; width: 48px; height: 48px; background: none; border: 0; border-radius: 10px; cursor: pointer; color: var(--navy); }
+    .sub-toggle:hover, .sub-toggle:focus-visible { background: var(--teal-soft); }
+    .chev { width: 10px; height: 10px; border-right: 2.5px solid currentColor; border-bottom: 2.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+    .sub-toggle[aria-expanded='true'] .chev { transform: translateY(2px) rotate(225deg); }
+    .sub, .has-sub:hover .sub, .has-sub:focus-within .sub { display: none; grid-column: 1 / -1; position: static; box-shadow: none; border: 0; border-radius: 0; padding: 0 0 10px 12px; min-width: 0; }
+    .has-sub.open .sub { display: block; }
+    .sub a { padding: 9px 10px; font-weight: 500; }
+    .nav-cta { justify-content: center; margin-top: 14px; }
   }
+  .bar-cta { white-space: nowrap; }
+  @media (max-width: 480px) {
+    .bar-cta { padding: 8px 12px; font-size: 0.85rem; min-height: 40px; margin-right: 2px; }
+    .brand :global(.logo) { font-size: 1rem; gap: 8px; }
+    .brand :global(.logo img) { width: 32px; height: auto; }
+  }
+  /* On the narrowest phones keep the mark and "Amica" so the Book a call button fits. */
+  @media (max-width: 400px) { .brand :global(.logo-text span) { display: none; } }
 </style>
 
 <script>
@@ -66,4 +90,13 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
     const open = nav?.classList.toggle('open');
     btn.setAttribute('aria-expanded', String(!!open));
   });
+  // Mobile menu: Care and Recruitment, Services and Industries open as accordions.
+  document.querySelectorAll<HTMLButtonElement>('.sub-toggle').forEach((t) =>
+    t.addEventListener('click', () => {
+      const li = t.closest('li')!;
+      const open = !li.classList.contains('open');
+      li.classList.toggle('open', open);
+      t.setAttribute('aria-expanded', String(open));
+    })
+  );
 </script>

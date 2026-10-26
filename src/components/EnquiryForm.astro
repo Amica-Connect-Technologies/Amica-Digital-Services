@@ -197,12 +197,15 @@ const successText =
       });
       return bad;
     }
-    // Clear a field's error as soon as it is fixed.
-    form.addEventListener('change', (e) => {
+    // Clear a field's error as soon as it is fixed: while typing, not on blur, so the
+    // layout does not shift under the pointer when someone clicks the next field.
+    const clearFixed = (e: Event) => {
       const n = (e.target as HTMLInputElement).name;
       const c = checks.find(([name]) => name === n);
-      if (c && document.getElementById(`enq-${n}-err`)?.hidden === false) setError(n, !c[1]());
-    });
+      if (c && document.getElementById(`enq-${n}-err`)?.hidden === false && c[1]()) setError(n, false);
+    };
+    form.addEventListener('input', clearFixed);
+    form.addEventListener('change', clearFixed);
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

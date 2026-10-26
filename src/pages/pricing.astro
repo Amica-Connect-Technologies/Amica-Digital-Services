@@ -3,156 +3,293 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
+import Icon from '../components/Icon.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
 import { faqSchema, orgRef, areaServed } from '../data/schema';
 import { company } from '../data/site';
+import { packages, individualServices, comparison, toNumber, type Billing } from '../data/pricing';
 
-// Each plan is available on a rolling 30-day basis with a setup fee, or with the setup fee waived for a longer commitment.
-const plans = [
-  {
-    name: 'Foundation',
-    tagline: 'Get started with smart systems',
-    price: '£199',
-    setup: '£200',
-    waiver: 'Setup fee waived on a 6-month agreement',
-    features: [
-      'Lead capture forms for your website and social media',
-      'Basic email automation',
-      'Enquiry notifications and tracking',
-      'Central contact database and lead tracking',
-      'Basic pipeline visibility',
-      'Conversion-focused website improvements',
-      'Basic landing page setup',
-      '4 branded social media posts per month',
-    ],
-  },
-  {
-    name: 'Growth',
-    tagline: 'Automation and lead generation system',
-    price: '£490',
-    setup: '£990',
-    waiver: 'Setup fee waived on a 12-month agreement',
-    featured: true,
-    features: [
-      'Everything in Foundation, plus:',
-      'Multi-step workflows and WhatsApp automation',
-      'Automated follow-ups and appointment booking',
-      'Full CRM pipeline with team access',
-      'Funnel setup with lead routing and qualification',
-      '8 social media posts per month',
-      'On-page SEO and local keyword targeting',
-      'Technical SEO improvements',
-    ],
-  },
-  {
-    name: 'Pro',
-    tagline: 'Full AI growth and automation system',
-    price: '£990',
-    setup: '£1,950',
-    waiver: 'Setup fee waived on a 12-month agreement',
-    features: [
-      'Everything in Growth, plus:',
-      'Advanced workflows, sales pipelines and API integrations',
-      'Lead scoring, qualification and advanced dashboards',
-      'AI chatbot, WhatsApp assistant and lead qualification',
-      'Advanced SEO content strategy',
-      '12 posts per month plus Reels and short-form video',
-      'LinkedIn profile optimisation and B2B outreach',
-      'YouTube channel optimisation (optional)',
-    ],
-  },
-];
+const per = (b: Billing) => (b === 'month' ? '/ month' : 'one-off');
+
+// "Bought separately" anchors: the sum of the standalone starting prices that a package covers.
+const sum = (keys: string[]) =>
+  individualServices.filter((s) => keys.includes(s.key)).reduce((t, s) => t + Number(toNumber(s.from)), 0);
+const separately: Record<string, number> = {
+  Growth: sum(['SEO', 'Social Media Management', 'CRM and GoHighLevel', 'AI Workflow Automation']),
+  Pro: sum(['SEO', 'Google Local Services Ads', 'Social Media Management', 'CRM and GoHighLevel', 'AI Workflow Automation', 'AI Website Chatbot', 'AI Receptionist / Voice Agent']),
+};
 
 const faqs = [
-  { q: 'How does the rolling 30-day plan work?', a: 'You pay monthly in advance with no minimum term, plus a one-off setup fee at the start. You can cancel by giving 30 days\' notice.' },
+  { q: 'How does the rolling 30-day plan work?', a: "You pay monthly in advance with no minimum term, plus a one-off setup fee at the start. You can cancel by giving 30 days' notice." },
   { q: 'How do I avoid the setup fee?', a: 'Choose a longer agreement: 6 months for Foundation, or 12 months for Growth and Pro. The monthly price stays the same and the setup fee is waived.' },
+  { q: 'Why choose a package instead of single services?', a: 'A package joins your marketing, CRM and follow-up into one system managed by one team, and costs less than buying the same services separately. Single services suit businesses that only need one thing done well.' },
+  { q: 'What is not included in the monthly price?', a: 'Advertising spend (for example Google Local Services Ads or social media ads), call minutes and phone numbers, SMS and WhatsApp usage, third-party software subscriptions and custom development are separate unless your written quote says otherwise.' },
+  { q: 'Do you guarantee leads or rankings?', a: 'No. Results depend on your market, competition, budget and eligibility. We agree clear monthly deliverables and report on them openly.' },
   { q: 'Is VAT included?', a: 'Amica Digital Services is not currently VAT registered, so no VAT is added to our prices. Your written quote confirms the final amount.' },
   { q: 'When do I pay?', a: 'The first monthly payment, and any setup fee, is due in advance before work starts.' },
   { q: 'Can I change plan later?', a: 'Yes. You can move up a plan at any time. We confirm any change in writing before it takes effect.' },
-  { q: 'How do you price other projects?', a: 'Custom websites, software, AI voice agents and advertising campaigns are quoted individually after a short call, so you only pay for what you need.' },
 ];
 
-const toNumber = (p: string) => p.replace(/[£,]/g, '');
+const monthlyOffer = (name: string, description: string, price: string) => ({
+  '@type': 'Offer',
+  name,
+  description,
+  priceCurrency: 'GBP',
+  priceSpecification: {
+    '@type': 'UnitPriceSpecification',
+    price: toNumber(price),
+    priceCurrency: 'GBP',
+    unitText: 'MONTH',
+    referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+  },
+});
 const schema = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Digital growth and AI automation plans',
+    name: 'Digital marketing, local advertising and AI automation',
     serviceType: 'Digital marketing and AI automation',
     url: `${company.url}/pricing`,
     provider: orgRef,
     areaServed,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Monthly plans',
-      itemListElement: plans.map((p) => ({
-        '@type': 'Offer',
-        name: p.name,
-        description: `${p.tagline}. Rolling 30-day plan: ${p.setup} one-off setup. ${p.waiver}.`,
-        price: toNumber(p.price),
-        priceCurrency: 'GBP',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: toNumber(p.price),
-          priceCurrency: 'GBP',
-          unitText: 'MONTH',
-          referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
-        },
-      })),
+      name: 'Amica Digital Services pricing',
+      itemListElement: [
+        ...packages.map((p) => monthlyOffer(`${p.name} package`, `${p.tagline} Rolling 30-day plan: ${p.setup} one-off setup. ${p.waiver}.`, p.price)),
+        ...individualServices.map((s) =>
+          s.billing === 'month'
+            ? monthlyOffer(s.name, `From ${s.from} per month. ${s.note}`, s.from)
+            : { '@type': 'Offer', name: s.name, description: `From ${s.from} one-off. ${s.note}`, price: toNumber(s.from), priceCurrency: 'GBP' }
+        ),
+      ],
     },
   },
   faqSchema(faqs),
 ];
 ---
-<Base title="Pricing: Automation and Marketing from £199/month | Amica" description="Foundation £199, Growth £490 and Pro £990 per month. Rolling 30-day plans with a setup fee, or the setup fee waived on longer agreements. No VAT added." schema={schema}>
-  <PageHero eyebrow="Pricing" title="Simple monthly plans, agreed in writing" lead="Choose a rolling 30-day plan with a one-off setup fee, or commit for longer and we waive the setup fee. Every plan includes setup, support and a monthly review." crumbs={[{ label: 'Pricing' }]} />
-  <section class="section">
+<Base title="Digital Marketing, SEO, LSA & AI Pricing | Amica Digital" description="Explore Amica Digital Services pricing for SEO, Google Local Services Ads, CRM, social media, AI receptionists and business automation packages." schema={schema}>
+  <PageHero eyebrow="Pricing" title="Simple pricing. Smarter business growth." lead="Choose the services you need, or combine digital marketing, lead generation, CRM and AI automation into one affordable monthly package." crumbs={[{ label: 'Pricing' }]}>
+    <div class="btn-row">
+      <a href="#enquire" class="btn btn-primary" data-pick-service="Not sure yet">Get a quote</a>
+      <a href="/book-a-consultation" class="btn btn-secondary">Book a free consultation</a>
+    </div>
+  </PageHero>
+
+  <section class="section pricing-tabs-section">
     <div class="container">
-      <div class="grid grid-3">
-        {plans.map((p) => (
-          <div class:list={['card price-card', { featured: p.featured }]}>
-            {p.featured && <span class="badge">Most popular</span>}
-            <h3>{p.name}</h3>
-            <p class="tagline">{p.tagline}</p>
-            <p class="price">{p.price}<small> / month</small></p>
-            <p class="terms">Rolling 30-day plan: {p.setup} one-off setup<br /><strong>{p.waiver}</strong></p>
-            <ul class="checklist">
-              {p.features.map((f) => <li>{f}</li>)}
-            </ul>
-            <a href="/book-a-consultation" class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']}>Book a free call</a>
+      <div class="tabs" role="tablist" aria-label="Pricing options" data-tabs hidden>
+        <button type="button" role="tab" id="tab-packages" aria-controls="panel-packages" aria-selected="true">Business growth packages</button>
+        <button type="button" role="tab" id="tab-services" aria-controls="panel-services" aria-selected="false" tabindex="-1">Individual services</button>
+      </div>
+
+      <div id="panel-packages" role="tabpanel" aria-labelledby="tab-packages" class="panel">
+        <h2 class="panel-title">Business growth packages</h2>
+        <p class="panel-lead">One joined-up system for marketing, lead capture and follow-up, managed by one team. Every package is monthly, with a setup fee on a rolling plan or no setup fee on a longer agreement.</p>
+        <div class="grid grid-3 packages">
+          {packages.map((p) => (
+            <article class:list={['card price-card', { featured: p.featured }]} aria-labelledby={`pkg-${p.name}`}>
+              {p.featured && <span class="badge">Most popular</span>}
+              <h3 id={`pkg-${p.name}`}>{p.name}</h3>
+              <p class="tagline">{p.tagline}</p>
+              <p class="price">{p.price}<small> / month</small></p>
+              {separately[p.name] && <p class="anchor">Bought separately: from £{separately[p.name].toLocaleString('en-GB')} / month</p>}
+              <p class="terms">Rolling 30-day plan: {p.setup} one-off setup<br /><strong>{p.waiver}</strong></p>
+              <a href="#enquire" class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']} data-pick-service={p.key}>{p.cta}</a>
+              {p.intro && <p class="intro">{p.intro}</p>}
+              <ul class="checklist">
+                {p.features.map((f) => <li>{f}</li>)}
+              </ul>
+              {p.notes && (
+                <details class="pkg-notes">
+                  <summary>Important to know</summary>
+                  <ul>{p.notes.map((n) => <li>{n}</li>)}</ul>
+                </details>
+              )}
+            </article>
+          ))}
+        </div>
+
+        <details class="compare card">
+          <summary><span>Compare packages side by side</span></summary>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Package comparison table">
+            <table>
+              <caption class="sr-only">What each package includes</caption>
+              <thead>
+                <tr><th scope="col">Feature</th>{packages.map((p) => <th scope="col">{p.name}<span>{p.price}/month</span></th>)}</tr>
+              </thead>
+              <tbody>
+                {comparison.map((row) => (
+                  <tr>
+                    <th scope="row">{row.label}</th>
+                    {row.values.map((v) => (
+                      <td>{v === true ? <span class="yes"><Icon name="check" /><span class="sr-only">Included</span></span> : v === false ? <span class="no" aria-label="Not included">–</span> : v}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        ))}
+        </details>
+
+        <div class="card specialist split">
+          <div>
+            <span class="eyebrow">Specialist package</span>
+            <h3>Care and Recruitment Agency Automation</h3>
+            <p>Built around care and recruitment operations: client enquiry and candidate pipelines, interview and assessment booking, onboarding workflows and reporting. It is separate from the packages above because its scope is specific to these sectors.</p>
+          </div>
+          <div>
+            <p class="price">£490<small> / month</small></p>
+            <p class="terms">No setup fee on a 12-month agreement, or £990 setup on a rolling 30-day plan.</p>
+            <a href="/care-agency-automation" class="btn btn-secondary">Explore Care and Recruitment Automation</a>
+          </div>
+        </div>
       </div>
-      <p class="note">Third-party usage costs, such as SMS, WhatsApp, phone numbers or advertising spend, may apply and will be confirmed in your written quote.</p>
+
+      <div id="panel-services" role="tabpanel" aria-labelledby="tab-services" class="panel">
+        <h2 class="panel-title">Individual services</h2>
+        <p class="panel-lead">Need one thing done well? Each service has a clear starting price. Your written quote confirms the exact scope.</p>
+        <div class="grid grid-3 services">
+          {individualServices.map((s) => (
+            <article class="card svc-card" aria-labelledby={`svc-${s.key.replace(/\W+/g, '-')}`}>
+              <div class="svc-head">
+                <div class="icon-badge"><Icon name={s.icon} /></div>
+                <span class="billing">{s.billing === 'month' ? 'Monthly' : 'One-off'}</span>
+              </div>
+              <h3 id={`svc-${s.key.replace(/\W+/g, '-')}`}>{s.name}</h3>
+              <p class="price small-price"><span class="from">From</span> {s.from}<small> {per(s.billing)}{s.suffix && ` ${s.suffix}`}</small></p>
+              <ul class="checklist">
+                {s.includes.map((i) => <li>{i}</li>)}
+              </ul>
+              <p class="svc-note">{s.note}</p>
+              <div class="svc-ctas">
+                <a href="#enquire" class="btn btn-primary" data-pick-service={s.key}>Get a quote</a>
+                <a href={s.cta.href} class="more">{s.cta.label} →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="extras notice">
+        <h3>What is charged separately</h3>
+        <p>Setup fees, usage charges (call minutes, phone numbers, SMS and WhatsApp), advertising budgets, third-party subscriptions and custom development are separate unless your written quote includes them. Google advertising spend is always paid directly to Google. Prices are starting prices for new agreements and do not change existing contracts.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section-sm">
-    <div class="container">
-      <div class="card specialist split">
-        <div>
-          <span class="eyebrow">For care and recruitment agencies</span>
-          <h2>Care and Recruitment Automation Package</h2>
-          <p class="lead" style="margin:0">Our Growth plan, built specifically for care and recruitment agencies: client enquiry and candidate pipelines, interview and assessment booking, onboarding workflows and reporting.</p>
-        </div>
-        <div>
-          <p class="price">£490<small> / month</small></p>
-          <p>No setup fee on a 12-month agreement, or £990 setup on a rolling 30-day plan.</p>
-          <a href="/care-agency-automation" class="btn btn-primary">See what is included</a>
-        </div>
+  <section class="section section-alt" id="enquire">
+    <div class="container enquire-wrap">
+      <div class="enquire-intro">
+        <span class="eyebrow">Get a quote</span>
+        <h2>Tell us what you need</h2>
+        <p class="lead">Choose a package or service and we will reply within one working day with a clear, written quote.</p>
+        <ul class="checklist">
+          <li>No obligation and no hard sell</li>
+          <li>Plain-English scope and pricing</li>
+          <li>UK team based in Manchester</li>
+        </ul>
+        <p>Prefer to talk it through? <a href="/book-a-consultation">Book a free consultation</a>.</p>
+      </div>
+      <div class="card form-card">
+        <ServiceEnquiryForm />
       </div>
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container" style="max-width:860px"><Faq items={faqs} /></div>
   </section>
   <CtaBand />
 </Base>
+
+<script>
+  // Progressive tabs: without JavaScript both panels show one after the other.
+  const list = document.querySelector<HTMLElement>('[data-tabs]');
+  if (list) {
+    const tabs = Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')!)!);
+    list.hidden = false;
+    document.querySelectorAll('.panel-title').forEach((h) => h.classList.add('sr-only'));
+    const select = (i: number, focus = false) => {
+      tabs.forEach((t, j) => {
+        const on = i === j;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          select((i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length, true);
+        }
+      });
+    });
+    select(location.hash === '#individual-services' ? 1 : 0);
+  }
+</script>
+
 <style>
-  .note { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 28px; }
-  .tagline { color: var(--muted); margin: -6px 0 0; }
-  .terms { font-size: 0.92rem; color: var(--muted); }
+  .pricing-tabs-section { padding-top: 40px; }
+  .tabs { display: inline-flex; gap: 4px; padding: 5px; background: var(--teal-soft); border-radius: 999px; margin: 0 auto 32px; position: relative; left: 50%; transform: translateX(-50%); }
+  .tabs[hidden] { display: none; }
+  .tabs button { font: inherit; font-weight: 700; font-size: 1rem; border: 0; background: transparent; color: var(--navy); padding: 12px 22px; border-radius: 999px; cursor: pointer; min-height: 48px; }
+  .tabs button[aria-selected='true'] { background: var(--white); color: var(--teal-dark); box-shadow: 0 2px 8px rgba(14,42,71,0.12); }
+  .tabs button:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  @media (max-width: 560px) {
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; left: 0; transform: none; border-radius: 14px; }
+    .tabs button { padding: 10px 8px; font-size: 0.92rem; border-radius: 10px; }
+  }
+  .panel + .panel { margin-top: 64px; }
+  .panel[hidden] { display: none; }
+  .panel-title { text-align: center; }
+  .panel-lead { text-align: center; color: var(--muted); max-width: 720px; margin: 0 auto 40px; }
+  .packages { align-items: stretch; }
+  .tagline { color: var(--muted); margin: 4px 0 0; min-height: 3em; }
+  .anchor { margin: 6px 0 0; font-size: 0.9rem; color: var(--muted); }
+  .terms { font-size: 0.92rem; color: var(--muted); margin: 10px 0 18px; }
   .terms strong { color: var(--teal-dark); }
-  .specialist { padding: 40px; grid-template-columns: 1.5fr 1fr; }
-  @media (max-width: 900px) { .specialist { padding: 28px; } }
+  .price-card .btn { margin-bottom: 4px; }
+  .intro { font-weight: 700; color: var(--navy); margin: 18px 0 -8px !important; }
+  .pkg-notes { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--muted); }
+  .pkg-notes summary { cursor: pointer; font-weight: 700; color: var(--navy); padding: 6px 0; }
+  .pkg-notes ul { margin: 6px 0 0; padding-left: 18px; }
+  .compare { margin-top: 32px; padding: 0; overflow: hidden; }
+  .compare > summary { cursor: pointer; padding: 20px 28px; font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+  .compare[open] > summary { border-bottom: 1px solid var(--line); }
+  .table-wrap { overflow-x: auto; }
+  .table-wrap:focus-visible { outline: 3px solid var(--teal); outline-offset: -3px; }
+  .compare table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 0.95rem; }
+  .compare th, .compare td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .compare thead th { color: var(--navy); background: var(--bg-soft, #f5f8fa); }
+  .compare thead th span { display: block; font-weight: 600; color: var(--muted); font-size: 0.85rem; }
+  .compare tbody th { font-weight: 600; color: var(--navy); width: 30%; }
+  .compare .yes { color: var(--teal-dark); display: inline-block; width: 22px; height: 22px; }
+  .compare .yes :global(svg) { width: 22px; height: 22px; }
+  .compare .no { color: #8a96a3; }
+  .specialist { margin-top: 32px; padding: 36px; grid-template-columns: 1.5fr 1fr; gap: 32px; align-items: center; }
+  .specialist p { margin: 8px 0 0; }
+  @media (max-width: 900px) { .specialist { grid-template-columns: 1fr; padding: 26px; } }
+  .svc-card { display: flex; flex-direction: column; }
+  .svc-head { display: flex; justify-content: space-between; align-items: center; }
+  .billing { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--teal-dark); background: var(--teal-soft); padding: 4px 10px; border-radius: 999px; }
+  .small-price { font-size: 2rem; }
+  .from { font-size: 0.95rem; font-weight: 600; color: var(--muted); }
+  .svc-card .checklist { margin: 16px 0; flex: 1; }
+  .svc-note { font-size: 0.88rem; }
+  .svc-ctas { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; margin-top: 18px; }
+  .svc-ctas .more { margin: 0; font-weight: 700; color: var(--teal-dark); }
+  .extras { margin-top: 48px; }
+  .extras h3 { margin: 0 0 6px; }
+  .extras p { margin: 0; }
+  .enquire-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
+  @media (max-width: 960px) { .enquire-wrap { grid-template-columns: 1fr; gap: 28px; } }
+  .form-card { padding: 32px; }
+  @media (max-width: 640px) { .form-card { padding: 22px 18px; } }
+  #enquire { scroll-margin-top: 80px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 </style>
