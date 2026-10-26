@@ -108,7 +108,7 @@ export const services: Service[] = [
       { q: "Will callers know they are speaking to an AI?", a: "We recommend the agent says so at the start of the call. Being open builds trust and avoids confusion." },
       { q: "Can it handle sensitive or urgent calls?", a: "It is set up to recognise these and pass them to a person, or give your agreed emergency instructions. It does not give clinical, legal or financial advice." },
       { q: "Do I need a new phone number?", a: "Not usually. Calls can be forwarded to the agent when your team is busy or outside office hours." },
-      { q: "How much does an AI receptionist cost?", a: "AI receptionists start from £199 per month plus usage. Setup, call minutes, phone numbers and extra integrations are quoted after a short call, because they depend on call volume, hours covered and the systems involved. The Pro plan (£690 per month) includes AI receptionist setup for one agreed call flow." },
+      { q: "How much does an AI receptionist cost?", a: "AI receptionists start from £199 per month plus usage. Setup, call minutes, phone numbers and extra integrations are quoted after a short call, because they depend on call volume, hours covered and the systems involved. The Pro plan (£995 per month) includes AI receptionist setup for one agreed call flow." },
     ],
   },
   {
@@ -316,7 +316,7 @@ export const services: Service[] = [
       { q: "How long does SEO take?", a: "Technical fixes can help within weeks, but steady growth in rankings usually takes several months. We report progress every month so you can see what is changing." },
       { q: "Can you guarantee a number one ranking?", a: "No one can honestly guarantee rankings, because Google decides them. We focus on the work that gives you the best chance and measure the results openly." },
       { q: "Do you do local SEO?", a: "Yes. Local SEO includes Google Business Profile optimisation and location pages for the areas you serve, alongside technical SEO and content." },
-      { q: "Is SEO included in your monthly plans?", a: "The Growth plan (£490 per month) includes on-page SEO, local keyword targeting and technical SEO improvements. The Pro plan (£690 per month) adds an expanded SEO strategy and monthly content planning. SEO on its own starts from £299 per month." },
+      { q: "Is SEO included in your monthly plans?", a: "The Growth plan (£490 per month) includes on-page SEO, local keyword targeting and technical SEO improvements. The Pro plan (£995 per month) adds an expanded SEO strategy and monthly content planning. SEO on its own starts from £299 per month." },
     ],
   },
   {

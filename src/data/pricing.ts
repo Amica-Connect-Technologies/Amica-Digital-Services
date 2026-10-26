@@ -188,8 +188,8 @@ export const packages: Package[] = [
     key: 'Pro package',
     name: 'Pro',
     tagline: 'For businesses ready to combine SEO, local advertising and AI-powered customer engagement.',
-    price: '£690',
-    setup: '£990',
+    price: '£995',
+    setup: '£750',
     waiver: 'Setup fee waived on a 12-month agreement',
     intro: 'Everything in Growth, plus:',
     features: [
