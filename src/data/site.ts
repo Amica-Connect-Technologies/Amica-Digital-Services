@@ -40,7 +40,7 @@ export const ghl = {
   contactFormId: 'W09aF9SXp5iUXiSIKLjL',
   embedScript: 'https://link.msgsndr.com/js/form_embed.js',
   // "whatsapp chat widget" in GHL → Sites → Chat Widget (the account default).
-  chatWidgetId: '69df58aed69ee8616381a214',
+  chatWidgetId: '6ac4f6d141bf96f2cd128fd4',
 };
 
 export const analytics = {
