@@ -1,5 +1,310 @@
 [
   {
+    "slug": "ai-receptionist-for-hvac-companies",
+    "title": "AI Receptionist for HVAC Companies: How It Works and What It Costs",
+    "seoTitle": "AI Receptionist for HVAC Companies: Costs and Setup | Amica",
+    "seoDescription": "How an AI receptionist answers HVAC calls 24/7, books service visits and texts back missed callers, what it costs in the US, and what to check before you buy.",
+    "excerpt": "When your techs are on jobs and the office line rings out, most new customers call the next HVAC company on Google. An AI receptionist answers every call, books the visit and logs it in your CRM. Here is how it works and what it costs.",
+    "category": "AI & Automation",
+    "date": "2026-11-02",
+    "readTime": "6 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/ai-receptionist.jpg",
+    "coverAlt": "AI receptionist dashboard showing answered calls and booked HVAC service visits",
+    "related": [
+      "ai-voice-agents",
+      "crm-gohighlevel",
+      "ai-automation"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "An AI receptionist for an HVAC company is a voice assistant that answers your business line in a natural voice, asks the right questions about the problem, books the service visit into your calendar and sends the details to your team. It works nights, weekends and peak-season Mondays, when your phones are busiest and your people are on jobs."
+      },
+      {
+        "type": "paragraph",
+        "content": "This guide explains what it does on a real call, what it costs in the US, and the questions to ask before you sign up with anyone, including us."
+      },
+      {
+        "type": "heading",
+        "content": "Why missed calls hurt HVAC companies more than most"
+      },
+      {
+        "type": "paragraph",
+        "content": "HVAC demand is urgent and seasonal. When a furnace stops on a cold night or the AC fails in July, the homeowner calls until someone answers. If your line goes to voicemail, most will not leave a message. They call the next company in the search results."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Owners and techs are on jobs when the phone rings",
+          "Peak-season call volume is more than one person can answer",
+          "After-hours and weekend calls go to voicemail",
+          "Missed calls rarely get a fast call back, because nobody knows they were new customers"
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "What an AI receptionist does on a call"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "Answers every call:",
+            "content": "in a natural voice, using a script you approve, at any hour you choose."
+          },
+          {
+            "title": "Qualifies the job:",
+            "content": "asks for name, address, ZIP code, the problem and how urgent it is."
+          },
+          {
+            "title": "Books the visit:",
+            "content": "offers open slots from your calendar and confirms one, with a text confirmation."
+          },
+          {
+            "title": "Handles emergencies safely:",
+            "content": "tells callers who smell gas or hear a carbon monoxide alarm to leave the building and call 911 or the gas company."
+          },
+          {
+            "title": "Texts back missed calls:",
+            "content": "if a call drops or is missed, the caller gets a text within seconds so the conversation is not lost."
+          },
+          {
+            "title": "Logs everything:",
+            "content": "each call creates a CRM record with a summary, so your team can follow up."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "You decide when it answers: only after hours, only when nobody picks up within a few rings, or all the time. Your team can see every conversation and take over at any point."
+      },
+      {
+        "type": "heading",
+        "content": "What it costs in the US"
+      },
+      {
+        "type": "paragraph",
+        "content": "Most providers charge in three parts: a one-off setup fee, a monthly fee, and usage for call minutes, phone numbers and text messages."
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Option",
+          "Typical pricing shape",
+          "Best for"
+        ],
+        "rows": [
+          [
+            "Voicemail",
+            "Free",
+            "Very low call volume"
+          ],
+          [
+            "Human answering service",
+            "Per minute, per call or a monthly bundle",
+            "Complex calls that need a person"
+          ],
+          [
+            "AI receptionist",
+            "Setup fee, monthly fee and usage",
+            "Busy companies with many routine booking calls"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "At Amica Digital Services, our AI receptionist and missed-call text-back package is $297 a month plus usage, with a $497 setup fee. It includes the receptionist, missed-call text-back, a CRM pipeline, online booking with reminders and review requests. Our full US price list is on <a href=\"/us\">our US page</a>."
+      },
+      {
+        "type": "heading",
+        "content": "Five questions to ask before you buy"
+      },
+      {
+        "type": "subheading",
+        "content": "1. Can I hear it first?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Any provider should let you call a live demo line. Judge the voice, the questions it asks and how it handles a booking."
+      },
+      {
+        "type": "subheading",
+        "content": "2. What happens with emergencies and unusual calls?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Ask how it handles gas leaks, angry callers and questions it cannot answer. It should hand over to a person or take a message, never guess."
+      },
+      {
+        "type": "subheading",
+        "content": "3. Does it book into my real calendar?"
+      },
+      {
+        "type": "paragraph",
+        "content": "A receptionist that only takes messages saves less time. Booking into your calendar, with confirmations and reminders, is where most of the value is."
+      },
+      {
+        "type": "subheading",
+        "content": "4. Who owns the data and the phone number?"
+      },
+      {
+        "type": "paragraph",
+        "content": "You should keep your contacts, call history and number if you leave."
+      },
+      {
+        "type": "subheading",
+        "content": "5. Is texting set up properly?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Business texting in the US needs A2P 10DLC registration, and texts should only go to people who called you or asked to hear from you. Ask the provider to handle registration with you."
+      },
+      {
+        "type": "heading",
+        "content": "Next step"
+      },
+      {
+        "type": "paragraph",
+        "content": "The quickest way to decide is to hear it. Book a free 15-minute demo on <a href=\"/us\">our US page</a> and we will show how it would answer calls for your company."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does an AI receptionist cost for an HVAC company?",
+        "a": "Most providers charge a setup fee, a monthly fee and usage for minutes and texts. Amica Digital Services' AI receptionist and missed-call text-back package is $297 a month plus usage, with $497 setup."
+      },
+      {
+        "q": "Can an AI receptionist book HVAC service calls?",
+        "a": "Yes. Connected to your calendar and CRM, it can offer open slots, confirm a booking and send the customer a text confirmation."
+      },
+      {
+        "q": "What happens if a caller has an emergency?",
+        "a": "A well-set-up AI receptionist follows safety rules you approve. For a suspected gas leak or carbon monoxide alarm, it tells the caller to leave the building and call 911 or the gas company, and alerts your team."
+      },
+      {
+        "q": "Will customers know they are talking to an AI?",
+        "a": "They should. Good practice is for the assistant to say it is a virtual assistant and to offer a way to reach a person."
+      }
+    ]
+  },
+  {
+    "slug": "missed-call-text-back-for-contractors",
+    "title": "Missed-Call Text-Back for Contractors: Win Back the Calls You Can't Answer",
+    "seoTitle": "Missed-Call Text-Back for Contractors and Plumbers | Amica",
+    "seoDescription": "How missed-call text-back works for plumbers, electricians, roofers and HVAC contractors, what to say in the text, US texting rules, and what it costs.",
+    "excerpt": "Missed-call text-back sends an automatic text to anyone whose call you could not answer, so the lead stays with you instead of calling a competitor. Here is how contractors set it up and what to say.",
+    "category": "AI & Automation",
+    "date": "2026-11-02",
+    "readTime": "5 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/website-crm.jpg",
+    "coverAlt": "Phone showing an automatic text sent to a caller after a missed call",
+    "related": [
+      "ai-automation",
+      "ai-voice-agents",
+      "crm-gohighlevel"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "Missed-call text-back is an automation that sends a text message to anyone whose call you did not answer, usually within seconds. For a contractor on a roof, under a sink or driving between jobs, it keeps a new customer talking to you instead of calling the next company on Google."
+      },
+      {
+        "type": "heading",
+        "content": "How it works"
+      },
+      {
+        "type": "list",
+        "items": [
+          "A customer calls your business number and nobody picks up",
+          "Within seconds, they receive a text from your business number",
+          "They reply by text with what they need, and the conversation lands in one inbox",
+          "Your team replies when they can, or an AI assistant answers simple questions and books the job"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "It runs on your existing business number or a new one, and works alongside voicemail rather than replacing it."
+      },
+      {
+        "type": "heading",
+        "content": "What to say in the text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Keep it short, friendly and specific. A good first text names your company, says sorry, and asks one easy question:"
+      },
+      {
+        "type": "paragraph",
+        "content": "\"Hi, this is Summit Plumbing. Sorry we missed your call, we're on a job right now. What can we help with? Reply here and we'll get right back to you.\""
+      },
+      {
+        "type": "paragraph",
+        "content": "Avoid sales language and links in the first text. The aim is a reply, not a click."
+      },
+      {
+        "type": "heading",
+        "content": "Why it works for contractors"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "Speed:",
+            "content": "the customer hears from you while they are still deciding who to hire."
+          },
+          {
+            "title": "Convenience:",
+            "content": "many people would rather text than leave a voicemail."
+          },
+          {
+            "title": "No lost leads:",
+            "content": "every missed call becomes a conversation in your CRM, with a record of who called and when."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "US texting rules to follow"
+      },
+      {
+        "type": "paragraph",
+        "content": "Business texting in the US is regulated. Register your number for A2P 10DLC so carriers deliver your messages, only text people who called you or asked to hear from you, and honor any reply such as STOP straight away. Missed-call text-back fits these rules because the person contacted you first. Do not use it to send marketing texts to lists."
+      },
+      {
+        "type": "heading",
+        "content": "What it costs"
+      },
+      {
+        "type": "paragraph",
+        "content": "Missed-call text-back is usually part of a CRM or AI receptionist package rather than sold alone, with a small charge per text. At Amica Digital Services, it is included in our AI receptionist and missed-call text-back package at $297 a month plus usage, with a $497 setup fee. See our full US price list on <a href=\"/us\">our US page</a>."
+      },
+      {
+        "type": "heading",
+        "content": "Next step"
+      },
+      {
+        "type": "paragraph",
+        "content": "If you miss calls while you are on jobs, missed-call text-back is one of the quickest wins you can set up. Book a free 15-minute demo on <a href=\"/us\">our US page</a> and we will show you how it works."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is missed-call text-back?",
+        "a": "An automation that texts anyone whose call you could not answer, usually within seconds, so they can reply by text instead of calling a competitor."
+      },
+      {
+        "q": "Is missed-call text-back legal in the US?",
+        "a": "It is generally used because the caller contacted you first. Register your number for A2P 10DLC, honor STOP replies and do not use it for marketing texts to lists."
+      },
+      {
+        "q": "Can I use my existing business number?",
+        "a": "Often yes, depending on your phone provider. Otherwise a new number can forward to your phones and handle the texts."
+      }
+    ]
+  },
+  {
     "slug": "ai-automation-agency-uk",
     "title": "AI Automation Agency UK: What One Does and How to Choose the Right One",
     "seoTitle": "AI Automation Agency UK: What They Do and How to Choose | Amica",
