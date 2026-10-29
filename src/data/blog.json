@@ -1,5 +1,709 @@
 [
   {
+    "slug": "ai-automation-agency-uk",
+    "title": "AI Automation Agency UK: What One Does and How to Choose the Right One",
+    "seoTitle": "AI Automation Agency UK: What They Do and How to Choose | Amica",
+    "seoDescription": "What a UK AI automation agency actually builds, what it should cost, the questions to ask before you sign, and the warning signs to look out for.",
+    "excerpt": "An AI automation agency connects your enquiries, calendar, CRM and follow-up so routine work happens on its own and your team gets the conversations that need a person. Here is what that looks like in practice and how to choose one in the UK.",
+    "category": "AI & Automation",
+    "date": "2026-11-02",
+    "readTime": "8 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/website-crm.jpg",
+    "coverAlt": "Dashboard showing automated lead follow-up, booked appointments and CRM pipeline stages",
+    "related": [
+      "ai-automation",
+      "crm-gohighlevel",
+      "ai-voice-agents"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "An AI automation agency designs and builds systems that handle repetitive work in your business: replying to new enquiries, booking appointments, sending reminders, chasing missing paperwork and keeping your CRM up to date. The aim is simple. Every lead gets a fast, consistent response, and your team spends its time on the conversations that need a person."
+      },
+      {
+        "type": "paragraph",
+        "content": "The term is used loosely, so this guide explains what a good UK AI automation agency should actually deliver, how pricing usually works, and what to ask before you commit."
+      },
+      {
+        "type": "heading",
+        "content": "What does an AI automation agency do?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Most of the value comes from joining up systems you may already have. A typical project covers some or all of the following:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Lead capture from your website, Facebook, Google and phone calls into one CRM",
+          "Instant replies by email or text so a new enquiry hears back in minutes, not hours",
+          "An AI chatbot on your website that answers approved questions and books calls",
+          "An AI receptionist that answers the phone when your team cannot and logs every call",
+          "Workflow automation for reminders, follow-ups, onboarding steps and internal alerts",
+          "Reporting so you can see where enquiries come from and how many turn into customers"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "AI is one part of this, not all of it. Much of the benefit comes from plain, reliable automation: the right message going to the right person at the right time, every time."
+      },
+      {
+        "type": "heading",
+        "content": "Signs your business is ready for automation"
+      },
+      {
+        "type": "paragraph",
+        "content": "Automation pays off fastest when the same task happens many times a week. Common signs include:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Enquiries wait hours or days for a first reply",
+          "Calls go to voicemail when the team is busy or after hours",
+          "Leads sit in an inbox, a spreadsheet and a phone, with no single record",
+          "Staff spend time copying details between systems",
+          "Nobody can say with confidence how many enquiries came in last month or what happened to them"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "If two or three of these sound familiar, a small, focused automation project will usually help more than a large one."
+      },
+      {
+        "type": "heading",
+        "content": "What should it cost in the UK?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Pricing varies with the number of systems, workflows and channels involved. Most agencies charge in a similar shape:"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "One-off build:",
+            "content": "discovery, workflow design, configuration, integration and testing."
+          },
+          {
+            "title": "Monthly fee:",
+            "content": "hosting, monitoring, fixes and improvements as your business changes."
+          },
+          {
+            "title": "Usage:",
+            "content": "text messages, call minutes, phone numbers and AI usage are often charged by the underlying platforms."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "At Amica Digital Services, workflow automation starts from £199 a month plus a one-off build from £495, and our packages and other services are listed with prices on our pricing page. Whoever you choose, ask for a written quote that separates build, monthly and usage costs so there are no surprises."
+      },
+      {
+        "type": "heading",
+        "content": "Questions to ask before you choose an agency"
+      },
+      {
+        "type": "subheading",
+        "content": "1. What exactly will be automated, and what stays with my team?"
+      },
+      {
+        "type": "paragraph",
+        "content": "A good agency writes this down. You should know which messages are sent automatically, which decisions stay with a person, and when the system hands over to your staff."
+      },
+      {
+        "type": "subheading",
+        "content": "2. Which platform will it run on, and who owns the account?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Ask whether the CRM and automations sit in an account you control. If you leave, you should keep your contacts, history and workflows."
+      },
+      {
+        "type": "subheading",
+        "content": "3. How is personal data handled?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Automation processes personal data, so the agency should be able to explain where data is stored, who can access it and how it supports your UK GDPR obligations. For marketing messages, consent rules under PECR still apply."
+      },
+      {
+        "type": "subheading",
+        "content": "4. How will we know it is working?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Agree a few measures before you start, such as time to first response, enquiries captured, appointments booked and enquiries that turn into customers."
+      },
+      {
+        "type": "subheading",
+        "content": "5. What happens when something breaks?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Integrations change. Ask who monitors the workflows, how quickly issues are fixed and how you report a problem."
+      },
+      {
+        "type": "heading",
+        "content": "Warning signs"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Promises of guaranteed results or a fixed number of sales",
+          "No clear answer on who owns the CRM account and data",
+          "Fully automated replies with no human handover for complaints, safeguarding or sensitive topics",
+          "A long contract before any discovery work has been done",
+          "Pricing that hides usage costs until after you sign"
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Where to start"
+      },
+      {
+        "type": "paragraph",
+        "content": "The best first project is usually small and measurable: capture every enquiry in one place and make sure each one gets an instant, helpful reply with a clear next step. Once that is reliable, add an AI chatbot, an AI receptionist or more detailed workflows."
+      },
+      {
+        "type": "paragraph",
+        "content": "If you would like a second opinion on what to automate first, book a free consultation and we will walk through your current enquiry process with you."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is an AI automation agency?",
+        "a": "An AI automation agency designs and builds systems that handle repetitive business tasks such as replying to enquiries, booking appointments, sending reminders and updating your CRM, using a mix of workflow automation and AI tools like chatbots and AI receptionists."
+      },
+      {
+        "q": "How much does AI automation cost for a UK small business?",
+        "a": "Most agencies charge a one-off build fee, a monthly fee and usage costs such as text messages and call minutes. Amica Digital Services offers workflow automation from £199 a month plus a build from £495."
+      },
+      {
+        "q": "Will automation replace my staff?",
+        "a": "It should not. Good automation handles routine, repetitive steps so your team can focus on conversations and decisions that need a person, with clear rules for handing over to staff."
+      },
+      {
+        "q": "Is AI automation GDPR compliant?",
+        "a": "It can be, if it is set up properly. Ask your agency where data is stored, who can access it and how consent for marketing messages is recorded under UK GDPR and PECR."
+      }
+    ]
+  },
+  {
+    "slug": "recruitment-crm-automation",
+    "title": "Recruitment CRM Automation: 7 Workflows Every UK Agency Should Set Up",
+    "seoTitle": "Recruitment CRM Automation: 7 Workflows for UK Agencies | Amica",
+    "seoDescription": "Seven recruitment CRM automations that save UK agencies time: instant applicant replies, screening, interview booking, compliance chasers, client updates and more.",
+    "excerpt": "Your recruitment CRM can do far more than store CVs. These seven workflows help UK agencies respond to candidates faster, keep compliance moving and give clients regular updates without extra admin.",
+    "category": "Recruitment",
+    "date": "2026-11-02",
+    "readTime": "7 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/recruitment-automation.jpg",
+    "coverAlt": "Recruiter reviewing an automated candidate pipeline in a CRM",
+    "related": [
+      "recruitment-agency-automation",
+      "crm-gohighlevel",
+      "ai-chatbots"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "Most recruitment agencies already have a CRM or applicant tracking system. Far fewer use it to do the repetitive work for them. Recruitment CRM automation means setting up workflows that respond to candidates, move people through your pipeline, chase documents and keep clients informed, so your consultants spend more time on the phone and less time on admin."
+      },
+      {
+        "type": "paragraph",
+        "content": "Here are seven workflows that make a difference for most UK agencies, whether you place care workers, drivers, office staff or specialist professionals."
+      },
+      {
+        "type": "heading",
+        "content": "1. Instant reply to every applicant"
+      },
+      {
+        "type": "paragraph",
+        "content": "When someone applies, send an immediate message by text and email confirming you have their application, what happens next and how long it usually takes. Candidates often apply to several agencies at once, so a fast, clear reply helps you stay in the conversation."
+      },
+      {
+        "type": "heading",
+        "content": "2. Short screening questions"
+      },
+      {
+        "type": "paragraph",
+        "content": "Follow the first reply with a few screening questions: availability, location, right to work, driving licence or relevant qualifications. Answers are saved to the candidate record, and suitable applicants can be moved to the next stage automatically, with a consultant reviewing anything unclear."
+      },
+      {
+        "type": "heading",
+        "content": "3. Self-service interview booking"
+      },
+      {
+        "type": "paragraph",
+        "content": "Instead of trading messages to find a time, send a booking link connected to your team's calendar. Add automatic reminders the day before and an hour before, and a follow-up if someone does not attend."
+      },
+      {
+        "type": "heading",
+        "content": "4. Compliance and document chasers"
+      },
+      {
+        "type": "paragraph",
+        "content": "Placements stall when documents are missing. Set up reminders that ask candidates for outstanding items, such as proof of right to work, references or training certificates, and alert a consultant when something has been outstanding too long. Automation can request and track documents, but checks such as right to work verification still need to be carried out properly by your team."
+      },
+      {
+        "type": "heading",
+        "content": "5. Pipeline stage updates"
+      },
+      {
+        "type": "paragraph",
+        "content": "Each time a candidate moves stage, from applied to screened, interviewed, compliant and placed, the CRM can update tags, notify the right consultant and trigger the next message. Your pipeline then reflects reality without anyone updating it by hand."
+      },
+      {
+        "type": "heading",
+        "content": "6. Client updates and vacancy follow-ups"
+      },
+      {
+        "type": "paragraph",
+        "content": "Send clients a short update when shortlisted candidates are ready, and set reminders for consultants to follow up on open vacancies. Regular, timely communication is one of the simplest ways to stand out from other agencies."
+      },
+      {
+        "type": "heading",
+        "content": "7. Re-engaging your existing database"
+      },
+      {
+        "type": "paragraph",
+        "content": "Your database is an asset. Automated campaigns can check in with past candidates about their availability, and with past clients about new roles. Make sure you have a lawful basis to contact people and that marketing messages respect consent and opt-out rules under UK GDPR and PECR."
+      },
+      {
+        "type": "heading",
+        "content": "What to automate first"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Workflow",
+          "Effort to set up",
+          "Typical benefit"
+        ],
+        "rows": [
+          [
+            "Instant applicant reply",
+            "Low",
+            "Faster response, fewer lost candidates"
+          ],
+          [
+            "Interview booking and reminders",
+            "Low",
+            "Less back-and-forth, fewer no-shows"
+          ],
+          [
+            "Screening questions",
+            "Medium",
+            "Consultants focus on suitable applicants"
+          ],
+          [
+            "Compliance chasers",
+            "Medium",
+            "Placements move faster"
+          ],
+          [
+            "Pipeline stage updates",
+            "Medium",
+            "Accurate pipeline without manual updates"
+          ],
+          [
+            "Client updates",
+            "Medium",
+            "Better client relationships"
+          ],
+          [
+            "Database re-engagement",
+            "Medium",
+            "More value from candidates you already have"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Start with the instant reply and interview booking. They are quick to build and the improvement is usually visible within weeks."
+      },
+      {
+        "type": "heading",
+        "content": "Keep people in the loop"
+      },
+      {
+        "type": "paragraph",
+        "content": "Recruitment is a people business. Automation should handle the routine steps and make it easier for consultants to have better conversations, not replace those conversations. Build in clear points where a person reviews, calls or decides."
+      },
+      {
+        "type": "paragraph",
+        "content": "If you want help setting these workflows up in GoHighLevel or connecting them to your existing systems, see our recruitment agency automation service or book a free consultation."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is recruitment CRM automation?",
+        "a": "It is the use of workflows in your recruitment CRM to handle repetitive tasks automatically, such as replying to applicants, booking interviews, chasing documents, updating pipeline stages and sending client updates."
+      },
+      {
+        "q": "Which recruitment workflow should I automate first?",
+        "a": "An instant reply to every applicant, followed by self-service interview booking with reminders. Both are quick to set up and reduce the number of candidates you lose to slower agencies."
+      },
+      {
+        "q": "Can automation carry out right to work checks?",
+        "a": "Automation can request, collect and track documents, but right to work checks must still be carried out correctly by your team in line with Home Office guidance."
+      },
+      {
+        "q": "Does recruitment automation work with GoHighLevel?",
+        "a": "Yes. GoHighLevel includes pipelines, forms, calendars, email, text messaging and workflow automation, which cover the workflows described in this guide."
+      }
+    ]
+  },
+  {
+    "slug": "gohighlevel-agency-uk",
+    "title": "GoHighLevel Agency UK: What a HighLevel Partner Sets Up for Your Business",
+    "seoTitle": "GoHighLevel Agency UK: What a HighLevel Partner Sets Up | Amica",
+    "seoDescription": "What GoHighLevel is, what a UK GoHighLevel agency sets up for you, how pricing works and the questions to ask before you hand over your CRM.",
+    "excerpt": "GoHighLevel brings your CRM, website forms, calendars, email, text messages and automation into one platform. Here is what a UK GoHighLevel agency actually configures, and what to check before you choose one.",
+    "category": "CRM",
+    "date": "2026-11-02",
+    "readTime": "7 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/website-crm.jpg",
+    "coverAlt": "GoHighLevel style CRM pipeline with automated follow-up messages",
+    "related": [
+      "crm-gohighlevel",
+      "ai-automation",
+      "lead-generation"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "GoHighLevel, often shortened to HighLevel or GHL, is an all-in-one sales and marketing platform. It combines a CRM, sales pipelines, forms, calendars, email, text messaging, reviews, social media scheduling and workflow automation in one place. Many UK businesses use it through an agency, which sets it up, connects it to their channels and manages it month to month."
+      },
+      {
+        "type": "paragraph",
+        "content": "This guide explains what a GoHighLevel agency does, what you should expect from the setup, and how to choose one in the UK."
+      },
+      {
+        "type": "heading",
+        "content": "What is GoHighLevel used for?"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Capturing every enquiry from your website, social media, Google and calls in one CRM",
+          "Following up automatically by email and text message",
+          "Booking appointments through online calendars with reminders",
+          "Tracking each lead through a sales pipeline",
+          "Requesting reviews after a job or appointment",
+          "Running AI chatbots and AI receptionists connected to the same contact records",
+          "Reporting on where leads come from and which turn into customers"
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "What a GoHighLevel agency sets up"
+      },
+      {
+        "type": "paragraph",
+        "content": "Buying the software is the easy part. The work is in configuring it around how your business actually runs. A good setup usually includes:"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "Account and branding:",
+            "content": "your sub-account, business details, users, phone number and email sending domain."
+          },
+          {
+            "title": "Pipelines:",
+            "content": "stages that match your sales or onboarding process, so everyone sees the same picture."
+          },
+          {
+            "title": "Lead capture:",
+            "content": "website forms, Facebook lead forms, chat widgets and call tracking feeding the CRM."
+          },
+          {
+            "title": "Automations:",
+            "content": "instant replies, reminders, follow-ups, internal alerts and task creation."
+          },
+          {
+            "title": "Calendars:",
+            "content": "booking links with confirmations and reminders to reduce no-shows."
+          },
+          {
+            "title": "Email deliverability:",
+            "content": "a properly authenticated sending domain, so messages reach inboxes rather than spam."
+          },
+          {
+            "title": "Training and handover:",
+            "content": "so your team knows how to use it day to day."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "How pricing works"
+      },
+      {
+        "type": "paragraph",
+        "content": "HighLevel sells its own subscriptions directly, and agencies add their setup and management on top. Some agencies include the software in a monthly package, others ask you to hold your own subscription. Text messages, phone calls and email sending are usually charged on usage."
+      },
+      {
+        "type": "paragraph",
+        "content": "At Amica Digital Services, CRM and GoHighLevel management starts from £149 a month, with setup and additional integrations quoted separately. Our full pricing is on our pricing page."
+      },
+      {
+        "type": "heading",
+        "content": "Questions to ask a GoHighLevel agency"
+      },
+      {
+        "type": "subheading",
+        "content": "Who owns the account?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Make sure your contacts, conversations and workflows are in an account you can keep if you change provider."
+      },
+      {
+        "type": "subheading",
+        "content": "Will my email sending domain be set up properly?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Ask whether they will configure SPF, DKIM and DMARC for your sending domain. Poorly configured email is one of the most common reasons automated follow-ups go unseen."
+      },
+      {
+        "type": "subheading",
+        "content": "What will be automated, and what will my team handle?"
+      },
+      {
+        "type": "paragraph",
+        "content": "You should get a clear list of automated messages and the points where a person takes over."
+      },
+      {
+        "type": "subheading",
+        "content": "How do you handle consent and opt-outs?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Marketing texts and emails need the right consent under PECR, and every message should make it easy to opt out. The agency should set this up from the start."
+      },
+      {
+        "type": "subheading",
+        "content": "What support do I get after launch?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Ask how changes are requested, how quickly they are made and who monitors workflows for errors."
+      },
+      {
+        "type": "heading",
+        "content": "Is GoHighLevel right for your business?"
+      },
+      {
+        "type": "paragraph",
+        "content": "GoHighLevel works well for service businesses that rely on enquiries, appointments and follow-up, such as care and recruitment agencies, clinics, trades and local service providers. If you already use a specialist system that works well, a good agency should be honest about whether to integrate with it rather than replace it."
+      },
+      {
+        "type": "paragraph",
+        "content": "If you would like to see how GoHighLevel could work for your business, book a free consultation and we will map out a setup with you."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is a GoHighLevel agency?",
+        "a": "A GoHighLevel agency sets up and manages the HighLevel platform for businesses, configuring the CRM, pipelines, lead capture, automations, calendars and messaging around how each business works."
+      },
+      {
+        "q": "How much does GoHighLevel cost in the UK?",
+        "a": "You pay for the HighLevel software, either directly or through your agency, plus the agency's setup and management fees and usage such as text messages and calls. Amica Digital Services offers CRM and GoHighLevel management from £149 a month."
+      },
+      {
+        "q": "Do I own my data if an agency sets up GoHighLevel?",
+        "a": "You should. Agree in writing that your contacts, conversations and workflows can be kept or exported if you change provider."
+      },
+      {
+        "q": "Can GoHighLevel run AI chatbots and AI receptionists?",
+        "a": "Yes. HighLevel includes AI tools for chat and voice that use the same contact records, so conversations are logged in your CRM."
+      }
+    ]
+  },
+  {
+    "slug": "virtual-receptionist-cost-uk",
+    "title": "Virtual Receptionist Cost UK: Human Answering Service vs AI Receptionist",
+    "seoTitle": "Virtual Receptionist Cost UK: Human vs AI Receptionist | Amica",
+    "seoDescription": "How UK virtual receptionist services are priced, how a human answering service compares with an AI receptionist, and how to work out which costs less for your business.",
+    "excerpt": "Virtual receptionist services in the UK are priced per call, per minute or as a monthly bundle. AI receptionists usually charge a setup fee, a monthly fee and usage. Here is how to compare them properly.",
+    "category": "AI & Automation",
+    "date": "2026-11-02",
+    "readTime": "6 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/ai-receptionist.jpg",
+    "coverAlt": "Phone call being answered by a virtual receptionist and logged automatically",
+    "related": [
+      "ai-voice-agents",
+      "ai-receptionist-care-agencies",
+      "ai-chatbots"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "If your business misses calls, a virtual receptionist can make sure every caller is answered. In the UK you can choose a human answering service, where trained operators answer on your behalf, or an AI receptionist, where an AI voice agent answers, takes details and books call-backs. The right choice depends on your call volume, the hours you need covered and the type of calls you get."
+      },
+      {
+        "type": "heading",
+        "content": "How human virtual receptionist services are priced"
+      },
+      {
+        "type": "paragraph",
+        "content": "Human answering services in the UK are usually priced in one of three ways:"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "Per call:",
+            "content": "a fee for each call answered, sometimes with a monthly minimum."
+          },
+          {
+            "title": "Per minute:",
+            "content": "charged on the time operators spend on your calls."
+          },
+          {
+            "title": "Monthly bundle:",
+            "content": "a set number of calls or minutes each month, with extra charges above the allowance."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Check what is included: message taking only, or diary booking and call transfers too. Out-of-hours and weekend cover often costs more."
+      },
+      {
+        "type": "heading",
+        "content": "How AI receptionists are priced"
+      },
+      {
+        "type": "paragraph",
+        "content": "AI receptionists usually have three parts to their cost:"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "Setup:",
+            "content": "designing the call flow, writing approved answers, connecting your phone line, calendar and CRM, and testing."
+          },
+          {
+            "title": "Monthly fee:",
+            "content": "hosting, monitoring and improving scripts over time."
+          },
+          {
+            "title": "Usage:",
+            "content": "call minutes and phone numbers, which grow with call volume."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "At Amica Digital Services, our AI receptionist service starts from £199 a month plus usage, with setup and telephone charges quoted separately."
+      },
+      {
+        "type": "heading",
+        "content": "Human vs AI: how they compare"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "",
+          "Human answering service",
+          "AI receptionist"
+        ],
+        "rows": [
+          [
+            "Cost structure",
+            "Per call, per minute or bundle",
+            "Setup, monthly fee and usage"
+          ],
+          [
+            "Hours",
+            "Depends on the hours the provider staffs",
+            "Can answer whenever you choose, including evenings and weekends"
+          ],
+          [
+            "Busy periods",
+            "Several calls at once may queue",
+            "Can usually handle several calls at the same time"
+          ],
+          [
+            "Booking and CRM",
+            "Often takes a message for your team",
+            "Can book into your calendar and log every call automatically"
+          ],
+          [
+            "Sensitive or complex calls",
+            "A trained person can respond with empathy",
+            "Should hand over to a person"
+          ]
+        ]
+      },
+      {
+        "type": "heading",
+        "content": "Working out which costs less"
+      },
+      {
+        "type": "paragraph",
+        "content": "Start with your own numbers. Look at a typical month and note:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "How many calls you receive and how many go unanswered",
+          "When missed calls happen: busy daytime periods, lunchtimes, evenings or weekends",
+          "How long a typical call lasts",
+          "What callers usually want: information, a booking, a call-back or something that needs a person"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "If most calls are short and routine, such as booking requests or common questions, an AI receptionist often works out more cost-effective as volume grows, because the monthly fee does not rise call by call in the same way. If calls are often complex, emotional or need judgement, a human service, or AI with fast handover to your team, may be the better fit."
+      },
+      {
+        "type": "heading",
+        "content": "Rules to follow either way"
+      },
+      {
+        "type": "paragraph",
+        "content": "Whichever you choose, tell callers who they are speaking to. With AI, the caller should be told it is an AI assistant and offered a way to reach a person. Make sure call recordings and personal data are handled in line with UK GDPR, and that outbound marketing calls follow PECR rules on consent."
+      },
+      {
+        "type": "heading",
+        "content": "Next step"
+      },
+      {
+        "type": "paragraph",
+        "content": "If you are losing calls today, the cheapest option is usually the one that answers them. Book a free consultation and we will look at your call pattern and recommend the setup that makes sense, even if that is not an AI receptionist."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does a virtual receptionist cost in the UK?",
+        "a": "Human answering services are usually charged per call, per minute or as a monthly bundle. AI receptionists usually charge a setup fee, a monthly fee and usage. Amica Digital Services' AI receptionist starts from £199 a month plus usage."
+      },
+      {
+        "q": "Is an AI receptionist cheaper than a human answering service?",
+        "a": "It often is for businesses with many short, routine calls, because costs do not rise call by call in the same way. For complex or sensitive calls, a human service or AI with quick handover may be better value."
+      },
+      {
+        "q": "Do I have to tell callers they are speaking to an AI?",
+        "a": "You should. Being open that the caller is speaking to an AI assistant, with an easy way to reach a person, builds trust and is good practice under UK data protection guidance."
+      },
+      {
+        "q": "Can a virtual receptionist book appointments?",
+        "a": "Many can. AI receptionists connected to your calendar and CRM can book appointments or call-backs and log each call automatically."
+      }
+    ]
+  },
+  {
     "slug": "ai-receptionist-uk",
     "title": "AI Receptionist UK: What It Does, What It Costs and When It Makes Sense",
     "seoTitle": "AI Receptionist UK: What It Does and What It Costs | Amica",
