@@ -8,9 +8,9 @@ Automation is designed to support each client's team, not replace it: staff can 
 
 - Legal name: Amica Digital Services Ltd, registered in England and Wales, company number 17020927.
 - Founder: Muhammad Shahzad Chughtai, known as Shaz. More than 15 years of hands-on experience in business development, recruitment, staffing, customer service and operational management.
-- Plans: Foundation £199/month, Growth £490/month, Pro £990/month. Rolling 30-day plans have a one-off setup fee (Foundation £200, Growth £990, Pro £1,950), waived on longer agreements (6 months for Foundation, 12 months for Growth and Pro). Not VAT registered.
+- Plans: Foundation £249/month (3-month minimum, £200 setup waived on a 6-month agreement), Growth £490/month (£495 setup waived on a 12-month agreement), Pro £995/month (£750 setup waived on a 12-month agreement). Founding client offer: the first 10 new clients get 20% off the monthly fee for 12 months on a 12-month agreement. Not VAT registered.
 - Care and Recruitment Agency Automation Package: £490/month (12 months, no setup fee) or £990 setup + £490/month rolling.
-- AI voice agents (AI receptionists), custom websites, software and advertising campaigns are quoted individually.
+- Individual services from: AI receptionist / voice agent £199/month plus usage, AI website chatbot £99/month, CRM and GoHighLevel £149/month, workflow automation £199/month plus build from £495, social media management £199/month, lead generation £249/month. Custom websites, software and portals are quoted individually. Full pricing: https://amicadigitalservices.com/pricing
 - Typical implementation: four to six weeks.
 - Main platform: GoHighLevel, with APIs and other platforms where they suit the job.
 - Hours: Monday to Friday, 08:00 to 17:00 UK time. Phone +44 7446 981768. Email shaz@amicadigitalservices.com.
@@ -36,6 +36,10 @@ Automation is designed to support each client's team, not replace it: staff can 
 
 ## Guides
 
+- [AI automation agency UK: what one does and how to choose](https://amicadigitalservices.com/blog/ai-automation-agency-uk)
+- [Recruitment CRM automation: 7 workflows for UK agencies](https://amicadigitalservices.com/blog/recruitment-crm-automation)
+- [GoHighLevel agency UK: what a HighLevel partner sets up](https://amicadigitalservices.com/blog/gohighlevel-agency-uk)
+- [Virtual receptionist cost UK: human answering service vs AI receptionist](https://amicadigitalservices.com/blog/virtual-receptionist-cost-uk)
 - [AI Receptionist UK: what it does, what it costs and when it makes sense](https://amicadigitalservices.com/blog/ai-receptionist-uk)
 - [AI receptionists for care agencies: answering out-of-hours enquiries safely](https://amicadigitalservices.com/blog/ai-receptionists-care-agencies-out-of-hours)
 - [Recruitment automation for UK agencies: what to automate first](https://amicadigitalservices.com/blog/recruitment-automation-uk-agencies)
