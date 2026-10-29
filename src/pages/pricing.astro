@@ -72,7 +72,8 @@ const schema = [
   <PageHero eyebrow="Pricing" title="Simple pricing. Smarter business growth." lead="Choose the services you need, or combine digital marketing, lead generation, CRM and AI automation into one affordable monthly package." crumbs={[{ label: 'Pricing' }]}>
     <div class="btn-row">
       <a href="#enquire" class="btn btn-primary" data-pick-service="Not sure yet">Get a quote</a>
-      <a href="/book-a-consultation" class="btn btn-secondary">Book a free consultation</a>
+      <a href="#packages" class="btn btn-secondary">Packages</a>
+      <a href="#individual-services" class="btn btn-secondary">All services and prices</a>
     </div>
   </PageHero>
 
@@ -84,12 +85,8 @@ const schema = [
         <p class="founding-small">{foundingOffer.small}</p>
         <a href="#enquire" class="btn btn-primary" data-pick-service="Not sure yet">Ask about a founding place</a>
       </aside>
-      <div class="tabs" role="tablist" aria-label="Pricing options" data-tabs hidden>
-        <button type="button" role="tab" id="tab-packages" aria-controls="panel-packages" aria-selected="true">Business growth packages</button>
-        <button type="button" role="tab" id="tab-services" aria-controls="panel-services" aria-selected="false" tabindex="-1">Individual services</button>
-      </div>
 
-      <div id="panel-packages" role="tabpanel" aria-labelledby="tab-packages" class="panel">
+      <div id="packages" class="panel">
         <h2 class="panel-title">Business growth packages</h2>
         <p class="panel-lead">One joined-up system for marketing, lead capture and follow-up, managed by one team. Every package is monthly, with a setup fee on a rolling plan or no setup fee on a longer agreement.</p>
         <div class="grid grid-3 packages">
@@ -152,7 +149,7 @@ const schema = [
         </div>
       </div>
 
-      <div id="panel-services" role="tabpanel" aria-labelledby="tab-services" class="panel">
+      <div id="individual-services" class="panel">
         <h2 class="panel-title">Individual services</h2>
         <p class="panel-lead">Need one thing done well? Each service has a clear starting price. Your written quote confirms the exact scope.</p>
         <div class="grid grid-3 services">
@@ -209,49 +206,11 @@ const schema = [
   <CtaBand />
 </Base>
 
-<script>
-  // Progressive tabs: without JavaScript both panels show one after the other.
-  const list = document.querySelector<HTMLElement>('[data-tabs]');
-  if (list) {
-    const tabs = Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
-    const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')!)!);
-    list.hidden = false;
-    document.querySelectorAll('.panel-title').forEach((h) => h.classList.add('sr-only'));
-    const select = (i: number, focus = false) => {
-      tabs.forEach((t, j) => {
-        const on = i === j;
-        t.setAttribute('aria-selected', String(on));
-        t.tabIndex = on ? 0 : -1;
-        panels[j].hidden = !on;
-      });
-      if (focus) tabs[i].focus();
-    };
-    tabs.forEach((t, i) => {
-      t.addEventListener('click', () => select(i));
-      t.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          select((i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length, true);
-        }
-      });
-    });
-    select(location.hash === '#individual-services' ? 1 : 0);
-  }
-</script>
 
 <style>
   .pricing-tabs-section { padding-top: 40px; }
-  .tabs { display: inline-flex; gap: 4px; padding: 5px; background: var(--teal-soft); border-radius: 999px; margin: 0 auto 32px; position: relative; left: 50%; transform: translateX(-50%); }
-  .tabs[hidden] { display: none; }
-  .tabs button { font: inherit; font-weight: 700; font-size: 1rem; border: 0; background: transparent; color: var(--navy); padding: 12px 22px; border-radius: 999px; cursor: pointer; min-height: 48px; }
-  .tabs button[aria-selected='true'] { background: var(--white); color: var(--teal-dark); box-shadow: 0 2px 8px rgba(14,42,71,0.12); }
-  .tabs button:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
-  @media (max-width: 560px) {
-    .tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; left: 0; transform: none; border-radius: 14px; }
-    .tabs button { padding: 10px 8px; font-size: 0.92rem; border-radius: 10px; }
-  }
   .panel + .panel { margin-top: 64px; }
-  .panel[hidden] { display: none; }
+  .panel { scroll-margin-top: 80px; }
   .panel-title { text-align: center; }
   .founding { max-width: 820px; margin: 0 auto 40px; padding: 24px 28px; border: 2px solid var(--coral); border-radius: 16px; background: var(--coral-soft); text-align: center; }
   .founding h2 { font-size: 1.35rem; margin: 0 0 8px; }
