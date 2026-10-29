@@ -8,6 +8,7 @@ import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
 import { services, relatedCards, type Service } from '../data/services';
 import { faqSchema, serviceSchema } from '../data/schema';
+import { individualServices, toNumber } from '../data/pricing';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { service: s.slug }, props: { s } }));
@@ -15,8 +16,12 @@ export function getStaticPaths() {
 
 const { s } = Astro.props as { s: Service };
 const related = relatedCards(s.related);
+// Starting price from /pricing, matched by the price card's link to this page.
+const price = individualServices.find((p) => p.cta.href === `/${s.slug}`);
+const priceText = price && `${price.billing === 'month' ? 'per month' : 'one-off'}${price.suffix ? `, ${price.suffix}` : ''}`;
+const offers = price && [{ '@type': 'Offer', name: price.name, description: `From ${price.from} ${priceText}. ${price.note}`, price: toNumber(price.from), priceCurrency: 'GBP' }];
 const schema = [
-  serviceSchema({ name: s.h1, serviceType: s.serviceType, description: s.metaDescription, path: `/${s.slug}` }),
+  serviceSchema({ name: s.h1, serviceType: s.serviceType, description: s.metaDescription, path: `/${s.slug}`, offers }),
   faqSchema(s.faqs),
 ];
 ---
@@ -26,6 +31,9 @@ const schema = [
       <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
       <a href="/pricing" class="btn btn-secondary">Pricing</a>
     </div>
+    {price && (
+      <p class="from-price"><strong>From {price.from}</strong> {priceText}. <a href="/pricing#individual-services">See what is included</a></p>
+    )}
   </PageHero>
 
   <section class="section">
@@ -86,3 +94,7 @@ const schema = [
 
   <CtaBand />
 </Base>
+<style>
+  .from-price { margin-top: 18px; font-size: 1.05rem; }
+  .from-price strong { font-size: 1.25rem; }
+</style>

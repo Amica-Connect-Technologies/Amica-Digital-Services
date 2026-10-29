@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+import { usPackage, toNumber } from '../data/pricing';
+import { company } from '../data/site';
+
+const industries = ['HVAC', 'Plumbing', 'Roofing', 'Electrical', 'Med spas', 'Dental practices', 'Other appointment-based local businesses'];
+
+const problems = [
+  'Calls go to voicemail while you are on a job or with a patient',
+  'Callers who reach voicemail ring the next business on Google',
+  'Leads sit in a notebook or an inbox with no follow-up',
+  'No-shows and last-minute cancellations cost you booked time',
+];
+
+const steps = [
+  { title: 'Discovery call', text: 'A free 15-minute video call to understand your calls, services, hours and booking rules.' },
+  { title: 'Build and test', text: 'We write the receptionist script with you, connect your number, calendar and CRM, and test every route before launch.' },
+  { title: 'Go live and improve', text: 'Your receptionist goes live, you see every call and conversation in the CRM, and we review results with you each month.' },
+];
+
+const faqs = [
+  { q: 'How much does it cost?', a: `${usPackage.price} per month plus usage, with a one-off setup fee of ${usPackage.setup}. Usage covers call minutes, phone numbers and text messages. All prices are in US dollars.` },
+  { q: 'Will the AI receptionist sound robotic?', a: 'It uses a natural voice and follows a script you approve. It answers questions you have signed off, takes details and books appointments. Anything outside those rules goes straight to you or your team.' },
+  { q: 'Can my team still take calls?', a: 'Yes. You choose when the AI answers: after hours only, when nobody picks up, or all the time. Your team can see and step into every conversation.' },
+  { q: 'Do you make cold calls or send marketing texts for us?', a: 'No. The receptionist answers inbound calls, and text-back only goes to people who called you. US business texting requires A2P 10DLC registration, which we complete with you during setup.' },
+  { q: 'You are based in the UK. How does that work?', a: `${company.legalName} is registered in England (company number ${company.companyNumber}) and works with clients remotely. You are billed monthly in US dollars, and we meet by video call. Our working hours overlap with US East Coast mornings.` },
+  { q: 'How long does setup take?', a: 'Most projects go live within four to six weeks, depending on how quickly we receive the information we need.' },
+];
+
+const schema = [
+  {
+    ...serviceSchema({
+      name: 'AI receptionist and missed-call text-back for US businesses',
+      serviceType: 'AI receptionist',
+      description: 'AI receptionist, missed-call text-back and GoHighLevel CRM for US service businesses, from $297 per month.',
+      path: '/us',
+      offers: [{
+        '@type': 'Offer',
+        name: usPackage.name,
+        description: `${usPackage.summary} Setup ${usPackage.setup} one-off. Usage billed separately.`,
+        price: toNumber(usPackage.price),
+        priceCurrency: 'USD',
+      }],
+    }),
+    areaServed: { '@type': 'Country', name: 'United States' },
+  },
+  faqSchema(faqs),
+];
+---
+<Base title="AI Receptionist for US Service Businesses, $297/mo | Amica" description="AI receptionist, missed-call text-back and CRM for US home service businesses, med spas and dental practices. $297 per month plus usage, $497 setup." schema={schema}>
+  <PageHero eyebrow="For US businesses" title="AI Receptionist and Missed-Call Text-Back for US Service Businesses" lead="Every call answered, every missed caller texted back and more appointments booked, without hiring another person for the front desk. Built for home service businesses, med spas and dental practices." crumbs={[{ label: 'For US businesses' }]}>
+    <div class="btn-row">
+      <a href="#enquire" class="btn btn-primary" data-pick-service="AI Receptionist / Voice Agent">Book a free demo</a>
+      <a href="#us-pricing" class="btn btn-secondary">See pricing in USD</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">The problem</span>
+        <h2>Missed calls are missed jobs</h2>
+        <p class="lead">When nobody answers, most callers do not leave a message. They call the next business on the list.</p>
+        <ul class="checklist crosslist">
+          {problems.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">Who it is for</span>
+        <h2>Built for local service businesses</h2>
+        <ul class="chips">
+          {industries.map((x) => <li>{x}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="us-pricing">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Pricing in US dollars</span><h2>One package, everything you need to answer and book</h2></div>
+      <article class="card price-card featured us-card">
+        <h3>{usPackage.name}</h3>
+        <p class="tagline">{usPackage.summary}</p>
+        <p class="price">{usPackage.price}<small> / month plus usage</small></p>
+        <p class="terms">Setup: {usPackage.setup} one-off</p>
+        <ul class="checklist">{usPackage.includes.map((i) => <li>{i}</li>)}</ul>
+        <a href="#enquire" class="btn btn-primary" data-pick-service="AI Receptionist / Voice Agent">Book a free demo</a>
+      </article>
+      <p class="note">Usage covers call minutes, phone numbers and text messages, billed at the rates set out in your agreement. Prices are in US dollars and are agreed in writing before work starts.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">How it works</span><h2>Three clear stages</h2></div>
+      <div class="grid grid-3 steps" style="margin-top:40px">
+        {steps.map((st) => <div class="card step"><h3>{st.title}</h3><p>{st.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px"><Faq items={faqs} /></div>
+  </section>
+
+  <section class="section" id="enquire">
+    <div class="container enquire-wrap">
+      <div>
+        <span class="eyebrow">Free demo</span>
+        <h2>See your AI receptionist in action</h2>
+        <p class="lead">Tell us about your business and we will reply within one working day to book a 15-minute demo.</p>
+        <p class="small">You can also email <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+      </div>
+      <div class="card form-card">
+        <ServiceEnquiryForm service="AI Receptionist / Voice Agent" submitLabel="Book my demo" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <p class="disclaimer">Amica Digital Services is an independent agency registered in England and Wales and is not affiliated with Google or GoHighLevel. Results depend on your call volume, services and follow-up, and we do not guarantee a number of bookings.</p>
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+<style>
+  .chips { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips li { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; font-weight: 600; color: var(--navy); }
+  .us-card { max-width: 560px; margin: 40px auto 0; }
+  .tagline { color: var(--muted); margin: 4px 0 0; }
+  .terms { font-size: 0.92rem; color: var(--muted); }
+  .note { text-align: center; color: var(--muted); font-size: 0.92rem; margin-top: 28px; }
+  .small { font-size: 0.9rem; color: var(--muted); }
+  .enquire-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 48px; align-items: start; }
+  @media (max-width: 960px) { .enquire-wrap { grid-template-columns: 1fr; gap: 28px; } }
+  .form-card { padding: 32px; }
+  @media (max-width: 640px) { .form-card { padding: 22px 18px; } }
+  #enquire, #us-pricing { scroll-margin-top: 80px; }
+  .disclaimer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+</style>

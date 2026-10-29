@@ -287,4 +287,21 @@ export const serviceOptions = [
 export const lsaCategories = ['Plumbing', 'Heating', 'Electrical', 'Roofing', 'Cleaning', 'Pest control', 'Landscaping', 'Locksmith', 'Other local service'];
 export const adBudgets = ['Under £300 a month', '£300-£750 a month', '£750-£1,500 a month', '£1,500+ a month', 'Not sure yet'];
 
-export const toNumber = (p: string) => p.replace(/[£,]/g, '');
+export const toNumber = (p: string) => p.replace(/[£$,]/g, '');
+
+// US package on /us, priced in US dollars. Enquiries use the existing
+// "AI Receptionist / Voice Agent" option; the form page (/us) marks them as US.
+export const usPackage = {
+  name: 'AI Receptionist + Missed-Call Text-Back',
+  price: '$297',
+  setup: '$497',
+  summary: 'Answer every call, text back every missed caller and book more jobs.',
+  includes: [
+    'AI receptionist that answers calls 24/7 using your approved script',
+    'Missed-call text-back within seconds',
+    'GoHighLevel CRM with one sales pipeline',
+    'Online booking calendar with SMS and email reminders',
+    'Automated Google review requests after each job',
+    'Call summaries and a monthly results report',
+  ],
+};
