@@ -306,3 +306,24 @@ export const usPackage = {
     'Call summaries and a monthly results report',
   ],
 };
+
+// US dollar prices for the full price list on /us. Set as round US market prices,
+// not converted from pounds. Features and inclusions come from the GBP data above.
+export const usPackagePrices: Record<string, { price: string; setup: string }> = {
+  'Foundation package': { price: '$297', setup: '$250' },
+  'Growth package': { price: '$597', setup: '$597' },
+  'Pro package': { price: '$1,197', setup: '$997' },
+};
+
+export const usServicePrices: Record<string, { from: string; suffix?: string; note?: string }> = {
+  SEO: { from: '$397' },
+  'Google Local Services Ads': { from: '$297', note: 'Setup from $297. Google advertising spend is paid separately.' },
+  'Social Media Management': { from: '$247' },
+  'CRM and GoHighLevel': { from: '$197' },
+  'AI Website Chatbot': { from: '$147' },
+  'AI Receptionist / Voice Agent': { from: '$297', suffix: 'plus usage', note: 'Setup $497. Call minutes, phone numbers and text messages are billed separately.' },
+  'AI Workflow Automation': { from: '$247', suffix: 'plus build from $597', note: 'A one-off build fee from $597 covers discovery, configuration and testing. Complex integrations, additional workflows and third-party costs are quoted separately.' },
+  'Lead Generation': { from: '$297' },
+  'Business Website': { from: '$1,250' },
+  'Custom Software and Client Portals': { from: '$5,000' },
+};

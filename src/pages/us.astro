@@ -6,7 +6,10 @@ import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
 import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
 import { faqSchema, serviceSchema } from '../data/schema';
-import { usPackage, toNumber } from '../data/pricing';
+import { usPackage, toNumber, packages, individualServices, usPackagePrices, usServicePrices, foundingOffer } from '../data/pricing';
+
+const usPackages = packages.map((p) => ({ ...p, ...usPackagePrices[p.key] }));
+const usServices = individualServices.map((s) => ({ ...s, ...usServicePrices[s.key] }));
 import { company } from '../data/site';
 
 const industries = ['HVAC', 'Plumbing', 'Roofing', 'Electrical', 'Med spas', 'Dental practices', 'Other appointment-based local businesses'];
@@ -25,7 +28,7 @@ const steps = [
 ];
 
 const faqs = [
-  { q: 'How much does it cost?', a: `${usPackage.price} per month plus usage, with a one-off setup fee of ${usPackage.setup}. Usage covers call minutes, phone numbers and text messages. All prices are in US dollars.` },
+  { q: 'How much does it cost?', a: `The AI receptionist package is ${usPackage.price} per month plus usage, with a one-off setup fee of ${usPackage.setup}. Usage covers call minutes, phone numbers and text messages. Our other packages and services are listed in the full US price list on this page. All prices are in US dollars.` },
   { q: 'Will the AI receptionist sound robotic?', a: 'It uses a natural voice and follows a script you approve. It answers questions you have signed off, takes details and books appointments. Anything outside those rules goes straight to you or your team.' },
   { q: 'Can my team still take calls?', a: 'Yes. You choose when the AI answers: after hours only, when nobody picks up, or all the time. Your team can see and step into every conversation.' },
   { q: 'Do you make cold calls or send marketing texts for us?', a: 'No. The receptionist answers inbound calls, and text-back only goes to people who called you. US business texting requires A2P 10DLC registration, which we complete with you during setup.' },
@@ -46,18 +49,22 @@ const schema = [
         description: `${usPackage.summary} Setup ${usPackage.setup} one-off. Usage billed separately.`,
         price: toNumber(usPackage.price),
         priceCurrency: 'USD',
-      }],
+      },
+      ...usPackages.map((p) => ({ '@type': 'Offer', name: `${p.name} package`, description: `${p.tagline} Setup ${p.setup} one-off. ${p.waiver}.`, price: toNumber(p.price), priceCurrency: 'USD' })),
+      ...usServices.map((s) => ({ '@type': 'Offer', name: s.name, description: `From ${s.from} ${s.billing === 'month' ? 'per month' : 'one-off'}. ${s.note}`, price: toNumber(s.from), priceCurrency: 'USD' })),
+      ],
     }),
     areaServed: { '@type': 'Country', name: 'United States' },
   },
   faqSchema(faqs),
 ];
 ---
-<Base title="AI Receptionist for US Service Businesses, $297/mo | Amica" description="AI receptionist, missed-call text-back and CRM for US home service businesses, med spas and dental practices. $297 per month plus usage, $497 setup." schema={schema}>
+<Base title="AI Receptionist for US Service Businesses, $297/mo | Amica" description="AI receptionist, missed-call text-back, CRM, SEO and marketing for US service businesses. AI receptionist from $297 a month, full price list in US dollars." schema={schema}>
   <PageHero eyebrow="For US businesses" title="AI Receptionist and Missed-Call Text-Back for US Service Businesses" lead="Every call answered, every missed caller texted back and more appointments booked, without hiring another person for the front desk. Built for home service businesses, med spas and dental practices." crumbs={[{ label: 'For US businesses' }]}>
     <div class="btn-row">
       <a href="#enquire" class="btn btn-primary" data-pick-service={usPackage.key}>Book a free demo</a>
       <a href="#us-pricing" class="btn btn-secondary">See pricing in USD</a>
+      <a href="#all-prices" class="btn btn-secondary">All services and prices</a>
     </div>
   </PageHero>
 
@@ -96,7 +103,55 @@ const schema = [
     </div>
   </section>
 
-  <section class="section">
+
+  <section class="section" id="all-prices">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">Full price list in US dollars</span>
+        <h2>Everything else we do for US businesses</h2>
+        <p class="lead">Combine services in a monthly package, or choose a single service. All prices are in US dollars.</p>
+      </div>
+
+      <h3 class="list-title">Business growth packages</h3>
+      <div class="grid grid-3 us-pkgs">
+        {usPackages.map((p) => (
+          <article class:list={['card price-card', { featured: p.featured }]}>
+            {p.featured && <span class="badge">Most popular</span>}
+            <h3>{p.name}</h3>
+            <p class="tagline">{p.tagline}</p>
+            <p class="price">{p.price}<small> / month</small></p>
+            <p class="terms">{p.minimum ? `${p.minimum[0].toUpperCase()}${p.minimum.slice(1)} minimum` : 'Month to month'}. Setup {p.setup} one-off.<br /><strong>{p.waiver}</strong></p>
+            {p.intro && <p class="intro">{p.intro}</p>}
+            <ul class="checklist">{p.features.map((f) => <li>{f}</li>)}</ul>
+            <a href="#enquire" class:list={['btn', p.featured ? 'btn-primary' : 'btn-secondary']} data-pick-service={p.key}>{p.cta}</a>
+          </article>
+        ))}
+      </div>
+
+      <h3 class="list-title">Individual services</h3>
+      <div class="grid grid-3 us-svcs">
+        {usServices.map((s) => (
+          <article class="card">
+            <div class="icon-badge"><Icon name={s.icon} /></div>
+            <h3>{s.name}</h3>
+            <p class="svc-price"><span>From</span> {s.from}<small> {s.billing === 'month' ? '/ month' : 'one-off'}{s.suffix && ` ${s.suffix}`}</small></p>
+            <ul class="checklist">{s.includes.map((i) => <li>{i}</li>)}</ul>
+            <p class="small">{s.note}</p>
+            <a href="#enquire" class="btn btn-secondary" data-pick-service={s.key}>Ask about this service</a>
+          </article>
+        ))}
+      </div>
+
+      <div class="card founding">
+        <h3>{foundingOffer.title}</h3>
+        <p>{foundingOffer.text}</p>
+        <p class="small">{foundingOffer.small}</p>
+      </div>
+      <p class="note">Advertising spend, call minutes, phone numbers, text messages and other third-party costs are billed separately. Final scope and price are agreed in writing before work starts.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
     <div class="container">
       <div class="center"><span class="eyebrow">How it works</span><h2>Three clear stages</h2></div>
       <div class="grid grid-3 steps" style="margin-top:40px">
@@ -105,7 +160,7 @@ const schema = [
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container" style="max-width:860px"><Faq items={faqs} /></div>
   </section>
 
@@ -143,5 +198,14 @@ const schema = [
   .form-card { padding: 32px; }
   @media (max-width: 640px) { .form-card { padding: 22px 18px; } }
   #enquire, #us-pricing { scroll-margin-top: 80px; }
+  .list-title { margin: 48px 0 20px; }
+  .us-pkgs .price-card, .us-svcs .card { display: flex; flex-direction: column; }
+  .us-pkgs .btn, .us-svcs .btn { margin-top: auto; align-self: flex-start; }
+  .us-svcs .checklist { margin: 12px 0; }
+  .svc-price { font-size: 1.6rem; font-weight: 800; color: var(--navy); margin: 8px 0 0; }
+  .svc-price span, .svc-price small { font-size: 0.9rem; font-weight: 500; color: var(--muted); }
+  .intro { font-weight: 700; margin: 12px 0 0; }
+  .founding { margin-top: 40px; border-left: 4px solid var(--teal); }
+  #all-prices { scroll-margin-top: 80px; }
   .disclaimer { font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
 </style>
