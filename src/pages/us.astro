@@ -56,7 +56,7 @@ const schema = [
 <Base title="AI Receptionist for US Service Businesses, $297/mo | Amica" description="AI receptionist, missed-call text-back and CRM for US home service businesses, med spas and dental practices. $297 per month plus usage, $497 setup." schema={schema}>
   <PageHero eyebrow="For US businesses" title="AI Receptionist and Missed-Call Text-Back for US Service Businesses" lead="Every call answered, every missed caller texted back and more appointments booked, without hiring another person for the front desk. Built for home service businesses, med spas and dental practices." crumbs={[{ label: 'For US businesses' }]}>
     <div class="btn-row">
-      <a href="#enquire" class="btn btn-primary" data-pick-service="AI Receptionist / Voice Agent">Book a free demo</a>
+      <a href="#enquire" class="btn btn-primary" data-pick-service={usPackage.key}>Book a free demo</a>
       <a href="#us-pricing" class="btn btn-secondary">See pricing in USD</a>
     </div>
   </PageHero>
@@ -90,7 +90,7 @@ const schema = [
         <p class="price">{usPackage.price}<small> / month plus usage</small></p>
         <p class="terms">Setup: {usPackage.setup} one-off</p>
         <ul class="checklist">{usPackage.includes.map((i) => <li>{i}</li>)}</ul>
-        <a href="#enquire" class="btn btn-primary" data-pick-service="AI Receptionist / Voice Agent">Book a free demo</a>
+        <a href="#enquire" class="btn btn-primary" data-pick-service={usPackage.key}>Book a free demo</a>
       </article>
       <p class="note">Usage covers call minutes, phone numbers and text messages, billed at the rates set out in your agreement. Prices are in US dollars and are agreed in writing before work starts.</p>
     </div>
@@ -118,7 +118,7 @@ const schema = [
         <p class="small">You can also email <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
       </div>
       <div class="card form-card">
-        <ServiceEnquiryForm service="AI Receptionist / Voice Agent" submitLabel="Book my demo" />
+        <ServiceEnquiryForm service={usPackage.key} submitLabel="Book my demo" />
       </div>
     </div>
   </section>

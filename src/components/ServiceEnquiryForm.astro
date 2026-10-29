@@ -5,7 +5,7 @@
 // Links or buttons with data-pick-service="<option>" anywhere on the page choose
 // that option and scroll to the form.
 import { company, enquiry } from '../data/site';
-import { serviceOptions, lsaCategories, adBudgets } from '../data/pricing';
+import { serviceOptions, lsaCategories, adBudgets, usPackage } from '../data/pricing';
 
 interface Props {
   /** Option chosen when the page loads. */
@@ -53,7 +53,7 @@ const timing = enquiry.options.timing;
       <label for="svc-service">Service you are interested in <span class="req" aria-hidden="true">*</span></label>
       <select id="svc-service" name="service" required aria-describedby="svc-service-err">
         <option value="">Please choose</option>
-        {serviceOptions.map((v) => <option value={v} selected={v === service}>{v}</option>)}
+        {serviceOptions.filter((v) => v !== usPackage.key || service === usPackage.key).map((v) => <option value={v} selected={v === service}>{v}</option>)}
       </select>
       <p class="svc-error" id="svc-service-err" hidden>Choose a service.</p>
     </div>

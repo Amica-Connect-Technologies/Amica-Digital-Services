@@ -282,6 +282,7 @@ export const serviceOptions = [
   ...lsaPackages.map((p) => p.key),
   ...individualServices.map((s) => s.key),
   'Not sure yet',
+  'US AI Receptionist package',
 ];
 
 export const lsaCategories = ['Plumbing', 'Heating', 'Electrical', 'Roofing', 'Cleaning', 'Pest control', 'Landscaping', 'Locksmith', 'Other local service'];
@@ -289,9 +290,9 @@ export const adBudgets = ['Under £300 a month', '£300-£750 a month', '£750-�
 
 export const toNumber = (p: string) => p.replace(/[£$,]/g, '');
 
-// US package on /us, priced in US dollars. Enquiries use the existing
-// "AI Receptionist / Voice Agent" option; the form page (/us) marks them as US.
+// US package on /us, priced in US dollars. Its enquiry option only appears on /us.
 export const usPackage = {
+  key: 'US AI Receptionist package',
   name: 'AI Receptionist + Missed-Call Text-Back',
   price: '$297',
   setup: '$497',
