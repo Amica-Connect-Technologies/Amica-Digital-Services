@@ -6,6 +6,7 @@ import Picture from '../components/Picture.astro';
 import FlowGraphic from '../components/FlowGraphic.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
+import WebsiteOfferBanner from '../components/WebsiteOfferBanner.astro';
 import { services, relatedCards, type Service } from '../data/services';
 import { faqSchema, serviceSchema } from '../data/schema';
 import { individualServices, toNumber } from '../data/pricing';
@@ -35,6 +36,10 @@ const schema = [
       <p class="from-price"><strong>From {price.from}</strong> {priceText}. <a href="/pricing#individual-services">See what is included</a></p>
     )}
   </PageHero>
+
+  {s.slug === 'websites-software' && (
+    <section class="section-sm"><div class="container"><WebsiteOfferBanner /></div></section>
+  )}
 
   <section class="section">
     <div class="container split">

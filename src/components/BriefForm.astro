@@ -1,0 +1,83 @@
+---
+// Online brief sent by email after an enquiry: /brief/website and /brief/project.
+// The link carries the GHL contact id (c) and a signature (s); the server checks them
+// and writes the answers to GHL as a note (POST /api/brief).
+interface Q { name: string; label: string; type: 'radio' | 'check'; options: string[]; required?: boolean }
+interface Props { kind: 'website' | 'project'; questions: Q[]; textLabel?: string; textPlaceholder?: string }
+const { kind, questions, textLabel, textPlaceholder } = Astro.props;
+const budget = kind === 'website'
+  ? ['Up to £300', '£300 to £700', '£700 to £1,500', '£1,500 to £3,000', 'Over £3,000', 'Not sure yet']
+  : ['Under £250 a month', '£250 to £500 a month', '£500 to £1,000 a month', 'Over £1,000 a month', 'Not sure yet'];
+const timeframe = ['As soon as possible (within 2 weeks)', 'Within 1 month', 'Within 3 months', 'Just looking'];
+const all: Q[] = [
+  ...questions,
+  { name: 'budget', label: kind === 'website' ? 'Rough budget for the website' : 'Rough monthly budget', type: 'radio', options: budget, required: true },
+  { name: 'timeframe', label: 'When would you like to start?', type: 'radio', options: timeframe, required: true },
+];
+---
+<form class="card brief-form" data-brief={kind} novalidate>
+  <input type="hidden" name="c" /><input type="hidden" name="s" />
+  {all.map((q) => (
+    <fieldset class="brief-q">
+      <legend>{q.label}{q.required && <span class="req" aria-hidden="true"> *</span>}</legend>
+      <div class="brief-opts">
+        {q.options.map((o) => (
+          <label class="brief-opt"><input type={q.type === 'radio' ? 'radio' : 'checkbox'} name={q.name} value={o} /> <span>{o}</span></label>
+        ))}
+      </div>
+      {q.required && <p class="brief-err" hidden data-err={q.name}>Please choose one.</p>}
+    </fieldset>
+  ))}
+  {textLabel && (
+    <div class="brief-q"><label for="b-domain" class="brief-label">{textLabel}</label><input id="b-domain" name="domain" type="text" maxlength="200" placeholder={textPlaceholder} /></div>
+  )}
+  <div class="brief-q"><label for="b-note" class="brief-label">Anything else we should know?</label><textarea id="b-note" name="note" rows="4" maxlength="2000" placeholder="For example opening hours, special requirements, or websites you like."></textarea></div>
+  <button class="btn btn-primary" type="submit">Send my brief</button>
+  <p class="brief-msg" role="status" hidden></p>
+  <p class="brief-small">It takes about 2 minutes. Your answers go straight to the person looking after your project.</p>
+</form>
+<script>
+  const form = document.querySelector<HTMLFormElement>('form[data-brief]');
+  if (form) {
+    const p = new URLSearchParams(location.search);
+    (form.elements.namedItem('c') as HTMLInputElement).value = p.get('c') || '';
+    (form.elements.namedItem('s') as HTMLInputElement).value = p.get('s') || '';
+    const msg = form.querySelector<HTMLElement>('.brief-msg')!;
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const show = (t: string) => { msg.textContent = t; msg.hidden = false; msg.scrollIntoView({ block: 'center' }); };
+    if (!p.get('c') || !p.get('s')) show('This page works from the link in our email. If you need a new link, reply to that email or call us.');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data: Record<string, string> = { kind: form.dataset.brief || '' };
+      new FormData(form).forEach((v, k) => { data[k] = data[k] ? `${data[k]}, ${v}` : String(v); });
+      let bad = false;
+      form.querySelectorAll<HTMLElement>('[data-err]').forEach((el) => {
+        const missing = !data[el.dataset.err!];
+        el.hidden = !missing;
+        if (missing && !bad) { bad = true; el.closest('fieldset')?.scrollIntoView({ block: 'center' }); }
+      });
+      if (bad) return;
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const r = await fetch('/api/brief', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+        const d = await r.json().catch(() => ({}));
+        if (r.ok && d.ok) { location.href = '/brief/thank-you'; return; }
+        show(r.status === 403 ? 'This link is not valid. Please use the link in our email, or reply to it and we will send a new one.' : 'Sorry, your brief did not send. Please try again, or reply to our email.');
+      } catch { show('Sorry, your brief did not send. Please check your connection and try again.'); }
+      btn.disabled = false; btn.textContent = 'Send my brief';
+    });
+  }
+</script>
+<style>
+  .brief-form { margin-top: 28px; }
+  .brief-q { border: 0; padding: 0; margin: 0 0 24px; }
+  .brief-q legend, .brief-label { display: block; font-weight: 700; color: var(--navy); margin-bottom: 10px; padding: 0; }
+  .brief-opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .brief-opt { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; line-height: 1.45; }
+  .brief-opt input { width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0; accent-color: var(--teal-dark); }
+  .brief-form input[type='text'], .brief-form textarea { width: 100%; font: inherit; border: 1.5px solid #b9c1ca; border-radius: 10px; padding: 11px 13px; min-height: 48px; }
+  .req, .brief-err { color: #b4361b; }
+  .brief-err { font-weight: 600; font-size: 0.9rem; margin: 6px 0 0; }
+  .brief-msg { margin-top: 16px; padding: 12px 16px; border-radius: 8px; background: var(--coral-soft); color: var(--navy); font-weight: 600; }
+  .brief-small { color: var(--muted); font-size: 0.9rem; margin-top: 14px; }
+</style>

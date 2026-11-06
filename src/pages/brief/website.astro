@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BriefForm from '../../components/BriefForm.astro';
+const questions = [
+  { name: 'goal', label: 'What should the website do most?', type: 'radio', required: true, options: ['Help local customers find me on Google', 'Bring in enquiries and quote requests', 'Take bookings or appointments online', 'Present my business professionally', 'Sell products online'] },
+  { name: 'pages', label: 'How many pages do you think you need?', type: 'radio', required: true, options: ['One page is enough (the £199 offer)', '3 to 5 pages', 'More than 5 pages', 'Not sure, please advise'] },
+  { name: 'features', label: 'Features you would like', type: 'check', options: ['WhatsApp button', 'Contact form', 'Online booking', 'Photo gallery', 'Google reviews', 'Map and opening hours', 'Blog or news', 'Click-to-call'] },
+  { name: 'materials', label: 'What do you already have?', type: 'check', options: ['Logo', 'Text about the business', 'Good quality photos', 'A domain name', 'An old website to replace', 'Google Business Profile'] },
+  { name: 'extras', label: 'Are you also interested in…', type: 'check', options: ['More customers from Google or social media ads', 'Automatic replies to enquiries', 'Appointment reminders', 'Missed-call text-back', 'Social media management'] },
+] as const;
+---
+<Base title="Your website brief" description="Tell us what you need from your new website." noindex>
+  <PageHero eyebrow="Brief" title="Tell us about your ideal website" lead="Answer a few questions so we can come back with a clear plan, price and delivery date." />
+  <section class="section-sm"><div class="container" style="max-width:820px">
+    <BriefForm kind="website" questions={questions as any} textLabel="Your domain or current website (if you have one)" textPlaceholder="for example mybusiness.co.uk" />
+  </div></section>
+</Base>

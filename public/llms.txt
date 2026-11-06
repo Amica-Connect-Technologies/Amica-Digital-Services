@@ -11,6 +11,7 @@ Automation is designed to support each client's team, not replace it: staff can 
 - Plans: Foundation £249/month (3-month minimum, £200 setup waived on a 6-month agreement), Growth £490/month (£495 setup waived on a 12-month agreement), Pro £995/month (£750 setup waived on a 12-month agreement). Founding client offer: the first 10 new clients get 20% off the monthly fee for 12 months on a 12-month agreement. Not VAT registered.
 - Care and Recruitment Agency Automation Package: £490/month (12 months, no setup fee) or £990 setup + £490/month rolling.
 - Individual services from: AI receptionist / voice agent £199/month plus usage, AI website chatbot £99/month, CRM and GoHighLevel £149/month, workflow automation £199/month plus build from £495, social media management £199/month, lead generation £249/month. Custom websites, software and portals are quoted individually. Full pricing: https://amicadigitalservices.com/pricing
+- Website offer: professional one-page business website £199 one-off, live in 7 working days, then £29/month hosting and support (12-month minimum); no VAT (not VAT registered); for businesses and sole traders: https://amicadigitalservices.com/website-199
 - Typical implementation: four to six weeks.
 - Main platform: GoHighLevel, with APIs and other platforms where they suit the job.
 - Hours: Monday to Friday, 08:00 to 17:00 UK time. Phone +44 7446 981768. Email shaz@amicadigitalservices.com.

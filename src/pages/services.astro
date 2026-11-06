@@ -4,11 +4,13 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { serviceLinks } from '../data/services';
+import WebsiteOfferBanner from '../components/WebsiteOfferBanner.astro';
 ---
 <Base title="Digital Marketing and AI Automation Services | Amica" description="Websites, SEO, social media, lead generation, GoHighLevel CRM, AI chatbots, AI receptionists and automation for UK businesses from a Manchester team.">
   <PageHero eyebrow="Services" title="Services that attract, convert and keep customers" lead="Choose a single service or combine them into one joined-up system, managed by a UK team." crumbs={[{ label: 'Services' }]} />
   <section class="section">
     <div class="container">
+      <WebsiteOfferBanner />
       <a href="/care-agency-automation" class="card feature">
         <div class="icon-badge"><Icon name="heart" /></div>
         <div>

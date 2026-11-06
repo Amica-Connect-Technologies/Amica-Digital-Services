@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BriefForm from '../../components/BriefForm.astro';
+const questions = [
+  { name: 'goal', label: 'What is the main problem today?', type: 'radio', required: true, options: ['We miss calls and messages', 'Not enough new enquiries', 'Too much manual admin and follow-up', 'Appointments missed or cancelled', 'Recruitment is slow', 'Something else'] },
+  { name: 'features', label: 'Which solutions interest you?', type: 'check', options: ['CRM to follow up every lead', 'Automatic replies and follow-up', 'Appointment booking and reminders', 'AI receptionist for calls', 'Google review requests', 'SEO and Google Business Profile', 'Google Local Services Ads', 'Social media management', 'New website'] },
+  { name: 'volume', label: 'Roughly how many enquiries do you get each week?', type: 'radio', required: true, options: ['Fewer than 20', '20 to 50', '50 to 150', 'More than 150', 'Not sure'] },
+  { name: 'staff', label: 'How many people handle phones and messages?', type: 'radio', options: ['Just me', '1 to 2 people', '3 to 5 people', 'More than 5'] },
+] as const;
+---
+<Base title="Your project brief" description="Tell us what you need." noindex>
+  <PageHero eyebrow="Brief" title="Tell us what you need" lead="A few questions so our call is about your real situation, with a clear proposal and timescale." />
+  <section class="section-sm"><div class="container" style="max-width:820px">
+    <BriefForm kind="project" questions={questions as any} textLabel="Which CRM, booking system or diary do you use today?" textPlaceholder="for example paper diary, Google Calendar, a rota system" />
+  </div></section>
+</Base>

@@ -17,7 +17,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => !page.includes('/404') && !page.includes('/brief/') && !page.includes('/order/'),
       serialize(item) {
         const path = new URL(item.url).pathname.replace(/\/$/, '');
         const date = postDates.get(path);

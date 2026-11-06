@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { websiteOffer as W } from '../../data/pricing';
+---
+<Base title="Order confirmed" description="Thank you for your order." noindex>
+  <PageHero title="Payment received. Thank you!" lead={`We have emailed you a confirmation and a link to your website brief. Your ${W.days} working days start when we have your materials (logo, text and photos).`} />
+  <section class="section-sm"><div class="container"><a class="btn btn-primary" href="/">Back to the website</a></div></section>
+</Base>

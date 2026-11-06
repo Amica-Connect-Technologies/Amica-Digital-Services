@@ -1,0 +1,136 @@
+---
+// "Website from £199" entry offer. Enquiries go through the service form with service
+// "Business Website"; the server tags leads from this page offer-website-199 and emails
+// them the website brief.
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+import { websiteOffer as W, websiteOfferYearOne } from '../data/pricing';
+
+const gbp = (n: number) => `£${n.toLocaleString('en-GB')}`;
+
+const faqs = [
+  { q: 'What does it really cost in the first year?', a: `${gbp(W.setup)} one-off to build the website, then ${gbp(W.monthly)} a month for hosting, security, backups and support, with a ${W.minMonths}-month minimum. That is ${gbp(websiteOfferYearOne)} in the first year. Amica Digital Services is not VAT registered, so there is no VAT to add. Nothing else is charged unless you choose an extra.` },
+  { q: 'What do I need to get started?', a: 'Your logo, some words about your business and a few photos. If you do not have them, we can write the text or design a simple logo (see the extras). We send you a short online brief to fill in.' },
+  { q: 'How quickly will it be live?', a: `Within ${W.days} working days of receiving your materials and the build payment. We show you a preview first, and you get one round of changes before it goes live.` },
+  { q: 'Do I own the domain?', a: 'Yes. If you do not have a domain yet, we register a .co.uk or .com in your business name, included for the first year. If you already have one, we connect it. The domain is always yours.' },
+  { q: `What happens after ${W.minMonths} months?`, a: `The ${gbp(W.monthly)} monthly fee continues month to month, and you can cancel with 30 days' notice. If you leave, we help you move your domain.` },
+  { q: 'Is it UK GDPR compliant?', a: 'Yes. It comes with a cookie banner, privacy and cookie notices, an SSL certificate and a contact form that asks for consent. Enquiries go straight into your CRM.' },
+  { q: 'Who is this offer for?', a: 'Businesses, including sole traders, buying for their trade or profession. It is not available to consumers.' },
+  { q: 'Can I add more later?', a: 'Yes. The website is connected to our CRM from day one, so you can add booking, missed-call text-back, review requests, an AI chatbot or one of our growth packages later without rebuilding anything.' },
+];
+
+const included = [
+  ['store', 'One complete page', 'Up to six sections: about you, services, photos, reviews, map and contact, on our professional template.'],
+  ['search', 'Ready for Google', 'Page titles and descriptions, sitemap, Google Search Console and a link to your Google Business Profile.'],
+  ['chat', 'Enquiries straight to you', 'Contact form connected to the CRM, plus click-to-call and WhatsApp buttons, so no enquiry gets lost.'],
+  ['shield', 'Secure and compliant', 'SSL certificate, daily backups, cookie banner and UK GDPR privacy notices.'],
+  ['users', 'One round of changes', 'We show you a preview before it goes live and adjust what you need.'],
+  ['clock', 'Support included', 'Small text and photo updates and help by email or WhatsApp on working days.'],
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Website from £199',
+    serviceType: 'Small business website design',
+    description: `Professional one-page business website for ${gbp(W.setup)} one-off, live in ${W.days} working days, plus ${gbp(W.monthly)} a month hosting and support.`,
+    path: W.path,
+    audience: 'Small businesses and sole traders',
+    offers: [{ '@type': 'Offer', name: 'Website from £199', price: String(W.setup), priceCurrency: 'GBP', description: `${gbp(W.setup)} build, then ${gbp(W.monthly)} a month, ${W.minMonths}-month minimum.` }],
+  }),
+  faqSchema(faqs),
+];
+---
+<Base title={`Business Website from £${W.setup} | Live in ${W.days} Days`} description={`A professional, mobile-friendly business website for £${W.setup}, live in ${W.days} working days. Ready for Google, with contact form and WhatsApp. Hosting and support £${W.monthly} a month.`} schema={schema}>
+  <PageHero eyebrow="Website offer" title={`A professional business website from £${W.setup}`} lead={`A modern, fast website that is ready for Google, with a contact form and WhatsApp button. Live in ${W.days} working days.`} crumbs={[{ label: 'Services', href: '/services' }, { label: 'Website from £199' }]}>
+    <ul class="checklist w-hero-list">
+      <li>Website build: <strong>{gbp(W.setup)} one-off</strong></li>
+      <li>Hosting, security and support: <strong>{gbp(W.monthly)} a month</strong> ({W.minMonths}-month minimum)</li>
+      <li>Domain included for the first year</li>
+      <li>Connected to our CRM, so every enquiry reaches you straight away</li>
+    </ul>
+    <p class="w-note">First year total {gbp(websiteOfferYearOne)}. No VAT to add. For businesses and sole traders.</p>
+    <div class="btn-row">
+      <a href="#enquire" class="btn btn-primary">Request my website</a>
+      <a href="/order/website-199" class="btn btn-secondary" data-order-link hidden>Order and pay online</a>
+    </div>
+  </PageHero>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">What is included</span><h2>Everything a small business needs to be found</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {included.map(([icon, title, text]) => (
+          <div class="card"><div class="icon-badge"><Icon name={icon} /></div><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:760px">
+      <div class="center"><span class="eyebrow">Extras</span><h2>Optional extras</h2></div>
+      <div class="table-wrap w-extras">
+        <table>
+          <caption class="sr-only">Optional extras and prices</caption>
+          <tbody>
+            {W.addons.map(([name, price, note]) => (
+              <tr><th scope="row">{name}</th><td><strong>{gbp(price)}</strong>{note && ` ${note}`}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="w-small">Need a larger or bespoke site? See <a href="/websites-software">website development</a>, from £950.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">How it works</span><h2>Four simple steps</h2></div>
+      <div class="grid grid-4 steps" style="margin-top:40px">
+        <div class="card step"><h3>1. Request</h3><p>Fill in the form. We reply within one working day.</p></div>
+        <div class="card step"><h3>2. Brief</h3><p>Answer a 2-minute online brief and send your logo, text and photos.</p></div>
+        <div class="card step"><h3>3. Preview</h3><p>See your website within days and ask for changes.</p></div>
+        <div class="card step"><h3>4. Live</h3><p>We publish within {W.days} working days and connect Google.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="enquire">
+    <div class="container" style="max-width:860px">
+      <div class="center"><span class="eyebrow">Get started</span><h2>Request your £{W.setup} website</h2><p class="lead">Tell us about your business. We will email you a short brief so we can get started quickly.</p></div>
+      <div class="card" style="margin-top:28px">
+        <ServiceEnquiryForm service="Business Website" submitLabel="Request my website" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+<script>
+  // The "Order and pay online" button only shows once online payments are switched on.
+  fetch('/api/order/status').then((r) => r.json()).then((d) => {
+    if (d && d.enabled) document.querySelectorAll<HTMLElement>('[data-order-link]').forEach((el) => (el.hidden = false));
+  }).catch(() => {});
+</script>
+<style>
+  .w-hero-list { margin: 22px 0 10px; }
+  .w-note { color: var(--muted); font-size: 0.95rem; margin: 0 0 20px; }
+  .w-extras table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .w-extras th, .w-extras td { padding: 12px 0; border-bottom: 1px solid #e3e7ec; text-align: left; font-weight: 500; }
+  .w-extras td { text-align: right; white-space: nowrap; }
+  .w-small { margin-top: 16px; color: var(--muted); font-size: 0.95rem; text-align: center; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  @media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .grid-4 { grid-template-columns: 1fr; } }
+</style>

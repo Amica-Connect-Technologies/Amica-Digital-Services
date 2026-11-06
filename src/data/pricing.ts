@@ -327,3 +327,26 @@ export const usServicePrices: Record<string, { from: string; suffix?: string; no
   'Business Website': { from: '$1,250' },
   'Custom Software and Client Portals': { from: '$5,000' },
 };
+
+// Entry offer "Website from £199" (UK copy of the Italian "Sito Web da €199", proposed 6 Nov 2026).
+// One-page website: one-off build, then monthly hosting and support with a minimum term.
+// Online ordering: /order/website-199 (noindex). Prices must match PRODUCTS in the deploy
+// repo's src/config/orders.js. Amica is not VAT registered, so prices are final.
+export const websiteOffer = {
+  name: 'Website from £199',
+  path: '/website-199',
+  setup: 199,
+  monthly: 29,
+  minMonths: 12,
+  days: 7,
+  // Shown on the order page. Bump when the order terms change.
+  termsVersion: '2026-11-06',
+  addons: [
+    ['Extra page', 79, 'each'],
+    ['Copywriting by us', 99, ''],
+    ['Simple logo', 99, ''],
+    ['Google Business Profile set-up', 79, ''],
+    ['Website up to 5 pages (instead of one page)', 590, 'instead of £199'],
+  ] as [string, number, string][],
+};
+export const websiteOfferYearOne = websiteOffer.setup + websiteOffer.monthly * websiteOffer.minMonths;

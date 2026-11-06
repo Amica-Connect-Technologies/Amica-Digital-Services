@@ -5,6 +5,7 @@ import CtaBand from '../components/CtaBand.astro';
 import Faq from '../components/Faq.astro';
 import Icon from '../components/Icon.astro';
 import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import WebsiteOfferBanner from '../components/WebsiteOfferBanner.astro';
 import { faqSchema, orgRef, areaServed } from '../data/schema';
 import { company } from '../data/site';
 import { packages, individualServices, comparison, foundingOffer, toNumber, type Billing } from '../data/pricing';
@@ -79,6 +80,7 @@ const schema = [
 
   <section class="section pricing-tabs-section">
     <div class="container">
+      <WebsiteOfferBanner />
       <aside class="founding" aria-labelledby="founding-title">
         <h2 id="founding-title">{foundingOffer.title}</h2>
         <p>{foundingOffer.text}</p>

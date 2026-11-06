@@ -2,9 +2,10 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import { company } from '../data/site';
+import { websiteOffer as W } from '../data/pricing';
 ---
 <Base title="Terms and Conditions" description="Terms of use for the Amica Digital Services website.">
-  <PageHero title="Terms and Conditions" lead="Last updated: 8 October 2026" crumbs={[{ label: 'Terms and Conditions' }]} />
+  <PageHero title="Terms and Conditions" lead="Last updated: 6 November 2026" crumbs={[{ label: 'Terms and Conditions' }]} />
   <section class="section-sm">
     <div class="container prose">
       <h2>About these terms</h2>
@@ -17,6 +18,30 @@ import { company } from '../data/site';
       <p>Links to other websites are provided for convenience. We are not responsible for their content.</p>
       <h2>Liability</h2>
       <p>We are not liable for any loss arising from use of this website, except where the law does not allow us to exclude liability.</p>
+      <h2 id="website-199">Website from £{W.setup}: order terms (version {W.termsVersion})</h2>
+      <p>These terms apply when you order the "Website from £{W.setup}" online or in writing. The contract is between you and {company.legalName}, company number {company.companyNumber}, {company.address}.</p>
+      <h3>1. Business customers only</h3>
+      <p>This offer is for businesses, including sole traders, buying for their trade, business or profession. By ordering you confirm you are not buying as a consumer.</p>
+      <h3>2. What is included</h3>
+      <p>One web page with up to six sections built on our professional template; contact form connected to our CRM; click-to-call and WhatsApp buttons; basic on-page SEO, sitemap and Google Search Console set-up; cookie banner and privacy notices; SSL certificate; hosting and daily backups; one round of changes before launch; a .co.uk or .com domain in your business name for the first year (or connection of your existing domain); and small text and photo updates by email or WhatsApp on working days. Extras, such as more pages, copywriting or a logo, are charged only if you order them.</p>
+      <h3>3. Price and payment</h3>
+      <p>The build fee of £{W.setup} is paid in advance when you order. The hosting and support fee of £{W.monthly} a month starts 30 days after your order and is collected automatically from the card or account you pay with. {company.legalName} is not VAT registered, so no VAT is charged. If we register for VAT, we will tell you at least 30 days before VAT is added.</p>
+      <h3>4. Minimum term and cancellation</h3>
+      <p>The minimum term is {W.minMonths} monthly payments. After that the service continues month to month, and either of us can end it with 30 days' written notice. If you end the service before the minimum term, the remaining monthly fees for the minimum term become due.</p>
+      <h3>5. Delivery</h3>
+      <p>We aim to publish your website within {W.days} working days of receiving the build payment and all your materials (logo, text and photos, or your completed brief). Delays in sending materials or approving the preview move the date.</p>
+      <h3>6. Your materials</h3>
+      <p>You confirm you have the right to use the logos, text, photos and other content you send us, and that it is accurate and lawful.</p>
+      <h3>7. Ownership</h3>
+      <p>Your domain and your content belong to you. Our template, code and systems remain ours and are licensed to you while the service runs. If the service ends, we give you a copy of your content and help you transfer your domain.</p>
+      <h3>8. Refunds</h3>
+      <p>If we cannot deliver your website, we refund the build fee in full. Once we have started building, the build fee is not refundable.</p>
+      <h3>9. Missed payments</h3>
+      <p>If a monthly payment fails, we will contact you. If it is still unpaid 14 days later, we may suspend hosting until it is paid.</p>
+      <h3>10. Liability</h3>
+      <p>Our total liability under this contract is limited to the fees you paid in the 12 months before the claim. We are not liable for loss of profit, business or data. Nothing in these terms limits liability that cannot be limited by law.</p>
+      <h3>11. Law</h3>
+      <p>These terms are governed by the laws of England and Wales, and the courts of England and Wales have jurisdiction.</p>
       <h2>Law</h2>
       <p>These terms are governed by the laws of England and Wales.</p>
       <h2>Contact</h2>
