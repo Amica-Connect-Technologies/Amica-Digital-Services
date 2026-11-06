@@ -75,8 +75,7 @@ const schema = [
     <div class="container" style="max-width:760px">
       <div class="center"><span class="eyebrow">Extras</span><h2>Optional extras</h2></div>
       <div class="table-wrap w-extras">
-        <table>
-          <caption class="sr-only">Optional extras and prices</caption>
+        <table aria-label="Optional extras and prices">
           <tbody>
             {W.addons.map(([name, price, note]) => (
               <tr><th scope="row">{name}</th><td><strong>{gbp(price)}</strong>{note && ` ${note}`}</td></tr>
@@ -124,6 +123,7 @@ const schema = [
   }).catch(() => {});
 </script>
 <style>
+  [data-order-link][hidden] { display: none; }
   .w-hero-list { margin: 22px 0 10px; }
   .w-note { color: var(--muted); font-size: 0.95rem; margin: 0 0 20px; }
   .w-extras table { width: 100%; border-collapse: collapse; margin-top: 20px; }
