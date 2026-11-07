@@ -9,16 +9,16 @@ import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
 import { faqSchema, serviceSchema } from '../data/schema';
-import { websiteOffer as W, websiteOfferYearOne } from '../data/pricing';
+import { websiteOffer as W } from '../data/pricing';
 
 const gbp = (n: number) => `£${n.toLocaleString('en-GB')}`;
 
 const faqs = [
-  { q: 'What does it really cost in the first year?', a: `${gbp(W.setup)} one-off to build the website, then ${gbp(W.monthly)} a month for hosting, security, backups and support, with a ${W.minMonths}-month minimum. That is ${gbp(websiteOfferYearOne)} in the first year. Amica Digital Services is not VAT registered, so there is no VAT to add. Nothing else is charged unless you choose an extra.` },
+  { q: 'What does it really cost?', a: `${gbp(W.setup)} one-off to build the website. There is no monthly fee and no contract. Amica Digital Services is not VAT registered, so there is no VAT to add. Nothing else is charged unless you choose an extra, or agree domain and hosting with us.` },
+  { q: 'Are the domain and hosting included?', a: 'No. Domain and hosting are agreed separately, so you only pay for what you need. If you would like us to buy your domain and host the website, we give you a simple quote on the call and agree it there and then. If you already have a domain or hosting, we connect the website to it.' },
   { q: 'What do I need to get started?', a: 'Your logo, some words about your business and a few photos. If you do not have them, we can write the text or design a simple logo (see the extras). We send you a short online brief to fill in.' },
   { q: 'How quickly will it be live?', a: `Within ${W.days} working days of receiving your materials and the build payment. We show you a preview first, and you get one round of changes before it goes live.` },
-  { q: 'Do I own the domain?', a: 'Yes. If you do not have a domain yet, we register a .co.uk or .com in your business name, included for the first year. If you already have one, we connect it. The domain is always yours.' },
-  { q: `What happens after ${W.minMonths} months?`, a: `The ${gbp(W.monthly)} monthly fee continues month to month, and you can cancel with 30 days' notice. If you leave, we help you move your domain.` },
+  { q: 'Do I own the domain?', a: 'Yes. Whether we register it for you or you already have one, the domain is always registered in your business name and belongs to you.' },
   { q: 'Is it UK GDPR compliant?', a: 'Yes. It comes with a cookie banner, privacy and cookie notices, an SSL certificate and a contact form that asks for consent. Enquiries go straight into your CRM.' },
   { q: 'Who is this offer for?', a: 'Businesses, including sole traders, buying for their trade or profession. It is not available to consumers.' },
   { q: 'Can I add more later?', a: 'Yes. The website is connected to our CRM from day one, so you can add booking, missed-call text-back, review requests, an AI chatbot or one of our growth packages later without rebuilding anything.' },
@@ -28,32 +28,32 @@ const included = [
   ['store', 'One complete page', 'Up to six sections: about you, services, photos, reviews, map and contact, on our professional template.'],
   ['search', 'Ready for Google', 'Page titles and descriptions, sitemap, Google Search Console and a link to your Google Business Profile.'],
   ['chat', 'Enquiries straight to you', 'Contact form connected to the CRM, plus click-to-call and WhatsApp buttons, so no enquiry gets lost.'],
-  ['shield', 'Secure and compliant', 'SSL certificate, daily backups, cookie banner and UK GDPR privacy notices.'],
+  ['shield', 'Secure and compliant', 'SSL-ready, with cookie banner and UK GDPR privacy notices.'],
   ['users', 'One round of changes', 'We show you a preview before it goes live and adjust what you need.'],
-  ['clock', 'Support included', 'Small text and photo updates and help by email or WhatsApp on working days.'],
+  ['clock', 'No monthly fee', 'One price for the build. Domain and hosting are agreed separately, or we connect your own.'],
 ];
 
 const schema = [
   serviceSchema({
     name: 'Website from £199',
     serviceType: 'Small business website design',
-    description: `Professional one-page business website for ${gbp(W.setup)} one-off, live in ${W.days} working days, plus ${gbp(W.monthly)} a month hosting and support.`,
+    description: `Professional one-page business website for ${gbp(W.setup)} one-off, live in ${W.days} working days. No monthly fee.`,
     path: W.path,
     audience: 'Small businesses and sole traders',
-    offers: [{ '@type': 'Offer', name: 'Website from £199', price: String(W.setup), priceCurrency: 'GBP', description: `${gbp(W.setup)} build, then ${gbp(W.monthly)} a month, ${W.minMonths}-month minimum.` }],
+    offers: [{ '@type': 'Offer', name: 'Website from £199', price: String(W.setup), priceCurrency: 'GBP', description: `${gbp(W.setup)} one-off build, no monthly fee. Domain and hosting quoted separately.` }],
   }),
   faqSchema(faqs),
 ];
 ---
-<Base title={`Business Website from £${W.setup} | Live in ${W.days} Days`} description={`A professional, mobile-friendly business website for £${W.setup}, live in ${W.days} working days. Ready for Google, with contact form and WhatsApp. Hosting and support £${W.monthly} a month.`} schema={schema}>
+<Base title={`Business Website from £${W.setup} | Live in ${W.days} Days`} description={`A professional, mobile-friendly business website for £${W.setup}, live in ${W.days} working days. Ready for Google, with contact form and WhatsApp. One-off price, no monthly fee.`} schema={schema}>
   <PageHero eyebrow="Website offer" title={`A professional business website from £${W.setup}`} lead={`A modern, fast website that is ready for Google, with a contact form and WhatsApp button. Live in ${W.days} working days.`} crumbs={[{ label: 'Services', href: '/services' }, { label: 'Website from £199' }]}>
     <ul class="checklist w-hero-list">
       <li>Website build: <strong>{gbp(W.setup)} one-off</strong></li>
-      <li>Hosting, security and support: <strong>{gbp(W.monthly)} a month</strong> ({W.minMonths}-month minimum)</li>
-      <li>Domain included for the first year</li>
+      <li><strong>No monthly fee</strong> and no contract</li>
+      <li>Domain and hosting quoted separately, or we connect your own</li>
       <li>Connected to our CRM, so every enquiry reaches you straight away</li>
     </ul>
-    <p class="w-note">First year total {gbp(websiteOfferYearOne)}. No VAT to add. For businesses and sole traders.</p>
+    <p class="w-note">No VAT to add. For businesses and sole traders.</p>
     <div class="btn-row">
       <a href="#enquire" class="btn btn-primary">Request my website</a>
       <a href="/order/website-199" class="btn btn-secondary" data-order-link hidden>Order and pay online</a>

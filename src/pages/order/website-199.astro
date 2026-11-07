@@ -1,7 +1,7 @@
 ---
 // Online order + payment for "Website from £199" (noindex, not linked until payments are live).
 // Posts to /api/order on the deploy server, which logs the terms acceptance in GHL and
-// opens Stripe Checkout (build fee today, monthly fee from day 30).
+// opens Stripe Checkout (one-off build fee, no subscription).
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import { company } from '../../data/site';
@@ -14,10 +14,10 @@ import { websiteOffer as W } from '../../data/pricing';
       <div class="card order-sum">
         <table>
           <tr><td>Website build (one-off)</td><td>£{W.setup}.00</td></tr>
-          <tr><td>Hosting, security and support</td><td>£{W.monthly}.00 a month</td></tr>
+          <tr><td>Monthly fee</td><td>None</td></tr>
         </table>
-        <p class="order-today">Today you pay £{W.setup}.00. The £{W.monthly}.00 monthly fee starts in 30 days and is collected automatically.</p>
-        <p class="order-small">{W.minMonths}-month minimum term, then month to month with 30 days' notice. {company.legalName} is not VAT registered, so no VAT is added. For businesses and sole traders only.</p>
+        <p class="order-today">You pay £{W.setup}.00 once. There is no subscription and nothing else is charged automatically.</p>
+        <p class="order-small">Domain and hosting are not included. We agree them with you separately before your website goes live, or we connect your own. {company.legalName} is not VAT registered, so no VAT is added. For businesses and sole traders only.</p>
       </div>
 
       <form class="card order-form" data-order="website199" novalidate>
@@ -33,7 +33,7 @@ import { websiteOffer as W } from '../../data/pricing';
           <div class="o-field o-wide"><label for="o-address">Business address and postcode *</label><input id="o-address" name="address" type="text" required maxlength="300" autocomplete="street-address" /></div>
         </div>
         <input type="hidden" name="terms_version" value={W.termsVersion} />
-        <label class="o-check"><input type="checkbox" name="terms_ack" value="yes" required /> <span>I have read and accept the <a href="/terms#website-199" target="_blank">Website from £{W.setup} terms</a>, including the {W.minMonths}-month minimum term. *</span></label>
+        <label class="o-check"><input type="checkbox" name="terms_ack" value="yes" required /> <span>I have read and accept the <a href="/terms#website-199" target="_blank">Website from £{W.setup} terms</a>. *</span></label>
         <label class="o-check"><input type="checkbox" name="b2b_ack" value="yes" required /> <span>I am buying for my business, trade or profession, not as a consumer. *</span></label>
         <label class="o-check"><input type="checkbox" name="privacy_ack" value="yes" required /> <span>I have read the <a href="/privacy-policy" target="_blank">privacy policy</a>. *</span></label>
         <button class="btn btn-primary" type="submit">Continue to secure payment</button>
