@@ -23,7 +23,7 @@ export const company = {
   // Leave empty until confirmed; empty values are not shown on the site.
   companyNumber: '17020927',
   icoNumber: '',
-  hours: 'Monday to Friday, 08:00 to 17:00 UK time',
+  hours: 'Monday to Friday, 08:00 to 18:00 UK time',
   // Only verified profile URLs. Empty values are not shown and are left out of the schema.
   social: {
     linkedin: 'https://www.linkedin.com/company/112604923',
