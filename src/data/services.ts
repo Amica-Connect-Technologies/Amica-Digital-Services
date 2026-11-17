@@ -240,7 +240,7 @@ export const services: Service[] = [
     slug: 'websites-software',
     icon: 'code',
     title: 'Websites and Software',
-    metaTitle: "Website Design Manchester for Small Businesses | Amica",
+    metaTitle: "Bespoke Websites, Portals and Custom Software | Amica",
     metaDescription:
       "Fast, search-friendly small business websites, portals and custom software from a Manchester team, with forms and booking that feed your CRM.",
     h1: "Websites, Portals and Custom Software",

@@ -1,0 +1,129 @@
+---
+// National landing page for "affordable / cheap website design UK" searches.
+// Prices come from pricing.ts so they stay in step with /website-199 and /pricing.
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+import { websiteOffer as W } from '../data/pricing';
+
+const gbp = (n: number) => `£${n.toLocaleString('en-GB')}`;
+const fivePage = W.addons.find(([name]) => name.startsWith('Website up to 5 pages'))?.[1] ?? 590;
+const path = '/affordable-website-design-uk';
+
+const included = [
+  ['store', 'A complete, professional page', 'Up to six sections: about you, services, photos, reviews, map and contact.'],
+  ['search', 'Set up for Google', 'Page titles, descriptions, sitemap, Search Console and a link to your Google Business Profile.'],
+  ['chat', 'Contact form, call and WhatsApp', 'Every enquiry goes into a CRM and reaches you straight away.'],
+  ['shield', 'Secure and UK GDPR ready', 'SSL-ready, cookie banner, privacy notice and consent on the form.'],
+  ['users', 'Preview and one round of changes', 'You approve it before it goes live.'],
+  ['clock', 'No monthly fee', 'One price for the build. Domain and hosting are agreed separately, or we connect your own.'],
+];
+
+const options = [
+  ['Do it yourself on a website builder', 'Low upfront cost, but you write, design and maintain everything yourself, and the monthly plan never stops.'],
+  ['A freelancer', 'Can be good value. Check what happens to the site, domain and hosting if they become unavailable.'],
+  ['A bespoke agency build', 'Best for complex sites, but usually a bigger budget and a longer timescale than a small business needs to start.'],
+  [`Amica's ${gbp(W.setup)} website`, `A done-for-you, professional page at a fixed one-off price, live in ${W.days} working days, with a UK company behind it and room to grow.`],
+];
+
+const faqs = [
+  { q: 'Is a £199 website any good?', a: `It is a complete, professional one-page website built on our tested template, not a DIY builder. It suits trades, sole traders and new businesses that need to look credible and be contactable quickly. If you need several pages, the five-page version is ${gbp(fivePage)}, and bespoke sites start from £950.` },
+  { q: 'Are there any hidden costs?', a: `The build is ${gbp(W.setup)} one-off, with no monthly fee and no contract. Domain and hosting are agreed separately so you only pay for what you need, or we connect a domain and hosting you already have. Optional extras, such as copywriting or a logo, are priced on the page before you order. We are not VAT registered, so there is no VAT to add.` },
+  { q: 'Do you cover the whole UK?', a: 'Yes. We are based in Manchester and work with businesses across England, Scotland, Wales and Northern Ireland by phone, video call and email.' },
+  { q: 'How quickly can my website be live?', a: `Within ${W.days} working days of receiving your logo, text, photos and the build payment. We show you a preview first.` },
+  { q: 'Will it get me to the top of Google?', a: 'No one can honestly promise that. Your website is built so Google can read it, and it links to your Google Business Profile. Rankings then depend on your profile, reviews, content and competition. We explain what is realistic for your area and trade on the call.' },
+  { q: 'Do I own the domain?', a: 'Yes. The domain is always registered in your business name and belongs to you.' },
+  { q: 'Who can buy it?', a: 'Businesses and sole traders buying for their trade or profession. It is not available to consumers.' },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Affordable website design UK',
+    serviceType: 'Small business website design',
+    description: `Affordable small business websites across the UK: one-page websites ${gbp(W.setup)} one-off, live in ${W.days} working days, no monthly fee. Five-page sites ${gbp(fivePage)}.`,
+    path,
+    audience: 'Small businesses and sole traders in the UK',
+    offers: [
+      { '@type': 'Offer', name: 'One-page website', price: String(W.setup), priceCurrency: 'GBP' },
+      { '@type': 'Offer', name: 'Website up to 5 pages', price: String(fivePage), priceCurrency: 'GBP' },
+    ],
+  }),
+  faqSchema(faqs),
+];
+---
+<Base title={`Affordable Website Design UK | From £${W.setup}, No Monthly Fee`} description={`Affordable website design for UK small businesses and sole traders: a professional website for £${W.setup} one-off, live in ${W.days} working days. No monthly fee, no contract.`} schema={schema}>
+  <PageHero eyebrow="Affordable websites" title="Affordable website design for UK small businesses" lead={`A professional website for ${gbp(W.setup)}, built for you and live in ${W.days} working days. One price, no monthly fee and no contract.`} crumbs={[{ label: 'Services', href: '/services' }, { label: 'Websites and Software', href: '/websites-software' }, { label: 'Affordable website design UK' }]}>
+    <ul class="checklist a-hero-list">
+      <li>Website build: <strong>{gbp(W.setup)} one-off</strong></li>
+      <li>Up to five pages: <strong>{gbp(fivePage)} one-off</strong></li>
+      <li>No VAT to add, no monthly fee for the build</li>
+      <li>A UK company (Amica Digital Services Ltd), based in Manchester</li>
+    </ul>
+    <div class="btn-row">
+      <a href={W.path} class="btn btn-primary">See the £199 website</a>
+      <a href="#enquire" class="btn btn-secondary">Ask a question</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <h2>Affordable should not mean amateur</h2>
+      <p>A low price is only good value if the website works: it loads quickly on a phone, tells people clearly what you do, and makes it easy to call, message or fill in a form. That is what we build. You send us your logo, a few words about your business and some photos, and we do the rest.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">What you get for {gbp(W.setup)}</span><h2>Everything a small business needs to be found</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {included.map(([icon, title, text]) => (
+          <div class="card"><div class="icon-badge"><Icon name={icon} /></div><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <div class="center"><span class="eyebrow">Your options</span><h2>Comparing ways to get a low-cost website</h2></div>
+      <div class="table-wrap a-compare">
+        <table aria-label="Ways to get a low-cost website">
+          <tbody>
+            {options.map(([name, note]) => (
+              <tr><th scope="row">{name}</th><td>{note}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="a-small">Based in Manchester? See <a href="/web-design-manchester">web design Manchester</a>. Need something larger? See <a href="/websites-software">bespoke websites and software</a>, from £950.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="enquire">
+    <div class="container" style="max-width:860px">
+      <div class="center"><span class="eyebrow">Get started</span><h2>Request your website</h2><p class="lead">Tell us about your business. We reply within one working day and email you a short brief.</p></div>
+      <div class="card" style="margin-top:28px">
+        <ServiceEnquiryForm service="Business Website" submitLabel="Request my website" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <CtaBand title="Get online properly, for a fixed price" text="Book a free 20-minute call and we will tell you what your business needs, and what it does not. No obligation." />
+</Base>
+<style>
+  .a-hero-list { margin: 22px 0 20px; }
+  .a-compare table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .a-compare th, .a-compare td { padding: 14px 12px 14px 0; border-bottom: 1px solid #e3e7ec; text-align: left; vertical-align: top; }
+  .a-compare th { width: 34%; font-weight: 600; }
+  .a-small { margin-top: 16px; color: var(--muted); font-size: 0.95rem; text-align: center; }
+</style>

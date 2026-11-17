@@ -1,0 +1,137 @@
+---
+// Local landing page for "web design Manchester" searches. Prices come from
+// pricing.ts so they stay in step with /website-199 and /pricing.
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+import { websiteOffer as W } from '../data/pricing';
+import { company } from '../data/site';
+
+const gbp = (n: number) => `£${n.toLocaleString('en-GB')}`;
+const fivePage = W.addons.find(([name]) => name.startsWith('Website up to 5 pages'))?.[1] ?? 590;
+const path = '/web-design-manchester';
+
+const tiers = [
+  { name: 'One-page website', price: `${gbp(W.setup)} one-off`, text: `A complete one-page site on our professional template, live in ${W.days} working days. Ideal for trades, sole traders and new businesses.`, href: W.path, cta: 'See the £199 website' },
+  { name: 'Website up to 5 pages', price: `${gbp(fivePage)} one-off`, text: 'Separate pages for your services, about, reviews and contact, so you can be found for more than one search.', href: '#enquire', cta: 'Ask for a 5-page site' },
+  { name: 'Bespoke website or portal', price: 'From £950', text: 'A custom design, booking, client areas or integrations with the systems you already use. Quoted in writing after a short call.', href: '/websites-software', cta: 'Bespoke websites' },
+];
+
+const included = [
+  ['search', 'Built to be found on Google', 'Page titles and descriptions, a sitemap, Google Search Console set-up and a link to your Google Business Profile.'],
+  ['chat', 'Enquiries straight to you', 'Contact form connected to the CRM, plus click-to-call and WhatsApp buttons, so no enquiry gets lost.'],
+  ['store', 'Fast on mobile', 'Most local searches happen on a phone, so every site is designed for small screens first and kept light so it loads quickly.'],
+  ['shield', 'Secure and UK GDPR ready', 'SSL-ready, with cookie banner, privacy notice and a consent checkbox on the form.'],
+  ['users', 'You see it before it goes live', 'We show you a preview and make one round of changes before we publish.'],
+  ['clock', 'Room to grow', 'Add booking, missed-call text-back, review requests or an AI chatbot later without rebuilding the site.'],
+];
+
+const faqs = [
+  { q: 'How much does a website cost in Manchester?', a: `With us, a one-page business website is ${gbp(W.setup)} one-off and a site of up to five pages is ${gbp(fivePage)} one-off. Bespoke websites and portals start from £950 and are quoted in writing. There is no monthly fee for the website build. Domain and hosting are agreed separately, or we connect your own. Amica Digital Services is not VAT registered, so there is no VAT to add.` },
+  { q: 'Where are you based?', a: `Our registered office is at ${company.address}. We work with businesses across Greater Manchester and the rest of the UK, mostly by phone, video call and email, so you do not need to take time out to visit us.` },
+  { q: 'How long does it take?', a: `A one-page website is live within ${W.days} working days of receiving your logo, text, photos and the build payment. Larger sites depend on the number of pages and features, and we agree a date with you before we start.` },
+  { q: 'Will my website show up on Google?', a: 'Every site is built so Google can read it: page titles, descriptions, a sitemap and Search Console set-up are included. No one can honestly guarantee a page-one position, especially for competitive searches. A complete Google Business Profile, genuine reviews and useful page content are what help most over time, and we can help with all three.' },
+  { q: 'Do I own the website and domain?', a: 'The domain is always registered in your business name and belongs to you, whether we register it or you already have one.' },
+  { q: 'Can you redesign my existing website?', a: 'Yes. Tell us your current web address in the form and we will look at it before the call. We can keep your domain and move your existing content across.' },
+  { q: 'Who is this for?', a: 'Businesses and sole traders buying for their trade or profession, such as trades, clinics, care providers, recruitment agencies, shops and professional services. It is not available to consumers.' },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Web design Manchester',
+    serviceType: 'Website design',
+    description: `Small business website design from a Manchester team: one-page websites from ${gbp(W.setup)} one-off, sites up to five pages ${gbp(fivePage)}, bespoke builds from £950.`,
+    path,
+    audience: 'Small businesses and sole traders in Manchester and the UK',
+    offers: [
+      { '@type': 'Offer', name: 'One-page website', price: String(W.setup), priceCurrency: 'GBP' },
+      { '@type': 'Offer', name: 'Website up to 5 pages', price: String(fivePage), priceCurrency: 'GBP' },
+    ],
+  }),
+  faqSchema(faqs),
+];
+---
+<Base title="Web Design Manchester | Small Business Websites from £199" description={`Manchester web design for small businesses: one-page websites from £${W.setup}, five-page sites £${fivePage}, live fast and ready for Google. No monthly fee for the build.`} schema={schema}>
+  <PageHero eyebrow="Web design Manchester" title="Web design in Manchester for small businesses" lead="Clear, fast websites that help local customers find you on Google and contact you straight away. Fixed prices, written down before we start." crumbs={[{ label: 'Services', href: '/services' }, { label: 'Websites and Software', href: '/websites-software' }, { label: 'Web design Manchester' }]}>
+    <ul class="checklist m-hero-list">
+      <li>One-page websites from <strong>{gbp(W.setup)} one-off</strong></li>
+      <li>Sites up to five pages for <strong>{gbp(fivePage)}</strong></li>
+      <li>No monthly fee for the build, and no contract</li>
+      <li>Based in Manchester (M14), working with businesses across the UK</li>
+    </ul>
+    <div class="btn-row">
+      <a href="#enquire" class="btn btn-primary">Get a website quote</a>
+      <a href="/book-a-consultation" class="btn btn-secondary">Book a free call</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <p class="lead">Amica Digital Services is a Manchester digital agency at {company.addressParts.streetAddress}, {company.addressParts.postalCode}. We design and build websites for small businesses, then connect them to a CRM so every enquiry is answered quickly. You get a fixed price in writing, a preview before anything goes live, and a website you own.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Prices</span><h2>Three ways to get your website</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {tiers.map((t) => (
+          <div class="card m-tier">
+            <h3>{t.name}</h3>
+            <p class="m-price">{t.price}</p>
+            <p>{t.text}</p>
+            <a href={t.href} class="btn btn-secondary">{t.cta}</a>
+          </div>
+        ))}
+      </div>
+      <p class="m-small">Domain and hosting are agreed separately, or we connect your own. No VAT to add. See all <a href="/pricing">prices</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">What every website includes</span><h2>More than a nice-looking page</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {included.map(([icon, title, text]) => (
+          <div class="card"><div class="icon-badge"><Icon name={icon} /></div><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px">
+      <h2>Being found by Manchester customers</h2>
+      <p>A website on its own rarely brings in local work. Customers searching for a business "near me" usually see the Google map results first, then the websites below them. That is why we set up your site and your Google Business Profile to work together, with the same business name, address and phone number on both.</p>
+      <p>If you want ongoing help after launch, our <a href="/seo">Google Business Profile and local visibility</a> service covers profile posts, photos, review replies and page updates each month. It is optional, and the website is yours either way.</p>
+    </div>
+  </section>
+
+  <section class="section" id="enquire">
+    <div class="container" style="max-width:860px">
+      <div class="center"><span class="eyebrow">Get started</span><h2>Tell us about your website</h2><p class="lead">We reply within one working day with a fixed price, or a short call if we need more detail.</p></div>
+      <div class="card" style="margin-top:28px">
+        <ServiceEnquiryForm service="Business Website" submitLabel="Get my website quote" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <CtaBand title="Need a website that brings in enquiries?" text="Book a free 20-minute call. We will look at what you have today and give you a fixed price. No obligation." />
+</Base>
+<style>
+  .m-hero-list { margin: 22px 0 20px; }
+  .m-tier { display: flex; flex-direction: column; gap: 6px; }
+  .m-tier .btn { margin-top: auto; align-self: flex-start; }
+  .m-price { font-size: 1.5rem; font-weight: 700; margin: 0; }
+  .m-small { margin-top: 20px; color: var(--muted); font-size: 0.95rem; text-align: center; }
+</style>
