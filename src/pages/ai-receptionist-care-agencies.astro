@@ -17,8 +17,9 @@ const faqs = [
   { q: 'Will it replace our coordinators or office staff?', a: 'No. It covers the calls your team cannot get to, such as evenings, weekends and busy rota periods, and passes every enquiry to them with the details already captured. Your coordinators still make every decision about care.' },
   { q: 'What happens if a caller has an urgent concern?', a: 'The agent is set up to recognise urgent or safeguarding concerns and pass them straight to your on-call number, or give your agreed emergency instructions. It does not give clinical advice or make safeguarding decisions.' },
   { q: 'Will callers know they are speaking to an AI?', a: 'We recommend the agent says so at the start of the call. Being open builds trust with families and applicants and avoids confusion.' },
+  { q: 'Can it work alongside missed-call text-back?', a: 'Yes. Missed-call text-back is included in the Care and Recruitment Agency Automation Package. If a call is not answered, the caller gets a text straight away with a link to book a call-back, and the AI receptionist can cover the hours your team chooses.' },
   { q: 'Do we need a new phone number?', a: 'Not usually. Calls can be forwarded to the agent when your team is busy or outside office hours, so families keep using the number they already have.' },
-  { q: 'How much does it cost?', a: 'AI voice agents are quoted individually after a short call, because cost depends on call volume, hours covered and integrations. It can be added to the Care and Recruitment Agency Automation Package, which is £490 per month on a 12-month agreement with no setup fee, or £990 setup plus £490 per month on a rolling 30-day plan.' },
+  { q: 'How much does an AI receptionist for a care agency cost?', a: 'AI receptionists start from £199 per month plus usage. Setup, call minutes and phone numbers are quoted after a short call, because they depend on call volume, the hours covered and the systems involved. It can also be added to the Care and Recruitment Agency Automation Package, which is £490 per month on a 12-month agreement with no setup fee, or £990 setup plus £490 per month on a rolling 30-day plan.' },
 ];
 
 const schema = [
@@ -28,6 +29,9 @@ const schema = [
     description,
     path: '/ai-receptionist-care-agencies',
     audience: 'Home care, supported living and care recruitment agencies',
+    offers: [
+      { '@type': 'Offer', name: 'AI receptionist', price: '199', priceCurrency: 'GBP', description: 'From £199 per month plus usage. Setup, call minutes and phone numbers quoted separately.' },
+    ],
   }),
   faqSchema(faqs),
 ];
@@ -36,7 +40,7 @@ const schema = [
   <PageHero
     eyebrow="For UK care agencies"
     title="AI Receptionist for Home Care and Care Recruitment Agencies"
-    lead="An AI receptionist for a care agency is a virtual receptionist that answers your phone when your coordinators are busy or the office is closed. It takes details from families and carer applicants, answers common questions from information you approve, books call-backs and passes anything urgent to a person. Amica Digital Services builds and manages AI receptionists for UK care agencies."
+    lead="An AI receptionist for a care agency is a virtual receptionist that answers your phone when your coordinators are busy or the office is closed. It takes details from families and carer applicants, answers common questions from information you approve, books call-backs and passes anything urgent to a person. Amica Digital Services, based in Manchester, builds and manages AI receptionists for care agencies across the UK, from £199 per month plus usage."
     crumbs={[{ label: 'Care and Recruitment', href: '/care-agency-automation' }, { label: 'AI Receptionist for Care Agencies' }]}
   >
     <div class="btn-row">
@@ -135,7 +139,7 @@ const schema = [
       <div class="center">
         <span class="eyebrow">Pricing</span>
         <h2>How pricing works</h2>
-        <p class="lead">AI voice agents are quoted individually after a short call, because the cost depends on call volume, the hours you want covered and the systems it connects to.</p>
+        <p class="lead">AI receptionists start from <strong>£199 per month plus usage</strong>. Setup, call minutes and phone numbers are quoted after a short call, because they depend on call volume, the hours you want covered and the systems it connects to.</p>
       </div>
       <div class="card specialist split" style="margin-top:36px">
         <div>

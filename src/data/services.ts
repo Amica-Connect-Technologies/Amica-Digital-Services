@@ -163,7 +163,7 @@ export const services: Service[] = [
     h1: "GoHighLevel CRM Setup and Management",
     serviceType: "CRM setup and management",
     answer:
-      "GoHighLevel (also called HighLevel) is an all-in-one CRM and marketing platform. Amica Digital Services is a Manchester-based GoHighLevel agency that sets up pipelines, calendars, forms, WhatsApp and automations for UK businesses, fixes existing accounts and manages them for you.",
+      "GoHighLevel (also called HighLevel) is an all-in-one CRM and marketing platform. Amica Digital Services is a Manchester-based GoHighLevel agency that sets up pipelines, calendars, forms, WhatsApp and automations for UK businesses, fixes existing accounts and manages them for you. CRM and GoHighLevel management starts from £149 per month.",
     summary: 'One place for every lead, conversation and appointment, set up properly and kept tidy.',
     intro:
       'GoHighLevel can bring your contacts, pipeline, calendars, email, SMS and WhatsApp into one system. Set up well, it shows exactly where every enquiry stands. Set up badly, it becomes another tool nobody trusts. We design it around your sales and onboarding process and keep it working.',
@@ -193,6 +193,10 @@ export const services: Service[] = [
       { q: "I already have GoHighLevel. Can you fix it?", a: "Yes. We often start with an audit of an existing account and then tidy pipelines, calendars and workflows." },
       { q: "Do I need to already use GoHighLevel?", a: "No. We can set it up from scratch, or audit and improve an account you already have." },
       { q: "Who owns the data?", a: "You do. Your contacts and records remain your business data." },
+      { q: "How much does GoHighLevel setup and management cost in the UK?", a: "CRM and GoHighLevel management starts from £149 per month, covering a contact database, one sales pipeline, lead capture, enquiry notifications and basic reporting. Setup and extra integrations are quoted after a short call. For a fuller build, the Growth package is £490 per month plus £495 setup, and Pro is £995 per month plus £750 setup; both setup fees are waived on a 12-month agreement. Amica is not VAT registered, so there is no VAT to add." },
+      { q: "Do you set up GoHighLevel for cleaning companies, trades and other small businesses?", a: "Yes. As well as care and recruitment agencies, we set up GoHighLevel for UK service businesses such as cleaning companies, trades and clinics: one inbox for website, phone, Facebook and WhatsApp enquiries, quote and booking forms, appointment reminders, missed-call text-back, review requests and repeat-booking follow-up." },
+      { q: "Where are you based?", a: "Amica Digital Services is based in Manchester and works with businesses across the UK. Most setup and training happens remotely by video call." },
+      { q: "How long does a GoHighLevel setup take?", a: "A typical project takes four to six weeks, depending on scope and how quickly we receive the information and access we need. Smaller fixes to an existing account can be quicker." },
     ],
   },
   {
