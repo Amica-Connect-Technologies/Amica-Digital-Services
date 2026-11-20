@@ -1,0 +1,161 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Picture from '../components/Picture.astro';
+import FlowGraphic from '../components/FlowGraphic.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+
+const title = 'Missed-Call Text-Back for UK Small Businesses | Amica';
+const description =
+  'Missed-call text-back for UK small businesses: when nobody can answer, the caller gets a text within seconds with a link to book a call back. From £199 per month.';
+
+const faqs = [
+  { q: 'What is missed-call text-back?', a: 'Missed-call text-back sends an automatic text message to anyone whose call you could not answer, usually within seconds. The text says sorry you missed them and gives a link to book a call back or reply by text, so the conversation carries on instead of the caller trying a competitor.' },
+  { q: 'How much does missed-call text-back cost in the UK?', a: 'Amica sets it up as part of AI Workflow Automation, from £199 per month plus a one-off build from £495. It is included in the Care and Recruitment Agency Automation Package (£490 per month). Text messages and phone numbers are charged at cost and confirmed in your written quote. Amica is not VAT registered, so there is no VAT to add.' },
+  { q: 'Do I need a new phone number?', a: 'Not always. Many businesses forward unanswered calls from their existing number to a GoHighLevel number that sends the text. Others use a new local or mobile number for adverts and the website. We recommend the simplest option after checking your current phone setup.' },
+  { q: 'Which businesses is it for?', a: 'Any UK business where calls arrive while staff are busy: cleaning companies, trades such as plumbers, electricians and builders, clinics, salons, care agencies and recruitment agencies. If you are often on a job, with a client or driving when the phone rings, it helps.' },
+  { q: 'Can it reply on WhatsApp instead of SMS?', a: 'The first message after a missed call goes by SMS, because that works for every mobile. Replies can then carry on by SMS, or by WhatsApp where the customer prefers it and your account is set up for it.' },
+  { q: 'What happens when the caller replies?', a: 'The reply lands in one shared inbox in your CRM with the caller\'s number, so your team can answer from the app on their phone. You can also add a short automatic follow-up, such as asking what the enquiry is about, before a person takes over.' },
+  { q: 'Is it the same as an AI receptionist?', a: 'No. Missed-call text-back sends a text after a call is missed. An AI receptionist answers the call in a natural voice. Many businesses start with text-back and add an AI receptionist, from £199 per month plus usage, for evenings and busy periods.' },
+  { q: 'How long does it take to set up?', a: 'It depends on your phone setup and what else is included. We confirm the timescale in your written quote; wider automation projects typically take four to six weeks.' },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'Missed-Call Text-Back',
+    serviceType: 'Missed-call text-back',
+    description,
+    path: '/missed-call-text-back',
+    audience: 'UK small businesses, trades, cleaning companies, clinics, care and recruitment agencies',
+    offers: [
+      { '@type': 'Offer', name: 'AI Workflow Automation', price: '199', priceCurrency: 'GBP', description: 'From £199 per month plus a one-off build from £495. SMS and phone numbers charged at cost.' },
+    ],
+  }),
+  faqSchema(faqs),
+];
+---
+<Base title={title} description={description} schema={schema}>
+  <PageHero
+    eyebrow="For UK small businesses"
+    title="Missed-Call Text-Back for UK Small Businesses"
+    lead="Missed-call text-back sends an automatic text to anyone whose call you could not answer, usually within seconds, with a link to book a call back or reply by text. Amica Digital Services, based in Manchester, sets it up in GoHighLevel for businesses across the UK, from £199 per month."
+    crumbs={[{ label: 'Services', href: '/services' }, { label: 'Missed-Call Text-Back' }]}
+  >
+    <div class="btn-row">
+      <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
+      <a href="#pricing" class="btn btn-secondary">See pricing</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h2>A missed call is often a lost customer</h2>
+        <p class="lead">When you are on a job, with a client or driving, the phone still rings. Many callers who reach voicemail do not leave a message. They simply ring the next business on the list.</p>
+        <ul class="checklist crosslist" style="margin-top:20px">
+          <li>Calls come in while you are up a ladder, on site or with a customer</li>
+          <li>Callers hang up at voicemail and try someone else</li>
+          <li>By the time you ring back in the evening, they have booked elsewhere</li>
+          <li>You cannot tell which missed calls were new customers</li>
+        </ul>
+      </div>
+      <Picture src="/images/ai-receptionist.jpg" alt="Receptionist on a headset, supported by automated call handling and text follow-up" ratio="4 / 3">
+        <FlowGraphic slot="fallback" />
+      </Picture>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">How it works</span>
+        <h2>What happens when you miss a call</h2>
+        <p class="lead">An example of a typical setup. It is an illustration, not a client result.</p>
+      </div>
+      <div class="grid grid-4 steps" style="margin-top:40px">
+        <div class="card step"><h3>Call missed</h3><p>A customer rings while you are on a job and nobody can answer.</p></div>
+        <div class="card step"><h3>Text sent</h3><p>Within seconds they get a friendly text from your business name with a link to book a call back.</p></div>
+        <div class="card step"><h3>They reply or book</h3><p>They reply with what they need, or pick a call-back time that suits them.</p></div>
+        <div class="card step"><h3>You pick it up</h3><p>The conversation and booking are waiting in your CRM inbox and app, ready when you are free.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">What is included</span>
+        <h2>What we set up for you</h2>
+      </div>
+      <div class="grid grid-3" style="margin-top:40px">
+        <div class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>Call forwarding</h3><p>Unanswered calls from your number are forwarded so every missed call is caught.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="chat" /></div><h3>Your text message</h3><p>A short message in your business name and tone, agreed with you before it goes live.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="calendar" /></div><h3>Call-back booking</h3><p>A booking link to your calendar, with confirmation and reminder messages.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="crm" /></div><h3>One inbox</h3><p>Texts, calls, website forms and social messages in one place, with the GoHighLevel mobile app.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="bolt" /></div><h3>Follow-up</h3><p>An optional second message if the caller does not reply, and a task for your team.</p></div>
+        <div class="card"><div class="icon-badge"><Icon name="chart" /></div><h3>Reporting</h3><p>See how many calls were missed, how many people replied and how many booked.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="pricing">
+    <div class="container">
+      <div class="center">
+        <span class="eyebrow">Pricing</span>
+        <h2>How pricing works</h2>
+        <p class="lead">Missed-call text-back is set up as part of AI Workflow Automation, from <strong>£199 per month plus a one-off build from £495</strong>. It is included in the Care and Recruitment Agency Automation Package.</p>
+      </div>
+      <div class="grid grid-2 pricing" style="margin-top:44px">
+        <div class="card price-card">
+          <h3>AI Workflow Automation</h3>
+          <p class="price">£199<small> / month</small></p>
+          <p>Plus build from £495</p>
+          <ul class="checklist">
+            <li>Missed-call text-back workflow</li>
+            <li>Testing before go-live</li>
+            <li>Routine monitoring and monthly review</li>
+          </ul>
+          <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
+        </div>
+        <div class="card price-card">
+          <h3>Care and recruitment agencies</h3>
+          <p class="price">£490<small> / month</small></p>
+          <p>Text-back included in the full package</p>
+          <ul class="checklist">
+            <li>No setup fee on a 12-month agreement</li>
+            <li>CRM, instant replies and booking</li>
+            <li>Recruitment workflows and reporting</li>
+          </ul>
+          <a href="/care-agency-automation" class="btn btn-secondary">See the package</a>
+        </div>
+      </div>
+      <p class="center small">Text messages, phone numbers and other third-party costs are charged at cost and confirmed in your written quote before work starts.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <h2>Related pages</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        <a href="/ai-voice-agents" class="card"><div class="icon-badge"><Icon name="phone" /></div><h3>AI receptionists</h3><p>Have calls answered in a natural voice when your team is busy.</p><span class="more">Learn more →</span></a>
+        <a href="/crm-gohighlevel" class="card"><div class="icon-badge"><Icon name="crm" /></div><h3>GoHighLevel CRM setup</h3><p>One place for every lead, conversation and appointment.</p><span class="more">Learn more →</span></a>
+        <a href="/ai-automation" class="card"><div class="icon-badge"><Icon name="bolt" /></div><h3>AI automation</h3><p>Instant replies, reminders and follow-ups that run on schedule.</p><span class="more">Learn more →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Find out how many calls you are missing" />
+</Base>
+<style>
+  .pricing { max-width: 860px; margin-left: auto; margin-right: auto; }
+  .small { font-size: 0.9rem; color: var(--muted); margin-top: 24px; }
+</style>

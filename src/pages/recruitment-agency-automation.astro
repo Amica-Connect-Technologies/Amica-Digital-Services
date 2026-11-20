@@ -17,6 +17,9 @@ const faqs = [
   { q: 'Will it replace our recruiters?', a: 'No. It takes the chasing and first replies off their desks so they can spend more time speaking to candidates and clients. Recruiters can see and take over any conversation.' },
   { q: 'Do we have to replace our ATS?', a: 'No. We check what your current ATS or recruitment CRM allows during the discovery call. Where a direct link is possible we connect the two; where it is not, we agree a simple handover process.' },
   { q: 'Can it collect right-to-work and DBS documents?', a: 'It can request documents, send upload links and remind candidates until everything is in. The checks themselves are still carried out by your team, following GOV.UK guidance.' },
+  { q: 'Can you automate candidate follow-up for a healthcare or nursing recruitment agency?', a: 'Yes. For healthcare, nursing and care recruitment agencies we set up instant replies to new applicants, short screening questions, interview booking, reminders, and automatic chasing for compliance documents such as right to work, DBS, references and training certificates. Candidates who go quiet get polite follow-ups by SMS, email or WhatsApp. Your compliance team still carries out and signs off every check.' },
+  { q: 'Do candidates get a reply out of hours?', a: 'Yes. Registrations and missed calls get an instant reply at any time, with a link to book a call or interview, so applicants who apply in the evening or at weekends hear back straight away.' },
+  { q: 'Where are you based?', a: 'Amica Digital Services is based in Manchester and works with recruitment agencies across the UK, including Scotland and Wales. Setup and training happen remotely by video call.' },
   { q: 'How much does it cost?', a: '£490 per month with no setup fee on a 12-month agreement, or £990 setup plus £490 per month on a rolling 30-day plan. It is the same Care and Recruitment Agency Automation Package, scoped around recruitment.' },
   { q: 'How long does setup take?', a: 'Implementation normally takes four to six weeks, depending on scope and how quickly we receive the information we need from you.' },
 ];
@@ -40,7 +43,7 @@ const schema = [
   <PageHero
     eyebrow="For UK recruitment and staffing agencies"
     title="Automation and CRM for UK Recruitment Agencies"
-    lead="Recruitment agency automation uses a CRM and workflows to handle the repetitive steps around candidates and clients: acknowledging registrations, screening, booking interviews, sending reminders and chasing compliance documents. Amica Digital Services sets this up for UK recruitment and staffing agencies, mainly in GoHighLevel, alongside the ATS you already use."
+    lead="Recruitment agency automation uses a CRM and workflows to handle the repetitive steps around candidates and clients: acknowledging registrations, screening, booking interviews, sending reminders and chasing compliance documents. Amica Digital Services, based in Manchester, sets this up for recruitment and staffing agencies across the UK, including healthcare and nursing agencies, mainly in GoHighLevel and alongside the ATS you already use. It costs £490 per month."
     crumbs={[{ label: 'Care and Recruitment', href: '/care-agency-automation' }, { label: 'Recruitment Agency Automation' }]}
   >
     <div class="btn-row">
@@ -99,6 +102,22 @@ const schema = [
   </section>
 
   <section class="section section-alt">
+    <div class="container prose" style="max-width:820px">
+      <span class="eyebrow">Healthcare and nursing recruitment</span>
+      <h2>Candidate follow-up for healthcare recruitment agencies</h2>
+      <p>Healthcare, nursing and care recruitment agencies lose good applicants in the gap between "apply" and "compliant". Nurses and care workers often apply to several agencies at once, and the one that replies first, books the interview and makes the paperwork easy usually wins them.</p>
+      <ul class="checklist" style="margin-top:12px">
+        <li>Instant reply to every new applicant, day or night, with a link to book an interview</li>
+        <li>Screening questions on role, location, availability and right to work</li>
+        <li>Automatic requests and reminders for right to work, DBS, references and training certificates, until everything is in</li>
+        <li>Follow-ups for applicants who go quiet, and re-engagement for past candidates who opted in</li>
+        <li>A dashboard showing who is waiting on what, so compliance staff only chase the exceptions</li>
+      </ul>
+      <p>The checks themselves are still carried out by your team, following GOV.UK and regulator guidance. If you also supply care, see our <a href="/care-agency-automation">care and recruitment agency package</a>.</p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="center"><span class="eyebrow">How it works</span><h2>Live in four to six weeks</h2></div>
       <div class="grid grid-4 steps" style="margin-top:40px">
@@ -110,7 +129,7 @@ const schema = [
     </div>
   </section>
 
-  <section class="section" id="pricing">
+  <section class="section section-alt" id="pricing">
     <div class="container">
       <div class="center"><span class="eyebrow">Pricing</span><h2>Simple monthly pricing</h2><p class="lead">Recruitment automation is part of our Care and Recruitment Agency Automation Package, scoped around how your agency recruits.</p></div>
       <div class="grid grid-2 pricing" style="margin-top:44px">
@@ -144,7 +163,7 @@ const schema = [
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container" style="max-width:860px">
       <Faq items={faqs} />
     </div>
