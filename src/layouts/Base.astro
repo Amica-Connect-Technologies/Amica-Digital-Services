@@ -125,7 +125,9 @@ const orgSchema = {
           else {
             try {
               var u = new URL(a.href, location.href);
-              if (u.origin === location.origin && u.pathname.replace(/\/$/, '') === '/book-a-consultation') name = 'click_book_cta';
+              var path = u.pathname.replace(/\/$/, '');
+              if (u.origin === location.origin && path === '/book-a-consultation') name = 'click_book_cta';
+              else if (u.origin === location.origin && path.indexOf('/order/') === 0 && path !== '/order/thank-you') name = 'click_order';
             } catch (err) {}
           }
           if (name) window.amicaTrack(name, { link_url: href.split('?')[0], link_text: (a.textContent || '').trim().slice(0, 100) });

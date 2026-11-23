@@ -137,5 +137,5 @@ export const enquiry = {
     heardFrom: ['Google search', 'Facebook', 'LinkedIn', 'Referral', 'Email from us', 'Other'],
   },
   // Hidden lead source values sent with the form (read from the session capture above).
-  sourceKeys: ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'landing_page', 'referrer'],
+  sourceKeys: ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'landing_page', 'referrer', 'gclid'],
 };

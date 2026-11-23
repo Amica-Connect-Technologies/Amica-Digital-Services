@@ -20,7 +20,7 @@ import { websiteOffer as W } from '../../data/pricing';
         <p class="order-small">Domain and hosting are not included. We agree them with you separately before your website goes live, or we connect your own. {company.legalName} is not VAT registered, so no VAT is added. For businesses and sole traders only.</p>
       </div>
 
-      <form class="card order-form" data-order="website199" novalidate>
+      <form class="card order-form" data-order="website199" data-value={W.setup} novalidate>
         <h2>Your business details</h2>
         <div class="o-grid">
           <div class="o-field"><label for="o-company">Business name *</label><input id="o-company" name="company" type="text" required maxlength="160" autocomplete="organization" /></div>
@@ -58,11 +58,19 @@ import { websiteOffer as W } from '../../data/pricing';
       if (bad) { show('Please complete every field marked * and tick the three boxes.'); bad.focus({ preventScroll: true }); return; }
       const data: Record<string, string> = { product: form.dataset.order || '' };
       new FormData(form).forEach((v, k) => { data[k] = String(v); });
+      // Lead source (UTM tags, Google click ID, landing page) from the session capture in Base.astro.
+      const lead = ((window as any).amicaLeadData || {}) as Record<string, string>;
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'landing_page', 'gclid'].forEach((k) => { if (lead[k]) data[k] = String(lead[k]).slice(0, 200); });
       btn.disabled = true; btn.textContent = 'Opening secure payment…';
       try {
         const r = await fetch('/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
         const d = await r.json().catch(() => ({}));
-        if (r.ok && d.url) { location.href = d.url; return; }
+        if (r.ok && d.url) {
+          const w = window as any;
+          if (w.amicaTrack) w.amicaTrack('begin_checkout', { currency: 'GBP', value: Number(form.dataset.value || 0) || undefined, items: [{ item_id: form.dataset.order || '', item_name: 'Website from £199' }] });
+          setTimeout(() => { location.href = d.url; }, 300);
+          return;
+        }
         show(r.status === 503 ? 'Online payment is not available at the moment. Please call or email us and we will help you order.' : r.status === 422 ? 'Please check your details: every field marked * is needed.' : 'Sorry, we could not open the payment page. Please try again, or contact us.');
       } catch { show('Sorry, we could not open the payment page. Please check your connection and try again.'); }
       btn.disabled = false; btn.textContent = 'Continue to secure payment';

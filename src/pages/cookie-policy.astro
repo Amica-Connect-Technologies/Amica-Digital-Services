@@ -12,7 +12,8 @@ const hasPixels = Boolean(analytics.metaPixelId || analytics.linkedinPartnerId);
       <h2>Strictly necessary</h2>
       <p>We store your cookie choice in your browser (<code>amica-consent-v1</code>) so we do not ask again. This does not identify you.</p>
       <h2>Analytics (only with your consent)</h2>
-      <p>If you click "Accept analytics", we load Google Analytics, which sets cookies such as <code>_ga</code> and <code>_ga_*</code> to understand which pages are useful. These last up to two years. If you click "Reject", Google Analytics is not loaded.</p>
+      <p>If you click "Accept analytics", we load Google Analytics, which sets cookies such as <code>_ga</code> and <code>_ga_*</code> to understand which pages are useful. It also tells Google Ads when a visitor who clicked one of our Google adverts sends an enquiry or places an order, so we can see which adverts work. These cookies last up to two years. If you click "Reject", Google Analytics is not loaded and nothing is sent to Google.</p>
+      <p>If you arrive from a Google advert, the web address contains a Google click ID (<code>gclid</code>). If you then send an enquiry or place an order, we save that ID with your enquiry in our CRM so we can report which adverts led to enquiries. We do not use it for anything else.</p>
       {hasPixels && <>
         <h2>Marketing pixels (only with your consent)</h2>
         <p>If you accept, we may also load marketing pixels from Meta and LinkedIn. They set cookies such as <code>_fbp</code> and <code>li_*</code> so we can see whether our adverts lead to enquiries. If you reject, they are not loaded.</p>

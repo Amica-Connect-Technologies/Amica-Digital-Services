@@ -4,7 +4,7 @@ const hasPixels = Boolean(analytics.metaPixelId || analytics.linkedinPartnerId);
 ---
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie preferences" hidden>
   <p>
-    We use essential cookies to run this site. With your permission we also use Google Analytics to understand how visitors use it{hasPixels ? ', and marketing pixels (Meta, LinkedIn) to measure our adverts' : ''}.
+    We use essential cookies to run this site. With your permission we also use Google Analytics to understand how visitors use it and to measure which of our Google adverts lead to enquiries{hasPixels ? ', and marketing pixels (Meta, LinkedIn) to measure our other adverts' : ''}.
     <a href="/cookie-policy">Cookie policy</a>
   </p>
   <div class="actions">
@@ -31,6 +31,10 @@ const hasPixels = Boolean(analytics.metaPixelId || analytics.linkedinPartnerId);
       window.__amicaGa = true;
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { dataLayer.push(arguments); };
+      // Google consent mode v2 (basic): the tag only loads after the visitor accepts,
+      // so we pass the granted signals Google needs to count UK ad conversions.
+      // ad_personalization stays denied: we do not use remarketing audiences.
+      gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'denied' });
       gtag('js', new Date());
       gtag('config', ga4, { anonymize_ip: true });
       var s = document.createElement('script');

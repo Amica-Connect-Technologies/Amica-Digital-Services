@@ -6,4 +6,24 @@ import { websiteOffer as W } from '../../data/pricing';
 <Base title="Order confirmed" description="Thank you for your order." noindex>
   <PageHero title="Payment received. Thank you!" lead={`We have emailed you a confirmation and a link to your website brief. Your ${W.days} working days start when we have your materials (logo, text and photos).`} />
   <section class="section-sm"><div class="container"><a class="btn btn-primary" href="/">Back to the website</a></div></section>
+  <div hidden data-purchase data-value={W.setup}></div>
 </Base>
+<script>
+  // GA4 purchase event (imported into Google Ads as the order conversion).
+  // Stripe sends buyers here with ?s=<checkout session id>; we use it as the
+  // transaction id and fire once per order, so a refresh is not counted twice.
+  // Sends nothing unless the visitor accepted analytics cookies.
+  const el = document.querySelector<HTMLElement>('[data-purchase]');
+  const sid = new URLSearchParams(location.search).get('s') || '';
+  if (el && /^cs_(live|test)_[A-Za-z0-9]+$/.test(sid)) {
+    const key = 'amica-purchase-' + sid.slice(-24);
+    let done = false;
+    try { done = localStorage.getItem(key) === '1'; } catch {}
+    const w = window as any;
+    if (!done && w.__amicaGa && w.amicaTrack) {
+      const value = Number(el.dataset.value || 0);
+      w.amicaTrack('purchase', { transaction_id: sid.slice(-40), currency: 'GBP', value, items: [{ item_id: 'website199', item_name: 'Website from £199', price: value, quantity: 1 }] });
+      try { localStorage.setItem(key, '1'); } catch {}
+    }
+  }
+</script>
