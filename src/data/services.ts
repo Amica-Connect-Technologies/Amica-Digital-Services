@@ -108,7 +108,7 @@ export const services: Service[] = [
       { q: "Will callers know they are speaking to an AI?", a: "We recommend the agent says so at the start of the call. Being open builds trust and avoids confusion." },
       { q: "Can it handle sensitive or urgent calls?", a: "It is set up to recognise these and pass them to a person, or give your agreed emergency instructions. It does not give clinical, legal or financial advice." },
       { q: "Do I need a new phone number?", a: "Not usually. Calls can be forwarded to the agent when your team is busy or outside office hours." },
-      { q: "How much does an AI receptionist cost?", a: "AI receptionists start from £199 per month plus usage. Setup, call minutes, phone numbers and extra integrations are quoted after a short call, because they depend on call volume, hours covered and the systems involved. The Pro plan (£995 per month) includes AI receptionist setup for one agreed call flow." },
+      { q: "How much does an AI receptionist cost?", a: "AI receptionists start from £199 per month plus usage. Setup, call minutes, phone numbers and extra integrations are quoted after a short call, because they depend on call volume, hours covered and the systems involved. The Pro plan (£990 per month) includes AI receptionist setup for one agreed call flow." },
     ],
   },
   {
@@ -193,7 +193,7 @@ export const services: Service[] = [
       { q: "I already have GoHighLevel. Can you fix it?", a: "Yes. We often start with an audit of an existing account and then tidy pipelines, calendars and workflows." },
       { q: "Do I need to already use GoHighLevel?", a: "No. We can set it up from scratch, or audit and improve an account you already have." },
       { q: "Who owns the data?", a: "You do. Your contacts and records remain your business data." },
-      { q: "How much does GoHighLevel setup and management cost in the UK?", a: "CRM and GoHighLevel management starts from £149 per month, covering a contact database, one sales pipeline, lead capture, enquiry notifications and basic reporting. Setup and extra integrations are quoted after a short call. For a fuller build, the Growth package is £490 per month plus £495 setup, and Pro is £995 per month plus £750 setup; both setup fees are waived on a 12-month agreement. Amica is not VAT registered, so there is no VAT to add." },
+      { q: "How much does GoHighLevel setup and management cost in the UK?", a: "CRM and GoHighLevel management starts from £149 per month, covering a contact database, one sales pipeline, lead capture, enquiry notifications and basic reporting. Setup and extra integrations are quoted after a short call. For a fuller build, the Growth package is £490 per month plus £495 setup, and Pro is £990 per month plus £750 setup; both setup fees are waived on a 12-month agreement. Amica is not VAT registered, so there is no VAT to add." },
       { q: "Do you set up GoHighLevel for cleaning companies, trades and other small businesses?", a: "Yes. As well as care and recruitment agencies, we set up GoHighLevel for UK service businesses such as cleaning companies, trades and clinics: one inbox for website, phone, Facebook and WhatsApp enquiries, quote and booking forms, appointment reminders, missed-call text-back, review requests and repeat-booking follow-up." },
       { q: "Where are you based?", a: "Amica Digital Services is based in Manchester and works with businesses across the UK. Most setup and training happens remotely by video call." },
       { q: "How long does a GoHighLevel setup take?", a: "A typical project takes four to six weeks, depending on scope and how quickly we receive the information and access we need. Smaller fixes to an existing account can be quicker." },
@@ -320,7 +320,7 @@ export const services: Service[] = [
       { q: "How long does SEO take?", a: "Technical fixes can help within weeks, but steady growth in rankings usually takes several months. We report progress every month so you can see what is changing." },
       { q: "Can you guarantee a number one ranking?", a: "No one can honestly guarantee rankings, because Google decides them. We focus on the work that gives you the best chance and measure the results openly." },
       { q: "Do you do local SEO?", a: "Yes. Local SEO includes Google Business Profile optimisation and location pages for the areas you serve, alongside technical SEO and content." },
-      { q: "Is SEO included in your monthly plans?", a: "The Growth plan (£490 per month) includes on-page SEO, local keyword targeting and technical SEO improvements. The Pro plan (£995 per month) adds an expanded SEO strategy and monthly content planning. SEO on its own starts from £299 per month." },
+      { q: "Is SEO included in your monthly plans?", a: "The Growth plan (£490 per month) includes on-page SEO, local keyword targeting and technical SEO improvements. The Pro plan (£990 per month) adds an expanded SEO strategy and monthly content planning. SEO on its own starts from £299 per month." },
     ],
   },
   {
