@@ -40,7 +40,7 @@ export const services: Service[] = [
       'Most small teams lose hours each week to the same tasks: replying to enquiries, chasing paperwork, sending reminders and copying details between systems. We map those tasks and automate the ones that follow clear rules, so your people can spend their time on the work that needs a person.',
     image: '/images/recruitment-automation.jpg',
     imageAlt: "Recruitment team reviewing candidate profiles and an automated interview booking workflow on screen",
-    related: ["ai-voice-agents", "crm-gohighlevel", "recruitment-agency-automation"],
+    related: ["ai-automation-agency-manchester", "ai-voice-agents", "crm-gohighlevel"],
     problems: [
       'Enquiries wait hours for a reply because the office is busy',
       'Staff re-type the same details into several systems',
@@ -388,6 +388,28 @@ export const landingPages = [
   },
 ];
 
+// Local landing pages (Manchester and UK-wide searches).
+export const localPages = [
+  {
+    slug: 'ai-automation-agency-manchester',
+    icon: 'bolt',
+    title: 'AI Automation Agency Manchester',
+    summary: 'Instant enquiry replies, AI receptionists and follow-ups from a Manchester-based team.',
+  },
+  {
+    slug: 'web-design-manchester',
+    icon: 'store',
+    title: 'Web Design Manchester',
+    summary: 'Small business websites from £199 one-off, built to be found on Google.',
+  },
+  {
+    slug: 'affordable-website-design-uk',
+    icon: 'store',
+    title: 'Affordable Website Design UK',
+    summary: 'A professional website for a fixed one-off price, with no monthly fee.',
+  },
+];
+
 // Service pages with their own layout (not built from the template in [service].astro).
 export const standaloneServices = [
   {
@@ -410,7 +432,7 @@ export function serviceLinks() {
 
 /** Card data for a list of related page slugs (services or landing pages). */
 export function relatedCards(slugs: string[]) {
-  const all = [...services, ...standaloneServices, ...landingPages];
+  const all = [...services, ...standaloneServices, ...landingPages, ...localPages];
   return slugs
     .map((slug) => all.find((p) => p.slug === slug))
     .filter((p): p is (typeof all)[number] => Boolean(p))

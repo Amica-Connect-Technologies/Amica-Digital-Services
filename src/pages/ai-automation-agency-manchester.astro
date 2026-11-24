@@ -1,0 +1,148 @@
+---
+// Local landing page for "AI automation agency Manchester" and "AI agency Manchester"
+// searches. Prices come from pricing.ts so they stay in step with /pricing.
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceEnquiryForm from '../components/ServiceEnquiryForm.astro';
+import { faqSchema, serviceSchema } from '../data/schema';
+import { individualServices } from '../data/pricing';
+import { company } from '../data/site';
+
+const path = '/ai-automation-agency-manchester';
+const byKey = (k: string) => individualServices.find((s) => s.key === k);
+const workflow = byKey('AI Workflow Automation');
+const receptionist = byKey('AI Receptionist / Voice Agent');
+const chatbot = byKey('AI Website Chatbot');
+
+const builds = [
+  ['bolt', 'Instant replies to every enquiry', 'Web forms, Facebook leads, calls and messages land in one CRM and get a personal reply within moments, by email, SMS or WhatsApp.', '/ai-automation'],
+  ['phone', 'AI receptionist for your phone line', 'Answers calls when your team is busy or the office is closed, takes details and books call-backs, then hands over to a person.', '/ai-voice-agents'],
+  ['chat', 'AI chatbot for your website', 'Answers approved questions on your website or WhatsApp and books calls, so visitors do not leave without getting in touch.', '/ai-chatbots'],
+  ['clock', 'Missed-call text-back', 'If nobody can pick up, the caller gets a text straight away so the conversation is not lost to a competitor.', '/missed-call-text-back'],
+  ['users', 'Follow-ups and reminders', 'Appointment reminders, quote follow-ups, document chasing and review requests that run on schedule without anyone remembering to send them.', '/crm-gohighlevel'],
+  ['heart', 'Care and recruitment workflows', 'Carer applicant replies, candidate screening, interview booking and compliance chasing for agencies.', '/care-agency-automation'],
+];
+
+const prices = [
+  { name: 'Workflow automation', price: workflow ? `From ${workflow.from} a month` : 'From £199 a month', note: workflow?.suffix ? `${workflow.suffix[0].toUpperCase()}${workflow.suffix.slice(1)}` : 'Plus build from £495', href: '/ai-automation' },
+  { name: 'AI receptionist', price: receptionist ? `From ${receptionist.from} a month` : 'From £199 a month', note: 'Plus usage. Setup quoted after a short call', href: '/ai-voice-agents' },
+  { name: 'AI website chatbot', price: chatbot ? `From ${chatbot.from} a month` : 'From £99 a month', note: 'Setup and usage charges apply', href: '/ai-chatbots' },
+];
+
+const faqs = [
+  { q: 'Are you an AI automation agency based in Manchester?', a: `Yes. ${company.legalName} is registered at ${company.address}. We build AI automation, AI receptionists and chatbots for businesses in Manchester and across the UK, mostly by phone, video call and email.` },
+  { q: 'What does an AI automation agency actually do?', a: 'We map the repetitive tasks in your business, such as replying to enquiries, booking appointments, sending reminders and chasing paperwork, and build workflows that handle the rule-based parts automatically. Your team stays in control and can step into any conversation.' },
+  { q: 'How much does AI automation cost?', a: `Workflow automation starts from ${workflow?.from ?? '£199'} a month plus a one-off build from £495. An AI receptionist starts from ${receptionist?.from ?? '£199'} a month plus usage, and a website chatbot from ${chatbot?.from ?? '£99'} a month. You get a written quote that separates the build, the monthly fee and usage before anything starts. We are not VAT registered, so there is no VAT to add.` },
+  { q: 'Which platform do you build on?', a: 'Mainly GoHighLevel, which combines a CRM, phone, SMS, email, calendars and automation in one place. We connect other tools through APIs where they suit the job, and the account and your data stay yours.' },
+  { q: 'How long does a project take?', a: 'A typical automation project takes four to six weeks, depending on scope and how quickly we receive the information we need. A small first project, such as instant enquiry replies, can be quicker.' },
+  { q: 'Can you guarantee more sales?', a: 'No, and you should be wary of anyone who does. Automation makes sure every enquiry is captured and answered quickly. We agree a few measures before we start, such as time to first reply and appointments booked, so you can see whether it is working.' },
+  { q: 'Is it UK GDPR compliant?', a: 'We build with UK GDPR and PECR in mind: clear consent on forms, data stored in an account you control, and AI agents that tell callers they are speaking to an AI and offer a way to reach a person.' },
+];
+
+const schema = [
+  serviceSchema({
+    name: 'AI automation agency Manchester',
+    serviceType: 'AI automation',
+    description: 'AI automation, AI receptionists and chatbots for Manchester and UK businesses, built in GoHighLevel by a Manchester-based agency.',
+    path,
+    audience: 'Small and medium-sized businesses in Manchester and the UK',
+    offers: [
+      { '@type': 'Offer', name: 'AI workflow automation', price: '199', priceCurrency: 'GBP', description: 'From £199 a month plus build from £495' },
+      { '@type': 'Offer', name: 'AI receptionist', price: '199', priceCurrency: 'GBP', description: 'From £199 a month plus usage' },
+    ],
+  }),
+  faqSchema(faqs),
+];
+---
+<Base title="AI Automation Agency Manchester | AI Receptionists and Workflows | Amica" description="Manchester AI automation agency: instant enquiry replies, AI receptionists, chatbots and follow-ups built in GoHighLevel. Workflow automation from £199 a month. Free 20-minute call." schema={schema}>
+  <PageHero eyebrow="AI automation agency Manchester" title="AI automation agency in Manchester" lead="We build the automations that make sure every enquiry is answered, every call is caught and every follow-up is sent, so your team can spend its time on customers rather than admin." crumbs={[{ label: 'Services', href: '/services' }, { label: 'AI Automation', href: '/ai-automation' }, { label: 'Manchester' }]}>
+    <ul class="checklist m-hero-list">
+      <li>Based in Manchester (M14), working with businesses across the UK</li>
+      <li>Workflow automation from <strong>{workflow?.from ?? '£199'} a month</strong></li>
+      <li>AI receptionists, chatbots and missed-call text-back</li>
+      <li>Fixed quote in writing, and the account stays yours</li>
+    </ul>
+    <div class="btn-row">
+      <a href="/book-a-consultation" class="btn btn-primary">Book a free call</a>
+      <a href="#enquire" class="btn btn-secondary">Ask a question</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <p class="lead">{company.legalName} is a Manchester AI automation agency at {company.addressParts.streetAddress}, {company.addressParts.postalCode}. We work with trades, clinics, care providers, recruitment agencies and professional services firms that lose time and enquiries to slow replies, missed calls and manual follow-up. We start small, measure the result and build from there.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">What we build</span><h2>Automation that wins and keeps customers</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {builds.map(([icon, title, text, href]) => (
+          <a href={href} class="card m-card"><div class="icon-badge"><Icon name={icon} /></div><h3>{title}</h3><p>{text}</p><span class="more">Learn more →</span></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <h2>How a project works</h2>
+      <ol class="m-steps">
+        <li><strong>Free 20-minute call.</strong> We look at how enquiries, calls and admin move through your business today, and where they get stuck.</li>
+        <li><strong>Written plan and quote.</strong> What will be automated, what stays with your team, the price and the date. Nothing starts until you agree.</li>
+        <li><strong>Build and test.</strong> We build in your CRM and test every message and call flow with you before a real customer sees it.</li>
+        <li><strong>Go live and improve.</strong> We train your team, watch the results and refine the automations each month.</li>
+      </ol>
+      <p>Want to compare agencies first? Our guide to <a href="/blog/ai-automation-agency-uk">choosing an AI automation agency in the UK</a> covers what to ask and the warning signs to look out for.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Prices</span><h2>Clear starting prices</h2></div>
+      <div class="grid grid-3" style="margin-top:40px">
+        {prices.map((p) => (
+          <div class="card m-tier">
+            <h3>{p.name}</h3>
+            <p class="m-price">{p.price}</p>
+            <p>{p.note}.</p>
+            <a href={p.href} class="btn btn-secondary">See what is included</a>
+          </div>
+        ))}
+      </div>
+      <p class="m-small">Care and recruitment agencies: see our <a href="/care-agency-automation">complete automation package</a>. All prices are on the <a href="/pricing">pricing page</a>. No VAT to add.</p>
+    </div>
+  </section>
+
+  <section class="section" id="enquire">
+    <div class="container" style="max-width:860px">
+      <div class="center"><span class="eyebrow">Get started</span><h2>Tell us what you want to automate</h2><p class="lead">We reply within one working day with ideas and a rough price, or a short call if we need more detail.</p></div>
+      <div class="card" style="margin-top:28px">
+        <ServiceEnquiryForm service="AI Workflow Automation" submitLabel="Send my enquiry" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container" style="max-width:860px">
+      <Faq items={faqs} />
+    </div>
+  </section>
+
+  <CtaBand title="Stop losing enquiries to slow replies" text="Book a free 20-minute call. We will show you what to automate first, and what is not worth automating. No obligation." />
+</Base>
+<style>
+  .m-hero-list { margin: 22px 0 20px; }
+  .m-card { color: inherit; text-decoration: none; display: flex; flex-direction: column; gap: 6px; }
+  .m-card .more { margin-top: auto; }
+  .m-tier { display: flex; flex-direction: column; gap: 6px; }
+  .m-tier .btn { margin-top: auto; align-self: flex-start; }
+  .m-price { font-size: 1.4rem; font-weight: 700; margin: 0; }
+  .m-steps { padding-left: 1.2em; }
+  .m-steps li { margin: 12px 0; }
+  .m-small { margin-top: 20px; color: var(--muted); font-size: 0.95rem; text-align: center; }
+</style>

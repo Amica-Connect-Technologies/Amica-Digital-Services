@@ -10,6 +10,7 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', mon
   <PageHero eyebrow="Blog" title="Insights on AI, automation and growth" lead="Practical articles on using AI, automation and digital marketing to win more customers and save time." crumbs={[{ label: 'Blog' }]} />
   <section class="section">
     <div class="container">
+      <p class="hubs">Popular guides: <a href="/blog/ai-receptionist-uk">AI receptionist UK</a> · <a href="/blog/ai-call-answering-service-uk">AI call answering service</a> · <a href="/blog/ai-automation-agency-uk">choosing an AI automation agency</a> · <a href="/blog/recruitment-automation-uk-agencies">recruitment automation</a>. Looking for a provider? See our <a href="/ai-voice-agents">AI receptionist service</a> and <a href="/ai-automation-agency-manchester">AI automation agency in Manchester</a>.</p>
       <div class="grid grid-3">
         {posts.map((p) => (
           <a class="card post-card" href={`/blog/${p.slug}`}>
@@ -26,6 +27,7 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', mon
   <CtaBand />
 </Base>
 <style>
+  .hubs { max-width: 860px; margin: 0 auto 32px; color: var(--muted); text-align: center; }
   .post-card { display: flex; flex-direction: column; gap: 10px; color: inherit; text-decoration: none; transition: transform .15s, box-shadow .15s; }
   .post-card:hover { transform: translateY(-2px); }
   .post-card .media { margin: -4px -4px 6px; border-radius: 12px; overflow: hidden; }

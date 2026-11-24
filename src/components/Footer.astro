@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import { company, nav, legalNav } from '../data/site';
-import { serviceLinks } from '../data/services';
+import { serviceLinks, localPages } from '../data/services';
 import Icon from './Icon.astro';
 const socials = [
   { label: 'Amica Digital Services on LinkedIn', icon: 'linkedin', href: company.social.linkedin },
@@ -36,6 +36,7 @@ const year = new Date().getFullYear();
           <li><a href="/blog">Blog</a></li>
           <li><a href="/pricing">Pricing</a></li>
           <li><a href="/us">For US businesses</a></li>
+          {localPages.map((l) => <li><a href={`/${l.slug}`}>{l.title}</a></li>)}
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
