@@ -28,8 +28,8 @@ export const company = {
   social: {
     linkedin: 'https://www.linkedin.com/company/112604923',
     facebook: 'https://www.facebook.com/922791870926750',
-    instagram: '',
-    youtube: '',
+    instagram: 'https://www.instagram.com/amica.digital/',
+    youtube: 'https://www.youtube.com/@amicadigitalservices',
   },
 };
 
