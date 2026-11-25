@@ -83,6 +83,12 @@ const schema = [
   <section class="section section-alt">
     <div class="container" style="max-width:860px">
       <Faq items={s.faqs} />
+      {s.guides && s.guides.length > 0 && (
+        <div class="guides">
+          <h3>Guides</h3>
+          <ul>{s.guides.map((g) => <li><a href={g.href}>{g.label}</a></li>)}</ul>
+        </div>
+      )}
     </div>
   </section>
 
@@ -101,5 +107,8 @@ const schema = [
 </Base>
 <style>
   .from-price { margin-top: 18px; font-size: 1.05rem; }
+  .guides { margin-top: 36px; }
+  .guides ul { padding-left: 1.2em; }
+  .guides li { margin: 8px 0; }
   .from-price strong { font-size: 1.25rem; }
 </style>

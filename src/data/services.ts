@@ -21,6 +21,8 @@ export type Service = {
   includes: { title: string; text: string }[];
   steps: { title: string; text: string }[];
   faqs: { q: string; a: string }[];
+  /** Optional links to related guides, shown under the FAQs. */
+  guides?: { href: string; label: string }[];
 };
 
 export const services: Service[] = [
@@ -41,6 +43,11 @@ export const services: Service[] = [
     image: '/images/recruitment-automation.jpg',
     imageAlt: "Recruitment team reviewing candidate profiles and an automated interview booking workflow on screen",
     related: ["ai-automation-agency-manchester", "ai-voice-agents", "crm-gohighlevel"],
+    guides: [
+      { href: '/blog/ai-automation-agency-uk', label: 'AI automation agency UK: how to choose' },
+      { href: '/blog/recruitment-automation-uk-agencies', label: 'Recruitment automation: what to automate first' },
+      { href: '/blog/gohighlevel-agency-uk', label: 'What a GoHighLevel partner sets up' },
+    ],
     problems: [
       'Enquiries wait hours for a reply because the office is busy',
       'Staff re-type the same details into several systems',
@@ -72,10 +79,10 @@ export const services: Service[] = [
     slug: 'ai-voice-agents',
     icon: 'phone',
     title: 'AI Voice Agents',
-    metaTitle: "AI Receptionist UK: AI Voice Agents for Calls | Amica",
+    metaTitle: "AI Receptionist UK | AI Call Answering from £199 a Month | Amica",
     metaDescription:
-      "An AI receptionist that answers calls when your team is busy or out of hours, captures details, books appointments and hands over to a person when needed.",
-    h1: "AI Receptionists and Voice Agents",
+      "AI receptionist service for UK businesses: answers calls when your team is busy or closed, captures details, books call-backs and hands over to a person. From £199 a month plus usage.",
+    h1: "AI Receptionist Service for UK Businesses",
     serviceType: "AI receptionist",
     answer:
       "An AI receptionist is a virtual receptionist that answers your phone in a natural voice, captures caller details and books appointments when your team is busy. Amica Digital Services builds and manages AI receptionists for UK businesses, from Manchester.",
@@ -85,6 +92,12 @@ export const services: Service[] = [
     image: '/images/ai-receptionist.jpg',
     imageAlt: "Receptionist wearing a headset, supported by an AI voice assistant that routes calls and books appointments",
     related: ["ai-receptionist-care-agencies", "ai-chatbots", "ai-automation"],
+    guides: [
+      { href: '/blog/ai-receptionist-uk', label: 'AI receptionist UK: what it does and what it costs' },
+      { href: '/blog/ai-call-answering-service-uk', label: 'AI call answering service: how it compares' },
+      { href: '/blog/virtual-receptionist-cost-uk', label: 'Virtual receptionist cost UK: human vs AI' },
+      { href: '/missed-call-text-back', label: 'Missed-call text-back' },
+    ],
     problems: [
       'Calls go to voicemail and callers try a competitor instead',
       'Out-of-hours enquiries wait until the next morning',
@@ -108,6 +121,8 @@ export const services: Service[] = [
       { q: "Will callers know they are speaking to an AI?", a: "We recommend the agent says so at the start of the call. Being open builds trust and avoids confusion." },
       { q: "Can it handle sensitive or urgent calls?", a: "It is set up to recognise these and pass them to a person, or give your agreed emergency instructions. It does not give clinical, legal or financial advice." },
       { q: "Do I need a new phone number?", a: "Not usually. Calls can be forwarded to the agent when your team is busy or outside office hours." },
+      { q: "Is an AI receptionist the same as a call answering service?", a: "It does a similar job. A traditional answering service uses people to answer your calls; an AI call answering service uses an AI voice agent. AI suits routine calls such as bookings, prices and new enquiries, and can answer several calls at once. Complex or sensitive calls should still go to a person, and we set up rules for that." },
+      { q: "Can an AI receptionist work for recruitment and staffing agencies?", a: "Yes. It can answer candidate and client calls out of hours, take availability and contact details, and book a call-back with a consultant, then log everything in your CRM. Urgent shift or safeguarding calls are passed straight to your team." },
       { q: "How much does an AI receptionist cost?", a: "AI receptionists start from £199 per month plus usage. Setup, call minutes, phone numbers and extra integrations are quoted after a short call, because they depend on call volume, hours covered and the systems involved. The Pro plan (£990 per month) includes AI receptionist setup for one agreed call flow." },
     ],
   },

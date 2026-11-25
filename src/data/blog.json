@@ -1,5 +1,201 @@
 [
   {
+    "slug": "website-design-for-small-business-uk",
+    "title": "Website Design for Small Businesses in the UK: What You Need and What It Costs",
+    "seoTitle": "Website Design for Small Business UK: What You Need and Costs | Amica",
+    "seoDescription": "A plain-English guide to website design for UK small businesses: what a small business website needs, typical UK prices, DIY vs freelancer vs agency, and what to check before you pay.",
+    "excerpt": "What a small business website actually needs, what it usually costs in the UK, how DIY builders, freelancers and agencies compare, and the questions to ask before you pay anyone.",
+    "category": "Websites",
+    "date": "2026-11-26",
+    "readTime": "7 min read",
+    "author": "Shaz Chughtai",
+    "coverImage": "/images/website-crm.jpg",
+    "coverAlt": "Colleagues reviewing a CRM pipeline and booking calendar on a desktop monitor, laptop and phone",
+    "related": [
+      "websites-software",
+      "seo",
+      "crm-gohighlevel"
+    ],
+    "sections": [
+      {
+        "type": "paragraph",
+        "content": "For most UK small businesses, a website has one job: turn people who find you on Google, social media or a recommendation into a phone call, message or enquiry. It does not need to be large or expensive to do that well. It does need to be clear, quick on a phone and easy to contact you from."
+      },
+      {
+        "type": "paragraph",
+        "content": "This guide explains what a small business website needs, what website design usually costs in the UK, how the main options compare, and what to check before you pay anyone."
+      },
+      {
+        "type": "heading",
+        "content": "What a small business website needs"
+      },
+      {
+        "type": "list",
+        "items": [
+          "<strong>A clear headline</strong> that says what you do and where, for example \"Plumber in Stockport\" rather than a slogan",
+          "<strong>Your services</strong>, described in the words customers actually search for",
+          "<strong>Proof you are real</strong>: your business name, address or area served, photos of your work and genuine reviews",
+          "<strong>Easy contact</strong>: click-to-call, a short form and, if you use it, WhatsApp, visible on every screen",
+          "<strong>Fast loading on a phone</strong>, because most local searches happen on mobile",
+          "<strong>The basics for Google</strong>: page titles and descriptions, a sitemap, Search Console set-up and a link to your Google Business Profile",
+          "<strong>UK GDPR basics</strong>: a privacy notice, cookie banner where needed and consent on forms"
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "Many small businesses start with a single well-built page and add separate service pages later. One page is enough to look credible and be contactable; separate pages help you appear for more than one search."
+      },
+      {
+        "type": "heading",
+        "content": "What does website design cost for a small business in the UK?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Prices vary widely, so it helps to know the usual shapes:"
+      },
+      {
+        "type": "keypoints",
+        "items": [
+          {
+            "title": "DIY website builders:",
+            "content": "a monthly subscription, with your own time to write, design and maintain the site."
+          },
+          {
+            "title": "Template-based builds:",
+            "content": "a fixed one-off price for a professional site built on a tested design, usually the quickest option."
+          },
+          {
+            "title": "Custom design:",
+            "content": "a bigger one-off fee for a bespoke design, extra pages, booking or integrations."
+          },
+          {
+            "title": "Ongoing costs:",
+            "content": "domain and hosting, plus any monthly support, SEO or updates you choose."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "At Amica Digital Services, a one-page business website is <a href=\"/website-199\">£199 one-off</a>, a site of up to five pages is £590 one-off, and bespoke websites start from £950. There is no monthly fee for the build, and we are not VAT registered, so there is no VAT to add. Whoever you choose, ask for a written quote that separates the build, domain, hosting and any monthly charges."
+      },
+      {
+        "type": "heading",
+        "content": "DIY, freelancer or agency?"
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Option",
+          "Good for",
+          "Watch out for"
+        ],
+        "rows": [
+          [
+            "DIY website builder",
+            "Very tight budgets and people who enjoy doing it themselves",
+            "Your time, a monthly fee that never stops, and sites that look good but are not set up for Google"
+          ],
+          [
+            "Freelancer",
+            "Good value and a personal service",
+            "What happens to the site, domain and hosting if they become unavailable"
+          ],
+          [
+            "Agency",
+            "Larger or more complex sites, and ongoing help with marketing",
+            "Higher prices and longer timescales than a small business may need to start"
+          ]
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "For a comparison focused on price, see our page on <a href=\"/affordable-website-design-uk\">affordable website design in the UK</a>."
+      },
+      {
+        "type": "heading",
+        "content": "Questions to ask before you pay"
+      },
+      {
+        "type": "subheading",
+        "content": "1. Who owns the domain and the website?"
+      },
+      {
+        "type": "paragraph",
+        "content": "The domain should be registered in your business name. Ask what happens if you want to move the site elsewhere later."
+      },
+      {
+        "type": "subheading",
+        "content": "2. What is included in the price, and what is extra?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Check the number of pages, rounds of changes, copywriting, photos, hosting and any monthly fees. A fixed price in writing avoids surprises."
+      },
+      {
+        "type": "subheading",
+        "content": "3. Will it be set up for Google?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Ask whether page titles, descriptions, a sitemap and Search Console are included. Be wary of anyone who guarantees a top position on Google; nobody can honestly promise that."
+      },
+      {
+        "type": "subheading",
+        "content": "4. Where do enquiries go?"
+      },
+      {
+        "type": "paragraph",
+        "content": "A form that sends to an inbox nobody checks loses business. Ideally enquiries go into a simple CRM and get an instant reply, and anyone who calls when you are busy gets a <a href=\"/missed-call-text-back\">missed-call text-back</a>."
+      },
+      {
+        "type": "subheading",
+        "content": "5. Can I see it before it goes live?"
+      },
+      {
+        "type": "paragraph",
+        "content": "You should get a preview and at least one round of changes before anything is published."
+      },
+      {
+        "type": "heading",
+        "content": "Getting found after launch"
+      },
+      {
+        "type": "paragraph",
+        "content": "A new website rarely brings in local work on its own. Customers searching \"near me\" usually see the Google map results first, so your website and Google Business Profile should show the same business name, address and phone number. Genuine reviews, a few useful pages about your services and listings on trusted UK directories all help over time. If you want ongoing help, our <a href=\"/seo\">Google Business Profile and local visibility</a> service covers this, and it is optional."
+      },
+      {
+        "type": "heading",
+        "content": "Next step"
+      },
+      {
+        "type": "paragraph",
+        "content": "If you are based in or near Manchester, see <a href=\"/web-design-manchester\">web design Manchester</a>. Anywhere in the UK, you can <a href=\"/book-a-consultation\">book a free 20-minute call</a> and we will tell you what your business needs, and what it does not."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does a small business website cost in the UK?",
+        "a": "It depends on the number of pages and features. At Amica Digital Services, a one-page business website is £199 one-off, up to five pages is £590 one-off and bespoke sites start from £950. Domain and hosting are agreed separately."
+      },
+      {
+        "q": "How many pages does a small business website need?",
+        "a": "Many start with one well-built page covering services, proof and contact details. Separate pages for each main service help you appear for more searches as you grow."
+      },
+      {
+        "q": "Is a website builder good enough for a small business?",
+        "a": "It can be, if you have the time to write, design and maintain it, and set it up properly for Google. Many owners find a done-for-you site at a fixed price saves time."
+      },
+      {
+        "q": "How long does it take to build a small business website?",
+        "a": "With us, a one-page website is live within 7 working days of receiving your logo, text, photos and payment. Larger sites take longer, and we agree a date before we start."
+      },
+      {
+        "q": "Will my new website appear on Google?",
+        "a": "A properly set-up site can be indexed by Google within days or weeks, but ranking on page one for competitive searches takes time and depends on your Google Business Profile, reviews, content and competition. Nobody can honestly guarantee a position."
+      }
+    ]
+  },
+  {
     "slug": "ai-call-answering-service-uk",
     "title": "AI Call Answering Service UK: How It Works and How It Compares",
     "seoTitle": "AI Call Answering Service UK: How It Works and Costs | Amica",
