@@ -50,6 +50,8 @@ export const analytics = {
   // cookie policy and privacy policy then mention them automatically.
   metaPixelId: '',
   linkedinPartnerId: '',
+  // OpenAI (ChatGPT) Ads measurement pixel, Ads Manager > Conversions > Data source.
+  openaiPixelId: 'GW5ppimrpw2QXjkPYsidZP',
 };
 
 // Lead source capture. On the first page view of a browser session we keep the

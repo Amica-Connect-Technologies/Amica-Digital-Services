@@ -107,10 +107,14 @@ const orgSchema = {
           } catch (e) { return base; }
         };
         var PIXEL = { generate_lead: 'Lead', book_appointment: 'Schedule' };
+        var OAI = { generate_lead: 'lead_created', book_appointment: 'appointment_scheduled' };
+        var oaiSent = {};
         window.amicaTrack = function (name, params) {
           try {
             if (window.__amicaGa && window.gtag) window.gtag('event', name, params || {});
             if (window.fbq && PIXEL[name]) window.fbq('track', PIXEL[name]);
+            // OpenAI (ChatGPT) Ads pixel: loaded only after consent (CookieBanner.astro).
+            if (window.oaiq && OAI[name] && !oaiSent[name]) { oaiSent[name] = true; window.oaiq('measure', OAI[name], { type: 'customer_action' }); }
           } catch (e) {}
         };
         // Click events on calls to action.
